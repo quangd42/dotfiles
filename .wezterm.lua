@@ -5,7 +5,7 @@ local act = wezterm.action
 -- This table will hold the configuration.
 local config = {}
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- config.font = wezterm.font("JetBrainsMono Nerd Font")
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
