@@ -1,11 +1,10 @@
 return {
 
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   opts = { style = "moon" },
-  -- },
-  -- add kanagawa
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    opts = { style = "moon" },
+  },
   {
     "rebelot/kanagawa.nvim",
     lazy = true,
@@ -47,7 +46,7 @@ return {
         TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 
         -- More uniform colors for the popup menu.
-        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
+        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend }, -- add `blend = vim.o.pumblend` to enable transparency
         PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
         PmenuSbar = { bg = theme.ui.bg_m1 },
         PmenuThumb = { bg = theme.ui.bg_p2 },
@@ -61,19 +60,20 @@ return {
     opts = {
       custom_highlights = function(colors)
         return {
-          FlashLabel = { fg = colors.crust, bg = colors.red, style = { "bold" } },
-          FlashMatch = { fg = colors.crust, bg = colors.mauve },
-          FlashCurrent = { fg = colors.crust, bg = colors.yellow },
+          FlashLabel = { fg = colors.crust, bg = colors.yellow, style = { "bold" } },
+          -- FlashLabel = { fg = colors.red },
+          -- FlashMatch = { fg = colors.crust, bg = colors.mauve },
+          -- FlashCurrent = { fg = colors.crust, bg = colors.yellow },
         }
       end,
     },
   },
 
   -- Configure LazyVim to load colorscheme
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "catppuccin",
-  --   },
-  -- },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
 }
