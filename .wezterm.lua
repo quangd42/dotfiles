@@ -37,12 +37,20 @@ local direction_move_keys = {
 	j = "Down",
 	k = "Up",
 	l = "Right",
+	LeftArrow = "Left",
+	DownArrow = "Down",
+	UpArrow = "Up",
+	RightArrow = "Right",
 }
 local direction_resize_keys = {
 	LeftArrow = "Left",
 	DownArrow = "Down",
 	UpArrow = "Up",
 	RightArrow = "Right",
+	Home = "Left",
+	PageDown = "Down",
+	PageUp = "Up",
+	End = "Right",
 }
 
 local function split_nav(resize_or_move, key)
@@ -140,40 +148,26 @@ config.key_tables = {
 }
 
 -- Define the arrow keys and corresponding hjkl keys
-local arrow_keys = { "LeftArrow", "DownArrow", "UpArrow", "RightArrow", "Home", "PageDown", "PageUp", "End" }
-local hjkl_keys = { "h", "j", "k", "l", "LeftArrow", "DownArrow", "UpArrow", "RightArrow" }
-
--- Loop through the arrow keys and map them to hjkl keys with and without the CTRL modifier
-for i, arrow_key in ipairs(arrow_keys) do
-	local hjkl_key = hjkl_keys[i]
-
-	-- Mapping without CTRL modifier
-	table.insert(config.keys, {
-		key = arrow_key,
-		action = act.SendKey({ key = hjkl_key }),
-	})
-
-	-- Mapping with CTRL modifier
-	table.insert(config.keys, {
-		key = arrow_key,
-		mods = "CTRL",
-		action = act.SendKey({ key = hjkl_key, mods = "CTRL" }),
-	})
-
-	-- Mapping with SHIFT modifier
-	table.insert(config.keys, {
-		key = arrow_key,
-		mods = "SHIFT",
-		action = act.SendKey({ key = hjkl_key, mods = "SHIFT" }),
-	})
-
-	-- Mapping with OPT modifier
-	table.insert(config.keys, {
-		key = arrow_key,
-		mods = "OPT",
-		action = act.SendKey({ key = hjkl_key, mods = "OPT" }),
-	})
-end
+-- local arrow_mapping = {
+-- 	LeftArrow = "h",
+-- 	DownArrow = "j",
+-- 	UpArrow = "k",
+-- 	RightArrow = "l",
+-- 	Home = "LeftArrow",
+-- 	PageDown = "DownArrow",
+-- 	PageUp = "UpArrow",
+-- 	End = "RightArrow",
+-- }
+--
+-- for input, output in pairs(arrow_mapping) do
+-- 	for _, mod in ipairs({ "NONE", "CTRL", "SHIFT", "OPT" }) do
+-- 		table.insert(config.keys, {
+-- 			key = input,
+-- 			mods = mod,
+-- 			action = act.SendKey({ key = output, mods = mod }),
+-- 		})
+-- 	end
+-- end
 
 -- and finally, return the configuration to wezterm
 return config
