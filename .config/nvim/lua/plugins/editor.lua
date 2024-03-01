@@ -3,7 +3,9 @@ return {
   {
     "mrjones2014/smart-splits.nvim",
     lazy = false,
-    opts = {},
+    opts = {
+      at_edge = "stop",
+    },
     keys = {
       -- Move to Window using the <ctrl> hjkl keys
       { "<C-h>", "<cmd>:lua require('smart-splits').move_cursor_left()<cr>", desc = "Go to left window" },

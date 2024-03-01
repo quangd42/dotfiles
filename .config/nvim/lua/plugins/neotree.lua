@@ -8,6 +8,12 @@ return {
           ["l"] = "open",
         },
       },
+      filesystem = {
+        filtered_items = {
+          -- visible = true,
+          hide_gitignored = false,
+        },
+      },
       event_handlers = {
         {
           event = "file_opened",
