@@ -16,7 +16,8 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Tokyo Night"
+-- config.color_scheme = "Tokyo Night"
+config.color_scheme = "Catppuccin Mocha"
 
 -- Show which key table is active in the status area
 wezterm.on("update-right-status", function(window, _)
@@ -146,6 +147,11 @@ config.key_tables = {
 		},
 	},
 }
+
+-- Tab bar
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.tab_max_width = 30
 
 -- Define the arrow keys and corresponding hjkl keys
 -- local arrow_mapping = {
