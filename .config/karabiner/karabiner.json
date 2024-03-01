@@ -23,7 +23,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
@@ -59,7 +62,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
@@ -95,7 +101,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
@@ -131,7 +140,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
@@ -167,7 +179,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
@@ -203,7 +218,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
@@ -239,7 +257,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
@@ -275,7 +296,10 @@
               {
                 "conditions": [
                   {
-                    "bundle_identifiers": ["^com.github.wez.wezterm$"],
+                    "bundle_identifiers": [
+                      "^com.github.wez.wezterm$",
+                      "^md.obsidian$"
+                    ],
                     "type": "frontmost_application_if"
                   },
                   {
