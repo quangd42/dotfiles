@@ -10,7 +10,7 @@ return {
       },
       filesystem = {
         filtered_items = {
-          -- visible = true,
+          visible = true,
           hide_gitignored = false,
         },
       },
