@@ -7,10 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Ayu Mirage",
+  "show_copilot_suggestions": false,
+  "theme": "Rosé Pine",
   "vim_mode": true,
   "ui_font_size": 16,
-  "buffer_font_size": 14,
+  "buffer_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // disable cursor blink
   "cursor_blink": false,
@@ -23,9 +24,7 @@
       "format_on_save": {
         "external": {
           "command": "black",
-          "arguments": [
-            "-"
-          ]
+          "arguments": ["-"]
         }
       }
     }
