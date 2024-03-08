@@ -39,7 +39,7 @@ return {
       options = {
         right_mouse_command = false,
         middle_mouse_command = "bdelete! %d",
-        separator_style = "slant",
+        -- separator_style = "slant",
       },
     },
   },

@@ -3,7 +3,7 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    opts = { style = "moon" },
+    opts = { style = "night" },
   },
   {
     "rebelot/kanagawa.nvim",
@@ -70,10 +70,10 @@ return {
   },
 
   -- Configure LazyVim to load colorscheme
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
-  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "catppuccin",
+  --   },
+  -- },
 }

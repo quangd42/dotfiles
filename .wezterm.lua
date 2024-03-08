@@ -16,8 +16,19 @@ end
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
--- config.color_scheme = "Tokyo Night"
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "tokyonight"
+-- config.color_scheme = "Catppuccin Mocha"
+
+if config.color_scheme == "tokyonight" then
+	config.colors = {
+		tab_bar = {
+			inactive_tab = {
+				bg_color = "#1a1b26",
+				fg_color = "#7aa2f7",
+			},
+		},
+	}
+end
 
 -- Show which key table is active in the status area
 wezterm.on("update-right-status", function(window, _)
