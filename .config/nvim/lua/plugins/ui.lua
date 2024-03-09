@@ -8,13 +8,13 @@ return {
       -- local colorscheme = vim.api.nvim_get_option("colorscheme")
       local colors, incline_normal, incline_normal_nc
       -- if colorscheme == "catppuccin" then
-      colors = require("catppuccin.palettes").get_palette("mocha")
-      incline_normal = { guibg = colors.rosewater, guifg = colors.crust }
-      incline_normal_nc = { guifg = colors.rosewater, guibg = colors.crust }
+      -- colors = require("catppuccin.palettes").get_palette("mocha")
+      -- incline_normal = { guibg = colors.rosewater, guifg = colors.crust }
+      -- incline_normal_nc = { guifg = colors.rosewater, guibg = colors.crust }
       -- elseif colorscheme == "tokyonight" then
-      --   colors = require("tokyonight.colors").setup()
-      --   incline_normal = { guibg = colors.magenta, guifg = colors.black }
-      --   incline_normal_nc = { guifg = colors.magenta, guibg = colors.black }
+      colors = require("tokyonight.colors").setup()
+      incline_normal = { guibg = colors.magenta, guifg = colors.black }
+      incline_normal_nc = { guifg = colors.magenta, guibg = colors.black }
       -- end
       require("incline").setup({
         highlight = {

@@ -3,7 +3,7 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    opts = { style = "night" },
+    opts = { style = "moon" },
   },
   {
     "rebelot/kanagawa.nvim",

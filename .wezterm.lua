@@ -5,7 +5,7 @@ local act = wezterm.action
 -- This table will hold the configuration.
 local config = {}
 
--- config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -15,31 +15,72 @@ end
 
 -- This is where you actually apply your config choices
 
--- For example, changing the color scheme:
-config.color_scheme = "tokyonight"
--- config.color_scheme = "Catppuccin Mocha"
+-- [[
+-- COLORSCHEME
+-- ]]
+local COLORSCHEME = "tokyonight"
+-- local COLORSCHEME = "Catppuccin Mocha"
+config.color_scheme = COLORSCHEME
 
-if config.color_scheme == "tokyonight" then
-	config.colors = {
-		tab_bar = {
-			inactive_tab = {
-				bg_color = "#1a1b26",
-				fg_color = "#7aa2f7",
-			},
-		},
+local current_cs = wezterm.color.get_builtin_schemes()[COLORSCHEME]
+if COLORSCHEME == "tokyonight" then
+	current_cs.tab_bar.inactive_tab = {
+		bg_color = "#1a1b26",
+		fg_color = "#7aa2f7",
+	}
+	config.color_schemes = {
+		["tokyonight"] = current_cs,
 	}
 end
 
+-- [[
+-- RIGHT STATUS BAR
+-- ]]
+
 -- Show which key table is active in the status area
-wezterm.on("update-right-status", function(window, _)
+-- Default to the active workspace
+wezterm.on("update-status", function(window, _)
 	local name = window:active_key_table()
 	if name then
-		name = "TABLE: " .. name
+		name = wezterm.format({
+			{ Foreground = { Color = current_cs.tab_bar.active_tab.bg_color } },
+			{ Background = { Color = current_cs.tab_bar.active_tab.fg_color } },
+			{ Text = "Table: " },
+			{ Attribute = { Intensity = "Bold" } },
+			{ Foreground = { Color = current_cs.tab_bar.active_tab.fg_color } },
+			{ Background = { Color = current_cs.tab_bar.active_tab.bg_color } },
+			{ Text = " " .. name },
+		})
 	end
-	window:set_right_status(name or "")
+
+	local workspace = wezterm.format({
+		{ Foreground = { Color = current_cs.tab_bar.active_tab.bg_color } },
+		{ Background = { Color = current_cs.scrollbar_thumb } },
+		{ Text = " Workspace: " },
+		{ Attribute = { Intensity = "Bold" } },
+		{ Foreground = { Color = current_cs.tab_bar.active_tab.fg_color } },
+		{ Background = { Color = current_cs.tab_bar.active_tab.bg_color } },
+		{ Text = " " .. window:active_workspace() },
+	})
+	window:set_right_status(name or workspace)
 end)
 
--- Config for smart-splits
+-- [[
+-- TAB BAR and WINDOW PADDING
+-- ]]
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.tab_max_width = 30
+
+config.window_padding = {
+	left = "0",
+	right = "0",
+	top = "0",
+	bottom = "0",
+}
+-- [[
+-- SPLIT NAVIGATION
+-- ]]
 local function is_vim(pane)
 	-- this is set by the plugin, and unset on ExitPre in Neovim
 	return pane:get_user_vars().IS_NVIM == "true"
@@ -86,12 +127,14 @@ local function split_nav(resize_or_move, key)
 	}
 end
 
--- Keys
-config.leader = { key = "\\", mods = "SUPER", timeout_milliseconds = 1000 }
+--[[
+-- CUSTOM KEYBINDINGS
+--]]
+config.leader = { key = ";", mods = "CTRL", timeout_milliseconds = 1000 }
 config.font_size = 16.0
 config.keys = {
 	{
-		key = "|",
+		key = "\\",
 		mods = "LEADER",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
@@ -107,8 +150,15 @@ config.keys = {
 		mods = "LEADER",
 		action = act.ActivateKeyTable({
 			name = "workspaces",
-			timeout_milliseconds = 1000,
+			timeout_milliseconds = 2000,
 		}),
+	},
+
+	-- Command pallete
+	{
+		key = ";",
+		mods = "LEADER|CTRL",
+		action = wezterm.action.ActivateCommandPalette,
 	},
 
 	-- move between split panes
@@ -158,33 +208,6 @@ config.key_tables = {
 		},
 	},
 }
-
--- Tab bar
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
-config.tab_max_width = 30
-
--- Define the arrow keys and corresponding hjkl keys
--- local arrow_mapping = {
--- 	LeftArrow = "h",
--- 	DownArrow = "j",
--- 	UpArrow = "k",
--- 	RightArrow = "l",
--- 	Home = "LeftArrow",
--- 	PageDown = "DownArrow",
--- 	PageUp = "UpArrow",
--- 	End = "RightArrow",
--- }
---
--- for input, output in pairs(arrow_mapping) do
--- 	for _, mod in ipairs({ "NONE", "CTRL", "SHIFT", "OPT" }) do
--- 		table.insert(config.keys, {
--- 			key = input,
--- 			mods = mod,
--- 			action = act.SendKey({ key = output, mods = mod }),
--- 		})
--- 	end
--- end
 
 -- and finally, return the configuration to wezterm
 return config
