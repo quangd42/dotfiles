@@ -49,7 +49,7 @@ wezterm.on("update-status", function(window, _)
 			{ Attribute = { Intensity = "Bold" } },
 			{ Foreground = { Color = current_cs.tab_bar.active_tab.fg_color } },
 			{ Background = { Color = current_cs.tab_bar.active_tab.bg_color } },
-			{ Text = " " .. name },
+			{ Text = " " .. name .. " " },
 		})
 	end
 
@@ -60,7 +60,7 @@ wezterm.on("update-status", function(window, _)
 		{ Attribute = { Intensity = "Bold" } },
 		{ Foreground = { Color = current_cs.tab_bar.active_tab.fg_color } },
 		{ Background = { Color = current_cs.tab_bar.active_tab.bg_color } },
-		{ Text = " " .. window:active_workspace() },
+		{ Text = " " .. window:active_workspace() .. " " },
 	})
 	window:set_right_status(name or workspace)
 end)
