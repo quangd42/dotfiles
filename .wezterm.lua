@@ -5,7 +5,7 @@ local act = wezterm.action
 -- This table will hold the configuration.
 local config = {}
 
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- config.font = wezterm.font("JetBrainsMono Nerd Font")
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -18,7 +18,7 @@ end
 -- [[
 -- COLORSCHEME
 -- ]]
-local COLORSCHEME = "tokyonight"
+local COLORSCHEME = "tokyonight_moon"
 -- local COLORSCHEME = "Catppuccin Mocha"
 config.color_scheme = COLORSCHEME
 
@@ -70,7 +70,8 @@ end)
 -- ]]
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.tab_max_width = 30
+config.tab_max_width = 32
+config.unzoom_on_switch_pane = true
 
 config.window_padding = {
 	left = "0",
@@ -78,6 +79,7 @@ config.window_padding = {
 	top = "0",
 	bottom = "0",
 }
+
 -- [[
 -- SPLIT NAVIGATION
 -- ]]
