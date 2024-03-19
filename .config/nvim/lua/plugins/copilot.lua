@@ -14,7 +14,7 @@ return {
       },
     },
   },
-  keys = {
-    { "<leader>cpt", ":Copilot suggestion toggle_auto_trigger<cr>", desc = "Toggle Copilot AutoTrigger" },
-  },
+  -- keys = {
+  --   { "<leader>ct", ":Copilot suggestion toggle_auto_trigger<cr>", desc = "Toggle Copilot AutoTrigger" },
+  -- },
 }
