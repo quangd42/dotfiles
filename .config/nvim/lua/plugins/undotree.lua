@@ -1,7 +1,7 @@
 return {
   {
     "debugloop/telescope-undo.nvim",
-    dependencies = { -- note how they're inverted to above example
+    dependencies = {
       {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -15,13 +15,13 @@ return {
       },
     },
     opts = {
-      -- don't use `defaults = { }` here, do this in the main telescope spec
       extensions = {
         undo = {
-          side_by_side = true,
+          -- side_by_side = true,
           layout_strategy = "vertical",
           layout_config = {
             preview_height = 0.7,
+            preview_cutoff = 20,
           },
         },
         -- no other extensions here, they can have their own spec too
