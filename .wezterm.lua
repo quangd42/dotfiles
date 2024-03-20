@@ -162,6 +162,16 @@ config.keys = {
 		mods = "LEADER|CTRL",
 		action = wezterm.action.ActivateCommandPalette,
 	},
+	{
+		key = "l",
+		mods = "CTRL|SUPER",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		key = "h",
+		mods = "CTRL|SUPER",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
 
 	-- move between split panes
 	split_nav("move", "h"),
