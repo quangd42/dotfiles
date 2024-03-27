@@ -10,3 +10,7 @@ map("n", "U", "<C-R>", { desc = "Redo last change" })
 -- Visual mode copy paste
 map("v", "C", '"_c', { desc = "Change without yank" })
 map("v", "D", '"_d', { desc = "Delete without yank" })
+
+-- Reduce skipgram for maya layout
+map("n", "cih", "ciw")
+map("n", "vih", "viw")

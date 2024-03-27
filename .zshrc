@@ -105,6 +105,7 @@ alias tree="lsd -A --tree"
 alias c="code"
 alias n="nvim"
 alias cd="z"
+alias lg="lazygit"
 
 # nvim envs
 alias nks='NVIM_APPNAME="nvim-kickstart" nvim'
