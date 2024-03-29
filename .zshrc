@@ -109,6 +109,7 @@ alias lg="lazygit"
 
 # nvim envs
 alias nks='NVIM_APPNAME="nvim-kickstart" nvim'
+alias nvs='NVIM_APPNAME="nvim-vscode" nvim'
 
 
 # Generated for envman. Do not edit.

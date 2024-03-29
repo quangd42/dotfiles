@@ -1,5 +1,4 @@
 return {
-  { "echasnovski/mini.move", version = "*" },
   {
     "mrjones2014/smart-splits.nvim",
     lazy = false,
