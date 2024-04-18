@@ -1,0 +1,14 @@
+theme = "kanagawa"
+
+[editor]
+line-number = "relative"
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.lsp]
+display-messages = true
+
+[editor.file-picker]
+hidden = false
