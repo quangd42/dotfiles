@@ -17,10 +17,10 @@ return {
       { "<C-Up>", "<cmd>:lua require('smart-splits').resize_up()<cr>", desc = "Go to upper window" },
       { "<C-Right>", "<cmd>:lua require('smart-splits').resize_right()<cr>", desc = "Go to right window" },
       -- swapping buffers between windows
-      { "<leader>bsh", "<cmd>:lua require('smart-splits').swap_buf_left()<cr>", desc = "Swap buffer left" },
-      { "<leader>bsj", "<cmd>:lua require('smart-splits').swap_buf_down()<cr>", desc = "Swap buffer down" },
-      { "<leader>bsk", "<cmd>:lua require('smart-splits').swap_buf_up()<cr>", desc = "Swap buffer up" },
-      { "<leader>bsl", "<cmd>:lua require('smart-splits').swap_buf_right()<cr>", desc = "Swap buffer right" },
+      { "<leader>wh", "<cmd>:lua require('smart-splits').swap_buf_left()<cr>", desc = "Swap buffer left" },
+      { "<leader>wj", "<cmd>:lua require('smart-splits').swap_buf_down()<cr>", desc = "Swap buffer down" },
+      { "<leader>wk", "<cmd>:lua require('smart-splits').swap_buf_up()<cr>", desc = "Swap buffer up" },
+      { "<leader>wl", "<cmd>:lua require('smart-splits').swap_buf_right()<cr>", desc = "Swap buffer right" },
     },
   },
 }
