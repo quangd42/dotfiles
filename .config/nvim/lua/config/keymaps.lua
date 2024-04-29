@@ -16,6 +16,14 @@ map("v", "D", '"_d', { desc = "Delete without yank" })
 map("n", "cih", "ciw")
 map("n", "vih", "viw")
 
+-- Change LazyVim defaults
+delmap("n", "<leader>qq")
+map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>qx", "<cmd>xa<cr>", { desc = "Save & Quit All" })
+
+-- Remove unused keymaps
 delmap("n", "<leader>ft")
 delmap("n", "<leader>fT")
 delmap("n", "<leader>fn")
+delmap("n", "<leader>l")
+delmap("n", "<leader>L")

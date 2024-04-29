@@ -12,12 +12,6 @@ return {
             end,
             desc = "flash",
           },
-          ["S"] = {
-            function()
-              require("flash").treesitter()
-            end,
-            desc = "flash treesitter",
-          },
           ["|"] = "open_vsplit",
           ["-"] = "open_split",
         },
