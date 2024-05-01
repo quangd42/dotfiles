@@ -16,12 +16,18 @@ map("v", "D", '"_d', { desc = "Delete without yank" })
 map("n", "cih", "ciw")
 map("n", "vih", "viw")
 
--- Change LazyVim defaults
+-- Quit
 delmap("n", "<leader>qq")
 map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
 map("n", "<leader>qx", "<cmd>xa<cr>", { desc = "Save & Quit All" })
 
--- Remove unused keymaps
+-- Buffers
+map("n", "<leader>[", "<C-^>", { desc = "Switch to Last Buffer" })
+delmap("n", "<leader>bb")
+delmap("n", "<leader>`")
+
+-- Remove LazyVim keymaps
+-- Files
 delmap("n", "<leader>ft")
 delmap("n", "<leader>fT")
 delmap("n", "<leader>fn")

@@ -106,6 +106,7 @@ alias c="code"
 alias n="nvim"
 alias cd="z"
 alias lg="lazygit"
+alias cl="curlie"
 
 # nvim envs
 alias nks='NVIM_APPNAME="nvim-kickstart" nvim'
@@ -123,3 +124,4 @@ eval "$(pyenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 PATH=~/.console-ninja/.bin:$PATH
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
