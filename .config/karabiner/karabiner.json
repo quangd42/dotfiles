@@ -385,84 +385,8 @@
                                 "from": {
                                     "key_code": "escape",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "caps_lock"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Quang's Tab to MT(Hyper, Tab)",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "is_built_in_keyboard": true
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "description": "tab = tab(click) | hyper(hold)",
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
                                         "optional": [
                                             "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "lazy": true,
-                                        "modifiers": [
-                                            "left_shift",
-                                            "left_control",
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "tab"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "is_built_in_keyboard": true
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "description": "escape = capslock switch",
-                                "from": {
-                                    "key_code": "escape",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control"
-                                        ],
-                                        "optional": [
-                                            "caps_lock"
                                         ]
                                     }
                                 },
