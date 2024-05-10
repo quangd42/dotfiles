@@ -8,17 +8,40 @@
 // from the command palette or from `Zed` application menu.
 {
   "show_copilot_suggestions": false,
-  "theme": "Andromeda",
-  "vim_mode": true,
+  "theme": "Rosé Pine Moon",
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
+  // Vim mode
+  "vim_mode": true,
+  "vim": {
+    "use_multiline_find": true,
+    "use_system_clipboard": "on_yank"
+  },
   // disable cursor blink
   "cursor_blink": false,
   // use relative line numbers
   "relative_line_numbers": true,
   // allow cursor to reach edges of screen
   "vertical_scroll_margin": 0,
+  // Formatter
+  "format_on_save": "on",
+  // "formatter": "language_server",
+  // Git
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 3000
+    }
+  },
+  "tabs": {
+    "git_status": true
+  },
+  // Inlay Hints
+  "inlay_hints": {
+    "enabled": false
+  },
   "language_overrides": {
     "Python": {
       "format_on_save": {
@@ -28,5 +51,9 @@
         }
       }
     }
+  },
+  // Preview tabs
+  "preview_tabs": {
+    "enable_preview_from_code_navigation": true
   }
 }

@@ -1,6 +1,7 @@
 /**/raycast/extensions/
-/**/envman
-/**/gcloud
-/**/karabiner/automatic_backups
-/**/github-copilot/hosts.json
-/**/zed
+envman
+gcloud
+.config/karabiner/automatic_backups
+.config/github-copilot/hosts.json
+.config/zed/.tmp*
+.config/zed/embeddings

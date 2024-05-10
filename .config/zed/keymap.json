@@ -1,0 +1,110 @@
+[
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in normal & visual mode
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      // "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      // "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-j": "workspace::ToggleBottomDock",
+      "ctrl-k": "workspace::ToggleBottomDock",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPrevHunk",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      "U": "editor::Redo",
+      // Explorer and file
+      "space e": "pane::RevealInProjectPanel",
+      "space f": "file_finder::Toggle",
+      // Buffer nav
+      "space 1": ["pane::ActivateItem", 0],
+      "space 2": ["pane::ActivateItem", 1],
+      "space 3": ["pane::ActivateItem", 2],
+      "space 4": ["pane::ActivateItem", 3],
+      "space 5": ["pane::ActivateItem", 4],
+      "space 6": ["pane::ActivateItem", 5],
+      "space 7": ["pane::ActivateItem", 6],
+      "space 8": ["pane::ActivateItem", 7],
+      "space 9": ["pane::ActivateItem", 8],
+      "space [": ["workspace::SendKeystrokes", "ctrl-tab enter"],
+      "space h": "tab_switcher::Toggle",
+      "space b d": ["workspace::SendKeystrokes", "cmd-w"],
+      "H": "pane::ActivatePrevItem",
+      "L": "pane::ActivateNextItem",
+      "space c f": "editor::Format",
+      "space c r": "editor::Rename",
+      "g r": "editor::FindAllReferences",
+      "K": "editor::Hover"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      // visual, visual line & visual block modes
+      ">": "editor::Indent",
+      "<": "editor::Outdent"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work in insert mode
+      // e.g.
+      // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp"
+    }
+  },
+  // {
+  //   "context": "Editor && VimControl && !VimWaiting && !menu",
+  //   "bindings": {
+  //     "w": "vim::NextSubwordStart",
+  //     "b": "vim::PreviousSubwordStart",
+  //     "e": "vim::NextSubwordEnd",
+  //     "g e": "vim::PreviousSubwordEnd"
+  //   }
+  // },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletion",
+      "enter": "editor::NewlineBelow",
+      "ctrl-e": "editor::AcceptPartialInlineCompletion"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+      // ... or other keybindings
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-enter": "workspace::NewTerminal",
+      "ctrl-j": "workspace::ToggleZoom",
+      "ctrl-k": "workspace::ToggleBottomDock",
+      "ctrl-h": "pane::ActivatePrevItem",
+      "ctrl-l": "pane::ActivateNextItem"
+    }
+  }
+]
