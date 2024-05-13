@@ -11,11 +11,16 @@ require("kitty-scrollback").setup({
   -- put your kitty-scrollback.nvim configurations here
 })
 
-vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/tokyonight.nvim") -- lazy.nvim
-require("tokyonight").setup({ style = "moon" })
-vim.cmd([[colorscheme tokyonight]])
+-- tokyonight
+-- vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/tokyonight.nvim")
+-- require("tokyonight").setup({ style = "moon" })
+-- vim.cmd([[colorscheme tokyonight]])
+-- catppuccin
+vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/catppuccin")
+require("catppuccin").setup()
+vim.cmd([[colorscheme catppuccin]])
 
-vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/flash.nvim") -- lazy.nvim
+vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/lazy/flash.nvim")
 require("flash").setup()
 local map = vim.keymap.set
 map({ "n", "x", "o" }, "s", function()
