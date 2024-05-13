@@ -8,10 +8,11 @@
 // from the command palette or from `Zed` application menu.
 {
   "show_copilot_suggestions": false,
-  "theme": "Rosé Pine Moon",
+  "theme": "Andromeda",
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_family": "Menlo",
   // Vim mode
   "vim_mode": true,
   "vim": {
@@ -26,7 +27,6 @@
   "vertical_scroll_margin": 0,
   // Formatter
   "format_on_save": "on",
-  // "formatter": "language_server",
   // Git
   "git": {
     "git_gutter": "tracked_files",
@@ -55,5 +55,12 @@
   // Preview tabs
   "preview_tabs": {
     "enable_preview_from_code_navigation": true
+  },
+  "project_panel": {
+    "default_width": 300
+  },
+  // Terminal
+  "terminal": {
+    "default_height": 640
   }
 }
