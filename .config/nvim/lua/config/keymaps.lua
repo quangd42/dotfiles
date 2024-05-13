@@ -12,9 +12,9 @@ map("n", "U", "<C-R>", { desc = "Redo last change" })
 map("v", "C", '"_c', { desc = "Change without yank" })
 map("v", "D", '"_d', { desc = "Delete without yank" })
 
--- Reduce skipgram for maya layout
-map("n", "cih", "ciw")
-map("n", "vih", "viw")
+-- Move screen
+map("n", "<C-E>", "5<C-E>")
+map("n", "<C-Y>", "5<C-Y>")
 
 -- Quit
 delmap("n", "<leader>qq")
