@@ -9,3 +9,19 @@
 	proxy = 
 [init]
 	defaultBranch = main
+
+[core]
+  pager = delta
+
+[include]
+  path = "/Users/quang-dang/.config/delta/catppuccin.gitconfig"
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  features = catppuccin-mocha
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
