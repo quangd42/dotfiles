@@ -123,5 +123,8 @@ eval "$(pyenv init -)"
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# starship
+eval "$(starship init zsh)"
+
 PATH=~/.console-ninja/.bin:$PATH
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
