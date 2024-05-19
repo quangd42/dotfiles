@@ -1,6 +1,7 @@
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    -- enabled = false,
     opts = {
       window = {
         mappings = {
@@ -36,13 +37,14 @@ return {
       { "<leader>fe", false },
       { "<leader>fE", false },
       {
-        "<leader>e",
+        "<leader>E",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
         end,
         desc = "Explorer NeoTree (Root Dir)",
       },
-      { "<leader>E", false },
+      -- { "<leader>E", false },
+      { "<leader>e", false },
     },
   },
 }
