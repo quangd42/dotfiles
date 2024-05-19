@@ -4,38 +4,76 @@ return {
     event = "BufReadPre",
     enabled = true,
     config = function()
-      local colorscheme = vim.api.nvim_get_var("colors_name")
-      local colors, incline_normal, incline_normal_nc
-      if colorscheme == "catppuccin-mocha" then
-        colors = require("catppuccin.palettes").get_palette("mocha")
-        incline_normal = { guibg = colors.rosewater, guifg = colors.crust }
-        incline_normal_nc = { guifg = colors.rosewater, guibg = colors.crust }
-      elseif colorscheme == "tokyonight" then
-        colors = require("tokyonight.colors").setup({ style = "moon" })
-        incline_normal = { guibg = colors.yellow, guifg = colors.black }
-        incline_normal_nc = { guifg = colors.yellow, guibg = colors.black }
-      end
       require("incline").setup({
-        highlight = {
-          groups = {
-            InclineNormal = incline_normal,
-            InclineNormalNC = incline_normal_nc,
-          },
-        },
         window = { margin = { vertical = 0, horizontal = 0 } },
         render = function(props)
-          -- local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":~:.")
+          local devicons = require("nvim-web-devicons")
+          local lzicons = LazyVim.config.icons
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-          -- local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-          local icon = require("nvim-web-devicons").get_icon(filename)
-          -- return { { icon, guifg = color }, { " " }, { filename } }
-          return { { icon }, { "  " }, { filename } }
+          if filename == "" then
+            filename = "[No Name]"
+          end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
+          local modified = vim.bo[props.buf].modified
+          local colors = require("tokyonight.colors").moon()
+
+          local function get_git_diff()
+            local icons = {
+              removed = lzicons.git.removed,
+              changed = lzicons.git.modified,
+              added = lzicons.git.added,
+            }
+            local signs = vim.b[props.buf].gitsigns_status_dict
+            local labels = {}
+            if signs == nil then
+              return labels
+            end
+            for name, icon in pairs(icons) do
+              if tonumber(signs[name]) and signs[name] > 0 then
+                table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. name })
+              end
+            end
+            if #labels > 0 then
+              table.insert(labels, { "┊ " })
+            end
+            return labels
+          end
+
+          local function get_diagnostic_label()
+            local icons = {
+              error = lzicons.diagnostics.Error,
+              warn = lzicons.diagnostics.Warn,
+              info = lzicons.diagnostics.Info,
+              hint = lzicons.diagnostics.Hint,
+            }
+            local label = {}
+
+            for severity, icon in pairs(icons) do
+              local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+              if n > 0 then
+                table.insert(label, { icon .. n .. " ", group = "DiagnosticSign" .. severity })
+              end
+            end
+            if #label > 0 then
+              table.insert(label, { "┊ " })
+            end
+            return label
+          end
+
+          return {
+            { get_diagnostic_label() },
+            { get_git_diff() },
+            { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
+            { filename },
+            { modified and " ●" or "", guifg = colors.yellow },
+          }
         end,
       })
     end,
   },
   {
     "akinsho/bufferline.nvim",
+    enabled = false,
     opts = {
       options = {
         right_mouse_command = false,

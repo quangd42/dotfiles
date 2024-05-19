@@ -3,7 +3,18 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    opts = { style = "moon" },
+    opts = {
+      style = "moon",
+      on_highlights = function(hl, colors)
+        hl.MiniFilesTitleFocused = {
+          bg = colors.yellow,
+          fg = colors.black,
+        }
+        -- hl.InclineNormal = { bg = colors.yellow, fg = colors.black }
+        -- hl.InclineNormalNC = { fg = colors.yellow, bg = colors.black }
+        hl.InclineNormal = { fg = colors.yellow, bg = colors.black }
+      end,
+    },
   },
   {
     "rebelot/kanagawa.nvim",
@@ -64,6 +75,8 @@ return {
           -- FlashLabel = { fg = colors.red },
           -- FlashMatch = { fg = colors.crust, bg = colors.mauve },
           -- FlashCurrent = { fg = colors.crust, bg = colors.yellow },
+          -- InclineNormal = { bg = colors.rosewater, fg = colors.crust },
+          InclineNormal = { fg = colors.rosewater, bg = colors.crust },
         }
       end,
     },
