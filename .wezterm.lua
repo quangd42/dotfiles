@@ -5,13 +5,15 @@ local act = wezterm.action
 -- This table will hold the configuration.
 local config = {}
 
--- config.font = wezterm.font("JetBrainsMono Nerd Font")
-
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
+
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
+config.command_palette_font_size = 16.0
+config.font_size = 12
 
 -- This is where you actually apply your config choices
 
@@ -143,6 +145,17 @@ config.keys = {
 	{
 		key = "-",
 		mods = "LEADER",
+		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+
+	{
+		key = "Enter",
+		mods = "SUPER|SHIFT",
+		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	{
+		key = "Enter",
+		mods = "SUPER",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 
