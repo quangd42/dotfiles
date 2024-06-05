@@ -5,14 +5,14 @@ return {
       table.insert(opts.ensure_installed, "prettierd")
     end,
   },
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettierd)
-    end,
-  },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   opts = function(_, opts)
+  --     local nls = require("null-ls")
+  --     opts.sources = opts.sources or {}
+  --     table.insert(opts.sources, nls.builtins.formatting.prettierd)
+  --   end,
+  -- },
   {
     "stevearc/conform.nvim",
     opts = {
