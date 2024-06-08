@@ -8,6 +8,10 @@ return {
             hints = {
               parameterNames = false,
               assignVariableTypes = false,
+              compositeLiteralFields = false,
+            },
+            analyses = {
+              fieldalignment = false,
             },
           },
         },
