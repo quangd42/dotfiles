@@ -10,7 +10,7 @@ return {
       },
     },
     keys = {
-      { "<leader>f", LazyVim.telescope("files"), desc = "Find Files (Root Dir)" },
+      { "<leader>f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader><space>", false },
       { "<leader>fb", false },
       { "<leader>fc", false },
