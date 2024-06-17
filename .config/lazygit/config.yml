@@ -1,0 +1,37 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+
+# Keybindings
+keybinding:
+  universal:
+    prevItem-alt: a
+    nextItem-alt: h
+    scrollLeft: P
+    scrollRight: E
+    prevBlock-alt: p
+    nextBlock-alt: e
+    edit: l
+    openFile: o
+    scrollUpMain-alt1: A
+    scrollDownMain-alt1: H
+
+    # 'Files' appended for legacy reasons
+    pushFiles: K
+
+    # 'Files' appended for legacy reasons
+    pullFiles: k
+  status:
+    allBranchesLogGraph: A
+  files:
+    toggleStagedAll: "'"
+  branches:
+    pushTag: K
+  commits:
+    amendToCommit: A
+    resetCommitAuthor: "'"
+    pickCommit: k
+  main:
+    toggleSelectHunk: "'"
+    editSelectHunk: L

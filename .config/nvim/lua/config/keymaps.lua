@@ -13,8 +13,10 @@ map("v", "C", '"_c', { desc = "Change without yank" })
 map("v", "D", '"_d', { desc = "Delete without yank" })
 
 -- Move screen
-map("n", "<C-E>", "5<C-E>")
 map("n", "<C-Y>", "5<C-Y>")
+map("n", "<C-L>", "5<C-E>")
+-- map("n", "<C-E>", "5<C-E>")
+map("n", "<C-K>", "<C-P>")
 
 -- Quit
 delmap("n", "<leader>qq")

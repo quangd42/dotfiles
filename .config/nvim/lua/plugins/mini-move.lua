@@ -5,16 +5,16 @@ return {
     opts = {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-        left = "<C-M-h>",
-        right = "<C-M-l>",
-        down = "<C-M-j>",
-        up = "<C-M-k>",
+        left = "<M-left>",
+        right = "<M-right>",
+        down = "<M-down>",
+        up = "<M-up>",
 
         -- Move current line in Normal mode
-        line_left = "<C-M-h>",
-        line_right = "<C-M-l>",
-        line_down = "<C-M-j>",
-        line_up = "<C-M-k>",
+        line_left = "<M-left>",
+        line_right = "<M-right>",
+        line_down = "<M-down>",
+        line_up = "<M-up>",
       },
     },
     config = function(_, opts)

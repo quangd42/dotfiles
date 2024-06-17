@@ -1,10 +1,11 @@
 return {
   {
     "echasnovski/mini.files",
+    enabled = true,
     opts = {
       windows = {
         preview = true,
-        width_focus = 30,
+        width_focus = 45,
         width_preview = 45,
       },
       mappings = {

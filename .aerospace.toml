@@ -87,16 +87,16 @@ alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-p = 'focus left'
+alt-h = 'focus down'
+alt-a = 'focus up'
+alt-e = 'focus right'
 
 # See: https://nikitakobko.github.io/AeroSpace/commands#move
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+alt-shift-p = 'move left'
+alt-shift-h = 'move down'
+alt-shift-a = 'move up'
+alt-shift-e = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-minus = 'resize smart -50'
@@ -116,6 +116,7 @@ alt-s = 'workspace S'
 alt-w = 'workspace W'
 alt-t = 'workspace T'
 alt-d = 'workspace D'
+alt-g = 'workspace G'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -131,6 +132,7 @@ alt-shift-s = 'move-node-to-workspace S'
 alt-shift-w = 'move-node-to-workspace W'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-d = 'move-node-to-workspace D'
+alt-shift-g = 'move-node-to-workspace G'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -143,8 +145,11 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-m = 'fullscreen'
 alt-f = 'layout floating tiling'
 
-alt-cmd-h = 'workspace --wrap-around prev'
-alt-cmd-l = 'workspace --wrap-around next'
+alt-cmd-p = 'workspace --wrap-around prev'
+alt-cmd-e = 'workspace --wrap-around next'
+
+# disable hide
+cmd-h = []
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-backslash = 'mode service'
@@ -161,10 +166,10 @@ f = [
 ] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
-alt-h = ['join-with left', 'mode main']
-alt-j = ['join-with down', 'mode main']
-alt-k = ['join-with up', 'mode main']
-alt-l = ['join-with right', 'mode main']
+alt-p = ['join-with left', 'mode main']
+alt-h = ['join-with down', 'mode main']
+alt-a = ['join-with up', 'mode main']
+alt-e = ['join-with right', 'mode main']
 
 
 [workspace-to-monitor-force-assignment]
@@ -215,7 +220,7 @@ run = 'move-node-to-workspace S'
 if.app-name-regex-substring = 'Arc'
 run = ['layout tiling', 'move-node-to-workspace W']
 
-# T - Terminal
+# D - Dev
 [[on-window-detected]]
 if.app-name-regex-substring = 'Kitty'
 run = ['layout tiling', 'move-node-to-workspace T']
@@ -224,7 +229,15 @@ run = ['layout tiling', 'move-node-to-workspace T']
 if.app-name-regex-substring = 'Wezterm'
 run = ['layout tiling', 'move-node-to-workspace T']
 
-# D - Dev tools
+[[on-window-detected]]
+if.app-name-regex-substring = 'Code'
+run = ['layout tiling', 'move-node-to-workspace T']
+
+# E - Execute stuff
 [[on-window-detected]]
 if.app-name-regex-substring = 'Dbeaver'
 run = ['layout tiling', 'move-node-to-workspace D']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'RapidAPI'
+run = ['layout floating', 'move-node-to-workspace D']

@@ -90,10 +90,10 @@ local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
 end
 local direction_move_keys = {
-	h = "Left",
-	j = "Down",
-	k = "Up",
-	l = "Right",
+	p = "Left",
+	h = "Down",
+	a = "Up",
+	e = "Right",
 	LeftArrow = "Left",
 	DownArrow = "Down",
 	UpArrow = "Up",
@@ -176,21 +176,21 @@ config.keys = {
 		action = wezterm.action.ActivateCommandPalette,
 	},
 	{
-		key = "l",
+		key = "e",
 		mods = "CTRL|SUPER",
 		action = wezterm.action.ActivateTabRelative(1),
 	},
 	{
-		key = "h",
+		key = "p",
 		mods = "CTRL|SUPER",
 		action = wezterm.action.ActivateTabRelative(-1),
 	},
 
 	-- move between split panes
+	split_nav("move", "p"),
 	split_nav("move", "h"),
-	split_nav("move", "j"),
-	split_nav("move", "k"),
-	split_nav("move", "l"),
+	split_nav("move", "a"),
+	split_nav("move", "e"),
 	-- resize panes
 	split_nav("resize", "LeftArrow"),
 	split_nav("resize", "DownArrow"),
