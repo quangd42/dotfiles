@@ -3,5 +3,6 @@ envman
 gcloud
 .config/karabiner/automatic_backups
 .config/github-copilot/hosts.json
-.config/zed/.tmp*
-.config/zed/embeddings
+.config/zed/**
+!config/zed/keymap.json
+!config/zed/settings.json
