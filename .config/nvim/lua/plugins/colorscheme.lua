@@ -51,7 +51,7 @@ return {
     opts = {
       custom_highlights = function(colors)
         return {
-          FlashLabel = { fg = colors.crust, bg = colors.yellow, style = { "bold" } },
+          FlashLabel = { fg = colors.crust, bg = colors.red, style = { "bold" } },
           -- FlashLabel = { fg = colors.red },
           -- FlashMatch = { fg = colors.crust, bg = colors.mauve },
           -- FlashCurrent = { fg = colors.crust, bg = colors.yellow },
@@ -63,10 +63,10 @@ return {
   },
 
   -- Configure LazyVim to load colorscheme
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "kanagawa",
-  --   },
-  -- },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
 }

@@ -107,11 +107,11 @@ alias n="nvim"
 alias cd="z"
 alias lg="lazygit"
 alias cl="curlie"
+alias wtt="wezterm cli set-tab-title"
 
 # nvim envs
 alias nks='NVIM_APPNAME="nvim-kickstart" nvim'
 alias nvs='NVIM_APPNAME="nvim-vscode" nvim'
-
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

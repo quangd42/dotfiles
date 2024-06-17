@@ -11,17 +11,20 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" })
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.cell_width = 1.05
 config.command_palette_font_size = 16.0
-config.font_size = 12
+config.font_size = 16.2
+config.line_height = 1.00
 
 -- This is where you actually apply your config choices
 
 -- [[
 -- COLORSCHEME
 -- ]]
-local COLORSCHEME = "tokyonight_moon"
--- local COLORSCHEME = "Catppuccin Mocha"
+-- local COLORSCHEME = "tokyonight_moon"
+-- local COLORSCHEME = "kanagawabones"
+local COLORSCHEME = "Catppuccin Mocha"
 config.color_scheme = COLORSCHEME
 
 local current_cs = wezterm.color.get_builtin_schemes()[COLORSCHEME]
@@ -78,9 +81,11 @@ config.unzoom_on_switch_pane = true
 config.window_padding = {
 	left = "0",
 	right = "0",
-	top = "0",
+	top = "10",
 	bottom = "0",
 }
+
+config.window_decorations = "RESIZE"
 
 -- [[
 -- SPLIT NAVIGATION
@@ -135,7 +140,6 @@ end
 -- CUSTOM KEYBINDINGS
 --]]
 config.leader = { key = ";", mods = "CTRL", timeout_milliseconds = 1000 }
-config.font_size = 16.0
 config.keys = {
 	{
 		key = "\\",
