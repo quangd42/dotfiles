@@ -26,10 +26,11 @@ keybinding:
     allBranchesLogGraph: A
   files:
     toggleStagedAll: "'"
+    amendLastCommit: '"'
   branches:
     pushTag: K
   commits:
-    amendToCommit: A
+    amendToCommit: '"'
     resetCommitAuthor: "'"
     pickCommit: k
   main:

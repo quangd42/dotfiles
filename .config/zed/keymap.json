@@ -60,8 +60,8 @@
       // put key-bindings here if you want them to work in insert mode
       // e.g.
       // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
-      "alt-j": "editor::MoveLineDown",
-      "alt-k": "editor::MoveLineUp"
+      "alt-down": "editor::MoveLineDown",
+      "alt-up": "editor::MoveLineUp"
     }
   },
   // {

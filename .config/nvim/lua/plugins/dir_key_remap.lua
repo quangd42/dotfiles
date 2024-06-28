@@ -18,12 +18,12 @@ return {
   {
     "monaqa/dial.nvim",
     -- stylua: ignore
-    keys = function ()
+    keys = function()
       return {
-        { "<C-j>", function() return M.dial(true) end, expr = true, desc = "Increment", mode = {"n", "v"} },
-        { "<C-x>", function() return M.dial(false) end, expr = true, desc = "Decrement", mode = {"n", "v"} },
-        { "g<C-j>", function() return M.dial(true, true) end, expr = true, desc = "Increment", mode = {"n", "v"} },
-        { "g<C-x>", function() return M.dial(false, true) end, expr = true, desc = "Decrement", mode = {"n", "v"} },
+        { "<c-'>",  function() return M.dial(true) end,        expr = true, desc = "Increment", mode = { "n", "v" } },
+        { "<C-x>",  function() return M.dial(false) end,       expr = true, desc = "Decrement", mode = { "n", "v" } },
+        { "g<C-'>", function() return M.dial(true, true) end,  expr = true, desc = "Increment", mode = { "n", "v" } },
+        { "g<C-x>", function() return M.dial(false, true) end, expr = true, desc = "Decrement", mode = { "n", "v" } },
       }
     end,
   },
@@ -45,8 +45,8 @@ return {
         },
         -- stylua: ignore
         { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank Text" },
-        { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put Yanked Text After Cursor" },
-        { "p", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put Yanked Text Before Cursor" },
+        { "k", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Put Yanked Text After Cursor" },
+        { "K", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Put Yanked Text Before Cursor" },
         { "gk", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Put Yanked Text After Selection" },
         { "gK", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Put Yanked Text Before Selection" },
         { "[y", "<Plug>(YankyCycleForward)", desc = "Cycle Forward Through Yank History" },
@@ -71,9 +71,11 @@ return {
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       -- disable a keymap
       keys[#keys + 1] = { "<c-k>", false }
+      keys[#keys + 1] = { "K", false }
       -- add a keymap
       keys[#keys + 1] =
         { "<c-a>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" }
+      keys[#keys + 1] = { "A", vim.lsp.buf.hover, desc = "Hover" }
     end,
   },
   {
@@ -86,6 +88,66 @@ return {
         ["<C-p>"] = {},
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
       }),
+    },
+  },
+  {
+    "echasnovski/mini.ai",
+    enabled = true,
+    event = "VeryLazy",
+    opts = function()
+      local ai = require("mini.ai")
+      return {
+        n_lines = 500,
+        mappings = {
+          -- Main textobject prefixes
+          around = "'",
+          inside = "i",
+
+          -- Next/last variants
+          around_next = "'n",
+          inside_next = "in",
+          around_last = "'l",
+          inside_last = "il",
+        },
+        custom_textobjects = {
+          o = ai.gen_spec.treesitter({ -- code block
+            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+          }),
+          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
+          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
+          d = { "%f[%d]%d+" }, -- digits
+          e = { -- Word with case
+            { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
+            "^().*()$",
+          },
+          i = LazyVim.mini.ai_indent, -- indent
+          g = LazyVim.mini.ai_buffer, -- buffer
+          u = ai.gen_spec.function_call(), -- u for "Usage"
+          U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+        },
+      }
+    end,
+  },
+  {
+    "echasnovski/mini.indentscope",
+    opts = {
+      mappings = {
+        -- Textobjects
+        object_scope = "ii",
+        object_scope_with_border = "'i",
+
+        -- Motions (jump to respective border line; if not present - body line)
+        goto_top = "[i",
+        goto_bottom = "]i",
+      },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    opts = {
+      plugins = { presets = { text_objects = false } },
     },
   },
 }
