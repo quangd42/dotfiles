@@ -53,20 +53,20 @@ return {
         return {
           FlashLabel = { fg = colors.crust, bg = colors.red, style = { "bold" } },
           -- FlashLabel = { fg = colors.red },
-          -- FlashMatch = { fg = colors.crust, bg = colors.mauve },
-          -- FlashCurrent = { fg = colors.crust, bg = colors.yellow },
+          FlashMatch = { fg = colors.text, bg = "#355868" },
+          FlashCurrent = { fg = colors.crust, bg = colors.sky },
           -- InclineNormal = { bg = colors.rosewater, fg = colors.crust },
-          InclineNormal = { fg = colors.rosewater, bg = colors.crust },
+          InclineNormal = { fg = colors.peach, bg = colors.crust },
         }
       end,
     },
   },
 
   -- Configure LazyVim to load colorscheme
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
-  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "catppuccin",
+  --   },
+  -- },
 }
