@@ -15,7 +15,7 @@ return {
           end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
           local modified = vim.bo[props.buf].modified
-          local colors = require("tokyonight.colors").moon()
+          local colors = require("tokyonight.colors").setup({ style = "moon" })
 
           local function get_git_diff()
             local icons = {
