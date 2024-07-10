@@ -5,8 +5,8 @@ return {
     opts = {
       window = {
         mappings = {
-          ["h"] = "close_node",
-          ["l"] = "open",
+          ["k"] = "close_node",
+          ["e"] = "open",
           ["s"] = {
             function()
               require("flash").jump()
@@ -36,15 +36,15 @@ return {
     keys = {
       { "<leader>fe", false },
       { "<leader>fE", false },
-      {
-        "<leader>E",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
-        end,
-        desc = "Explorer NeoTree (Root Dir)",
-      },
+      -- {
+      --   "<leader>E",
+      --   function()
+      --     require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
+      --   end,
+      --   desc = "Explorer NeoTree (Root Dir)",
+      -- },
       -- { "<leader>E", false },
-      { "<leader>e", false },
+      -- { "<leader>e", false },
     },
   },
 }
