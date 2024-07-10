@@ -3,7 +3,7 @@
 -- Add any additional options here
 vim.opt.scrolloff = 10 -- Lines of context
 vim.opt.inccommand = "split"
-vim.o.timeoutlen = 0
+-- vim.o.timeoutlen = 0
 
 -- local function escape(str)
 --   -- You need to escape these characters to work correctly

@@ -12,9 +12,9 @@ keybinding:
   universal:
     prevItem-alt: a
     nextItem-alt: h
-    scrollLeft: P
+    scrollLeft: K
     scrollRight: E
-    prevBlock-alt: p
+    prevBlock-alt: k
     nextBlock-alt: e
     edit: l
     openFile: o
@@ -22,21 +22,21 @@ keybinding:
     scrollDownMain-alt1: H
 
     # 'Files' appended for legacy reasons
-    pushFiles: K
+    pushFiles: P
 
     # 'Files' appended for legacy reasons
-    pullFiles: k
+    pullFiles: p
   status:
     allBranchesLogGraph: A
   files:
     toggleStagedAll: "'"
     amendLastCommit: '"'
   branches:
-    pushTag: K
+    pushTag: P
   commits:
     amendToCommit: '"'
     resetCommitAuthor: "'"
-    pickCommit: k
+    pickCommit: p
   main:
     toggleSelectHunk: "'"
     editSelectHunk: L

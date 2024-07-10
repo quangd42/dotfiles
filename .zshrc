@@ -128,6 +128,7 @@ eval "$(starship init zsh)"
 
 PATH=~/.console-ninja/.bin:$PATH
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/quang-dang/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/quang-dang/Downloads/google-cloud-sdk/path.zsh.inc'; fi

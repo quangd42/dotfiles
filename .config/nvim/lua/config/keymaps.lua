@@ -35,26 +35,45 @@ delmap("n", "<leader>fn")
 delmap("n", "<leader>l")
 delmap("n", "<leader>L")
 
--- PHAE keymaps
-map("n", "<C-L>", "5<C-E>")
-map("n", "<C-K>", "<C-P>")
+-- -- PHAE keymaps
+-- map("n", "<C-L>", "5<C-E>")
+-- map("n", "<C-K>", "<C-P>")
 
 -- References
 -- local nav_to = "hjklpae'"
 -- local nav_from = "phaek'lj"
 -- local nav_to_shift = 'HJKLPAE"'
 -- local nav_from_shift = 'PHAEK"LJ'
-local others_from = "k'lj"
-local others_to = "pae'"
-local others_from_shift = 'K"LJ'
-local others_to_shift = 'PAE"'
-local nav_from = "phae"
+--
+-- local others_from = "k'lj"
+-- local others_to = "pae'"
+-- local others_from_shift = 'K"LJ'
+-- local others_to_shift = 'PAE"'
+--
+-- local nav_from = "phae"
+-- local nav_to = "hjkl"
+-- local nav_from_shift = "PHAE"
+-- local nav_to_shift = "HJKL"
+
+-- KHAE navkeymaps
+map("n", "<C-L>", "5<C-E>")
+map("n", "gl", "ge", { desc = "Go to previous word end" })
+map("n", "ge", "$", { desc = "Go to end of line" })
+map("n", "gk", "^", { desc = "Go to beginning of line" })
+
+local others_from = "'lj"
+local others_to = "ae'"
+local others_from_shift = '"LJ'
+local others_to_shift = 'AE"'
+
+local nav_from = "khae"
 local nav_to = "hjkl"
-local nav_from_shift = "PHAE"
+local nav_from_shift = "KHAE"
 local nav_to_shift = "HJKL"
 
 -- Function to create mappings
-local function map_keys(from, to, modes, opts)
+local function map_keys(from, to, modes)
+  local opts = { noremap = true, silent = true }
   for i = 1, #from do
     local from_char = from:sub(i, i)
     local to_char = to:sub(i, i)
@@ -65,16 +84,20 @@ local function map_keys(from, to, modes, opts)
 end
 
 -- List of modes to apply the mappings
-local modes = { "n", "o" }
+local modes = { "n", "x" }
 
 -- Map lowercase keys
-map_keys(nav_from, nav_to, modes, { noremap = true, silent = true })
-map_keys(nav_from, nav_to, { "x" }, { noremap = true, silent = true })
-map_keys(others_from, others_to, modes, { noremap = true, silent = true })
-map_keys("'", "a", { "x", "o" }, { noremap = true, silent = true })
+-- For nav keys, can map 'o' mode
+map_keys(nav_from, nav_to, modes)
+map_keys(nav_from, nav_to, { "o" })
+-- leave l=>e to nvim-spider ind all 3 modes
+-- leave '=>a in 'x' and 'o' mode to mini.ai
+map_keys("'j", "a'", { "n" })
+map_keys("j", "'", { "x", "o" })
 
 -- Map uppercase (shift) keys
-map_keys(nav_from_shift, nav_to_shift, modes, { noremap = true, silent = true })
-map_keys(nav_from_shift, nav_to_shift, { "x" }, { noremap = true, silent = true })
-map_keys(others_from_shift, others_to_shift, modes, { noremap = true, silent = true })
-map_keys("L", "E", { "x" }, { noremap = true, silent = true })
+-- shifted keys are mostly unused in 'o' mode
+map_keys(nav_from_shift, nav_to_shift, modes)
+map_keys(nav_from_shift, nav_to_shift, { "o" })
+map_keys(others_from_shift, others_to_shift, modes)
+map_keys(others_from_shift, others_to_shift, { "o" })

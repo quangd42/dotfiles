@@ -19,6 +19,7 @@ config.font_size = 16.2
 config.line_height = 1.00
 
 config.enable_kitty_keyboard = true
+config.window_background_opacity = 0.9
 
 -- [[
 -- COLORSCHEME
@@ -96,7 +97,7 @@ local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
 end
 local direction_move_keys = {
-	p = "Left",
+	k = "Left",
 	h = "Down",
 	a = "Up",
 	e = "Right",
@@ -186,13 +187,23 @@ config.keys = {
 		action = wezterm.action.ActivateTabRelative(1),
 	},
 	{
-		key = "p",
+		key = "k",
+		mods = "CTRL|SUPER",
+		action = wezterm.action.ActivateTabRelative(-1),
+	},
+	{
+		key = "l",
+		mods = "CTRL|SUPER",
+		action = wezterm.action.ActivateTabRelative(1),
+	},
+	{
+		key = "h",
 		mods = "CTRL|SUPER",
 		action = wezterm.action.ActivateTabRelative(-1),
 	},
 
 	-- move between split panes
-	split_nav("move", "p"),
+	split_nav("move", "k"),
 	split_nav("move", "h"),
 	split_nav("move", "a"),
 	split_nav("move", "e"),
