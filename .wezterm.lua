@@ -19,7 +19,7 @@ config.font_size = 16.2
 config.line_height = 1.00
 
 config.enable_kitty_keyboard = true
-config.window_background_opacity = 0.9
+-- config.window_background_opacity = 0.9
 
 -- [[
 -- COLORSCHEME

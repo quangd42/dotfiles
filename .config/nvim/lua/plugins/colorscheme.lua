@@ -5,6 +5,7 @@ return {
     lazy = true,
     opts = {
       style = "moon",
+      transparent = false,
       on_highlights = function(hl, colors)
         hl.MiniFilesTitleFocused = {
           bg = colors.yellow,
