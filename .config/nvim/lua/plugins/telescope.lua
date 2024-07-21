@@ -26,8 +26,8 @@ return {
       },
     },
     keys = {
-      { "<leader>f", LazyVim.pick("auto"), desc = "Find Files (Root Dir)" },
-      { "<leader>F", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader>f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+      { "<leader>F", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
       { "<leader><space>", false },
       { "<leader>fb", false },
       { "<leader>fc", false },
@@ -36,6 +36,9 @@ return {
       { "<leader>fg", false },
       { "<leader>fr", false },
       { "<leader>fR", false },
+      { "<leader><space>g", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
+      { "<leader><space>r", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+      { "<leader><space>R", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
     },
   },
 }
