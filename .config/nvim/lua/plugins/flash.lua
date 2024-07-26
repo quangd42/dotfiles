@@ -18,9 +18,6 @@ return {
           enabled = true,
         },
       },
-      jump = {
-        autojump = true,
-      },
     },
   },
 }

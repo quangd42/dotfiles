@@ -1,3 +1,6 @@
 return {
-  { "lukas-reineke/headlines.nvim", enabled = false },
+  {
+    "echasnovski/mini.icons",
+    enabled = false,
+  },
 }
