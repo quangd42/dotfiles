@@ -56,10 +56,10 @@ delmap("n", "<leader>L")
 -- local nav_to_shift = "HJKL"
 
 -- KHAE navkeymaps
-map("n", "<C-L>", "5<C-E>")
-map("n", "gl", "ge", { desc = "Go to previous word end" })
-map("n", "ge", "$", { desc = "Go to end of line" })
-map("n", "gk", "^", { desc = "Go to beginning of line" })
+map({ "n", "x" }, "<C-L>", "5<C-E>")
+map({ "n", "x" }, "gl", "ge", { desc = "Go to previous word end" })
+map({ "n", "x" }, "ge", "$", { desc = "Go to end of line" })
+map({ "n", "x" }, "gk", "^", { desc = "Go to beginning of line" })
 
 local others_from = "'lj"
 local others_to = "ae'"
@@ -87,8 +87,11 @@ end
 local modes = { "n", "x" }
 
 -- Map lowercase keys
+-- Use better up/down for jk
+map_keys("ke", "hl", modes)
+map({ "n", "x" }, "h", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "a", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 -- For nav keys, can map 'o' mode
-map_keys(nav_from, nav_to, modes)
 map_keys(nav_from, nav_to, { "o" })
 -- leave l=>e to nvim-spider ind all 3 modes
 -- leave '=>a in 'x' and 'o' mode to mini.ai
@@ -97,7 +100,8 @@ map_keys("j", "'", { "x", "o" })
 
 -- Map uppercase (shift) keys
 -- shifted keys are mostly unused in 'o' mode
-map_keys(nav_from_shift, nav_to_shift, modes)
+-- leave A->K to lsp Hover
+map_keys("KHE", "HJL", modes)
 map_keys(nav_from_shift, nav_to_shift, { "o" })
 map_keys(others_from_shift, others_to_shift, modes)
 map_keys(others_from_shift, others_to_shift, { "o" })
