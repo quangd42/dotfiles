@@ -14,7 +14,7 @@ return {
     },
     keys = {
       { "-", "<CMD>Oil --float<CR>", desc = "Open parent directory" },
-      { "<leader>e", "<CMD>Oil --float<CR>", desc = "Open parent directory" },
+      -- { "<leader>e", "<CMD>Oil --float<CR>", desc = "Open parent directory" },
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
