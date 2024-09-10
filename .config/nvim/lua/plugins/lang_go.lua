@@ -11,6 +11,8 @@ return {
                 parameterNames = false,
                 assignVariableTypes = false,
                 compositeLiteralFields = false,
+                compositeLiteralTypes = false,
+                functionTypeParameters = false,
               },
               analyses = {
                 fieldalignment = false,
