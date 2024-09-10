@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vscode aliases zsh-vi-mode zoxide fzf fd)
+plugins=(git vscode aliases zsh-vi-mode zoxide fzf)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -126,7 +126,7 @@ eval "$(pyenv init -)"
 # starship
 eval "$(starship init zsh)"
 
-PATH=~/.console-ninja/.bin:$PATH
+
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 
