@@ -9,12 +9,14 @@
       // "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
       "ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-k": "workspace::ToggleBottomDock",
-      "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPrevDiagnostic",
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPrevHunk",
       "alt-j": "editor::MoveLineDown",
-      "alt-k": "editor::MoveLineUp"
+      "alt-k": "editor::MoveLineUp",
+      "w": "vim::NextSubwordStart",
+      "b": "vim::PreviousSubwordStart",
+      "e": "vim::NextSubwordEnd",
+      "g e": "vim::PreviousSubwordEnd"
     }
   },
   {
@@ -22,6 +24,7 @@
     "bindings": {
       // put key-bindings here if you want them to work only in normal mode
       "U": "editor::Redo",
+      "Y": ["editor::SelectToEndOfLine", "editor::Copy"],
       // Explorer and file
       "space e": "pane::RevealInProjectPanel",
       "space f": "file_finder::Toggle",
@@ -43,7 +46,8 @@
       "space c f": "editor::Format",
       "space c r": "editor::Rename",
       "g r": "editor::FindAllReferences",
-      "K": "editor::Hover"
+      "g h": "editor::MoveToBeginningOfLine",
+      "g l": "editor::MoveToEndOfLine"
     }
   },
   {
@@ -51,7 +55,9 @@
     "bindings": {
       // visual, visual line & visual block modes
       ">": "editor::Indent",
-      "<": "editor::Outdent"
+      "<": "editor::Outdent",
+      "g h": "editor::SelectToBeginningOfLine",
+      "g l": "editor::SelectToEndOfLine"
     }
   },
   {
@@ -61,7 +67,9 @@
       // e.g.
       // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
       "alt-down": "editor::MoveLineDown",
-      "alt-up": "editor::MoveLineUp"
+      "alt-up": "editor::MoveLineUp",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp"
     }
   },
   // {
@@ -76,15 +84,19 @@
   {
     "context": "Editor && showing_completions",
     "bindings": {
-      "ctrl-y": "editor::ConfirmCompletion",
+      "ctrl-m": "editor::ConfirmCompletion",
       "enter": "editor::NewlineBelow",
-      "ctrl-e": "editor::AcceptPartialInlineCompletion"
+      "ctrl-l": "editor::AcceptPartialInlineCompletion"
     }
   },
   {
-    "context": "ProjectPanel",
+    "context": "ProjectPanel && not_editing",
     "bindings": {
-      "space e": "workspace::ToggleLeftDock"
+      "space e": "workspace::ToggleLeftDock",
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "ctrl-j": "workspace::ToggleBottomDock",
+      "ctrl-k": "workspace::ToggleBottomDock"
     }
   },
   {
@@ -105,6 +117,12 @@
       "ctrl-k": "workspace::ToggleBottomDock",
       "ctrl-h": "pane::ActivatePrevItem",
       "ctrl-l": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "AssistantPanel",
+    "bindings": {
+      "cmd-?": "workspace::ToggleRightDock"
     }
   }
 ]
