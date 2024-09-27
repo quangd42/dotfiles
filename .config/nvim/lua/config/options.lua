@@ -4,23 +4,3 @@
 vim.opt.scrolloff = 10 -- Lines of context
 vim.opt.inccommand = "split"
 -- vim.o.timeoutlen = 0
-
--- local function escape(str)
---   -- You need to escape these characters to work correctly
---   local escape_chars = [[;,."|\]]
---   return vim.fn.escape(str, escape_chars)
--- end
---
--- -- Recommended to use lua template string
--- local hjkl = [[hjklpae']]
--- local phae = [[phaek'lj]]
--- local hjkl_shift = [[HJKLPAE"]]
--- local phae_shift = [[PHAEK"LJ]]
---
--- vim.opt.langmap = vim.fn.join({
---   -- | `to` should be first     | `from` should be second
---   escape(phae_shift)
---     .. ";"
---     .. escape(hjkl_shift),
---   escape(phae) .. ";" .. escape(hjkl),
--- }, ",")
