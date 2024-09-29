@@ -22,12 +22,20 @@ return {
             ["<c-i>"] = find_files_no_ignore,
             ["<c-h>"] = find_files_with_hidden,
           },
+          n = {
+            ["d"] = require("telescope.actions").delete_buffer,
+          },
         },
       },
     },
     keys = {
       { "<leader>f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader>F", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      {
+        "<leader>b",
+        "<cmd>Telescope buffers sort_mru=true<cr>",
+        desc = "Buffers",
+      },
       { "<leader><space>", false },
       { "<leader>fb", false },
       { "<leader>fc", false },

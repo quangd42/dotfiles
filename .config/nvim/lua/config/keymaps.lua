@@ -24,8 +24,9 @@ map("n", "<leader>qx", "<cmd>xa<cr>", { desc = "Save & Quit All" })
 
 -- Buffers
 map("n", "<leader>[", "<C-^>", { desc = "Switch to Last Buffer" })
+map("n", "<leader>`", "<C-^>", { desc = "Switch to Last Buffer" })
 delmap("n", "<leader>bb")
-delmap("n", "<leader>`")
+-- delmap("n", "<leader>`")
 delmap("n", "<leader>bd")
 delmap("n", "<leader>bD")
 
