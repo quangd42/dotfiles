@@ -250,5 +250,51 @@ config.key_tables = {
 	},
 }
 
+-- https://wezfurlong.org/wezterm/config/lua/keyassignment/CopyMode/AcceptPattern.html
+local copy_mode = nil
+local search_mode = nil
+local copy_mode_mappings = {
+	{
+		key = "/",
+		mods = "NONE",
+		action = act.CopyMode("EditPattern"),
+	},
+	{
+		key = "Escape",
+		mods = "NONE",
+		action = act.Multiple({ act.CopyMode("ClearSelectionMode"), act.CopyMode("ClearPattern") }),
+	},
+	{
+		key = "n",
+		mods = "NONE",
+		action = act.CopyMode("NextMatch"),
+	},
+	{
+		key = "n",
+		mods = "SHIFT",
+		action = act.CopyMode("PriorMatch"),
+	},
+}
+local search_mode_mappings = {
+	{
+		key = "Enter",
+		mods = "NONE",
+		action = act.CopyMode("AcceptPattern"),
+	},
+}
+-- https://wezfurlong.org/wezterm/config/lua/wezterm.gui/default_key_tables.html
+if wezterm.gui then
+	copy_mode = wezterm.gui.default_key_tables().copy_mode
+	for _, key in pairs(copy_mode_mappings) do
+		table.insert(copy_mode, key)
+	end
+	search_mode = wezterm.gui.default_key_tables().search_mode
+	for _, key in pairs(search_mode_mappings) do
+		table.insert(search_mode, key)
+	end
+end
+config.key_tables.copy_mode = copy_mode
+config.key_tables.search_mode = search_mode
+
 -- and finally, return the configuration to wezterm
 return config
