@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vscode aliases zsh-vi-mode zoxide fzf)
+plugins=(git zsh-vi-mode)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="lsd"
-alias tree="lsd -A --tree"
+alias tree="lsd -A --tree --depth 3"
 alias c="code"
 alias n="nvim"
 alias cd="z"
@@ -113,6 +113,8 @@ alias wtt="wezterm cli set-tab-title"
 alias nks='NVIM_APPNAME="nvim-kickstart" nvim'
 alias nvs='NVIM_APPNAME="nvim-vscode" nvim'
 
+alias kbc='kubectl'
+
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 # Pyenv
@@ -120,12 +122,15 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# starship
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
+# https://github.com/jeffreytse/zsh-vi-mode#execute-extra-commands
+# The plugin will auto execute this zvm_after_init function
+function zvm_after_init() {
+  # Set up fzf key bindings and fuzzy completion
+  source <(fzf --zsh)
+}
 
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
