@@ -2,6 +2,9 @@ if vim.g.vscode then
   return
 end
 local wk = require("which-key")
+if wk == true then
+  return
+end
 wk.add({
   { "<leader>l", group = "language action" },
   { "<leader>le", "<cmd>GoIfErr<cr>", desc = "GoIfErr" },

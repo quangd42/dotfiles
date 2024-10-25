@@ -2,6 +2,9 @@ if vim.g.vscode then
   return
 end
 local wk = require("which-key")
+if wk == true then
+  return
+end
 wk.add({
   { "<leader>l", group = "language helpers" },
   { "<leader>lh", group = "hurl" },
@@ -17,6 +20,7 @@ wk.add({
     desc = "Set Variable",
   },
   { "<leader>lht", "<cmd>HurlRunnerToEntry<cr>", desc = "Run Requests to Cursor" },
+  { "<leader>lhf", "<cmd>HurlRunnerToEnd<cr>", desc = "Run Requests From Cursor to End" },
   { "<leader>lhv", "<cmd>HurlManageVariable<cr>", desc = "Manage Variables" },
   { "<leader>lha", ":HurlRunner<cr>", desc = "Run All Requests", mode = { "n", "v" } },
 })
