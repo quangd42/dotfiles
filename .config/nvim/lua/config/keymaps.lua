@@ -12,6 +12,9 @@ map("n", "U", "<C-R>", { desc = "Redo Last Change" })
 -- Visual mode copy paste
 map("v", "C", '"_c', { desc = "Change Without Yank" })
 map("v", "D", '"_d', { desc = "Delete Without Yank" })
+-- qwerty home end
+map({ "n", "x" }, "gh", "^", { desc = "Go to Beginning of Line" })
+map({ "n", "x" }, "gl", "$", { desc = "Go to End of Line" })
 
 -- Move screen
 map("n", "<C-Y>", "5<C-Y>")
