@@ -5,14 +5,12 @@
       // put key-bindings here if you want them to work in normal & visual mode
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      // "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       // "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
       "ctrl-j": "workspace::ToggleBottomDock",
-      "ctrl-k": "workspace::ToggleBottomDock",
+      // "ctrl-k": "workspace::ToggleBottomDock",
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPrevHunk",
-      "alt-j": "editor::MoveLineDown",
-      "alt-k": "editor::MoveLineUp",
       "w": "vim::NextSubwordStart",
       "b": "vim::PreviousSubwordStart",
       "e": "vim::NextSubwordEnd",
@@ -67,20 +65,9 @@
       // e.g.
       // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
       "alt-down": "editor::MoveLineDown",
-      "alt-up": "editor::MoveLineUp",
-      "alt-j": "editor::MoveLineDown",
-      "alt-k": "editor::MoveLineUp"
+      "alt-up": "editor::MoveLineUp"
     }
   },
-  // {
-  //   "context": "Editor && VimControl && !VimWaiting && !menu",
-  //   "bindings": {
-  //     "w": "vim::NextSubwordStart",
-  //     "b": "vim::PreviousSubwordStart",
-  //     "e": "vim::NextSubwordEnd",
-  //     "g e": "vim::PreviousSubwordEnd"
-  //   }
-  // },
   {
     "context": "Editor && showing_completions",
     "bindings": {
@@ -114,7 +101,7 @@
     "context": "Terminal",
     "bindings": {
       "cmd-enter": "workspace::NewTerminal",
-      "ctrl-j": "workspace::ToggleZoom",
+      "ctrl-m": "workspace::ToggleZoom",
       "ctrl-k": "workspace::ToggleBottomDock",
       "ctrl-h": "pane::ActivatePrevItem",
       "ctrl-l": "pane::ActivateNextItem"

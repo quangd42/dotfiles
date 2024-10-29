@@ -7,24 +7,35 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
   "show_copilot_suggestions": false,
-  "theme": "Andromeda",
+  "theme": "Catppuccin Mocha",
   "ui_font_size": 16,
+  "ui_font_family": "Menlo",
   "buffer_font_size": 16,
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "ui_font_family": "Menlo",
+  "buffer_line_height": { "custom": 1.5 },
+  "wrap_guides": [80, 100],
   // Vim mode
   "vim_mode": true,
   "vim": {
     "use_multiline_find": true,
-    "use_system_clipboard": "on_yank"
+    "use_system_clipboard": "on_yank",
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true
   },
   // disable cursor blink
   "cursor_blink": false,
   // use relative line numbers
   "relative_line_numbers": true,
   // allow cursor to reach edges of screen
-  "vertical_scroll_margin": 0,
+  "vertical_scroll_margin": 8,
   // Formatter
   "format_on_save": "on",
   // Git
@@ -40,14 +51,44 @@
   },
   // Inlay Hints
   "inlay_hints": {
-    "enabled": false
+    "enabled": true
   },
-  "language_overrides": {
+  "languages": {
+    "Templ": {
+      "language_servers": ["...", "tailwindlabs/tailwindcss-intellisense"]
+    },
+    "Go": {
+      "tab_size": 2
+    },
     "Python": {
-      "format_on_save": {
-        "external": {
-          "command": "black",
-          "arguments": ["-"]
+      "language_servers": ["pyright", "ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    }
+  },
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "hints": {
+          "assignVariableTypes": false,
+          "compositeLiteralFields": false,
+          "compositeLiteralTypes": false,
+          "constantValues": true,
+          "functionTypeParameters": false,
+          "parameterNames": false,
+          "rangeVariableTypes": false
         }
       }
     }
