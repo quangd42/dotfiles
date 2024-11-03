@@ -182,6 +182,13 @@ config.keys = {
 		action = wezterm.action.ActivateCommandPalette,
 	},
 	{
+		key = "p",
+		mods = "SUPER|SHIFT",
+		action = wezterm.action.ActivateCommandPalette,
+	},
+
+	-- Tabs
+	{
 		key = "l",
 		mods = "CTRL|SUPER",
 		action = wezterm.action.ActivateTabRelative(1),
@@ -212,6 +219,28 @@ config.keys = {
 	split_nav("resize", "DownArrow"),
 	split_nav("resize", "UpArrow"),
 	split_nav("resize", "RightArrow"),
+
+	-- passthrough for wm
+	{
+		key = "h",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "j",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "k",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "l",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
 }
 
 config.key_tables = {

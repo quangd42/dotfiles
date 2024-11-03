@@ -1,9 +1,3 @@
-# Place a copy of this config to ~/.aerospace.toml
-# After that, you can edit ~/.aerospace.toml to your liking
-
-# It's not neceesary to copy all keys to your config.
-# If the key is missing in your config, "default-config.toml" will serve as a fallback
-
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
@@ -15,7 +9,7 @@ after-login-command = []
 after-startup-command = []
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
@@ -37,6 +31,11 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 key-mapping.preset = 'qwerty'
 
+# See: https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callback
+# Mouse lazily follows any focus (window or workspace)
+# Currently buggy https://github.com/nikitabobko/AeroSpace/issues/386
+# on-focus-changed = ['move-mouse window-lazy-center']
+
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
 # - Constant:     gaps.outer.top = 8
@@ -51,12 +50,6 @@ outer.left = 0
 outer.bottom = 0
 outer.top = 0
 outer.right = 0
-
-# See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
-[exec] # Again, you don't need to copy all config sections to your config.
-inherit-env-vars = true # If you don't touch "exec" section,
-[exec.env-vars] # it will fallback to "default-config.toml"
-PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -83,9 +76,8 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
+alt-semicolon = 'layout tiles horizontal vertical'
 alt-quote = 'layout accordion horizontal vertical'
-alt-z = 'layout tiles accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -99,43 +91,31 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
+# See: https://nikitakobko.github.io/AeroSpace/commands#move
+alt-shift-ctrl-h = 'join-with left'
+alt-shift-ctrl-j = 'join-with down'
+alt-shift-ctrl-k = 'join-with up'
+alt-shift-ctrl-l = 'join-with right'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
 alt-b = 'workspace B'
 alt-s = 'workspace S'
 alt-w = 'workspace W'
 alt-t = 'workspace T'
 alt-d = 'workspace D'
-alt-g = 'workspace G'
+alt-c = 'workspace C'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-b = 'move-node-to-workspace B'
 alt-shift-s = 'move-node-to-workspace S'
 alt-shift-w = 'move-node-to-workspace W'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-d = 'move-node-to-workspace D'
-alt-shift-g = 'move-node-to-workspace G'
+alt-shift-c = 'move-node-to-workspace C'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -143,7 +123,7 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-m = 'fullscreen'
-alt-f = 'layout floating tiling'
+alt-f = 'layout floating tiling' # Toggle between floating and tiling layout
 
 alt-cmd-h = 'workspace --wrap-around prev'
 alt-cmd-l = 'workspace --wrap-around next'
@@ -152,7 +132,7 @@ alt-cmd-l = 'workspace --wrap-around next'
 cmd-h = []
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-backslash = 'mode service'
+alt-esc = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -160,21 +140,11 @@ alt-backslash = 'mode service'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = [
-  'layout floating tiling',
-  'mode main',
-] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
-alt-h = ['join-with left', 'mode main']
-alt-j = ['join-with down', 'mode main']
-alt-k = ['join-with up', 'mode main']
-alt-l = ['join-with right', 'mode main']
-
-
-[workspace-to-monitor-force-assignment]
-S = 'secondary' # Non-main monitor only in case when there are two monitors
-1 = 'secondary'
+# [workspace-to-monitor-force-assignment]
+# C = 'secondary' # Non-main monitor only in case when there are two monitors
+# 1 = 'secondary'
 
 # Force floating by default
 [[on-window-detected]]
@@ -184,41 +154,43 @@ run = 'layout floating'
 # default everything to be in workspace B (Base)
 [[on-window-detected]]
 check-further-callbacks = true
-run = 'move-node-to-workspace B'
 if.during-aerospace-startup = true
+run = 'move-node-to-workspace B'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Spotify'
 run = ['layout tiling', 'move-node-to-workspace B']
 
-# S - Secondary/Social
 [[on-window-detected]]
 if.app-name-regex-substring = 'GCal'
-run = ['layout tiling', 'move-node-to-workspace G']
-if.during-aerospace-startup = true
+run = ['layout tiling', 'move-node-to-workspace B']
 
+# C - Communication
 [[on-window-detected]]
 if.app-name-regex-substring = 'Messenger'
-run = ['layout tiling', 'move-node-to-workspace S']
-if.during-aerospace-startup = true
+run = ['layout tiling', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Whatsapp'
-run = ['layout tiling', 'move-node-to-workspace S']
-if.during-aerospace-startup = true
+run = ['layout tiling', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Slack'
-run = 'move-node-to-workspace S'
+run = ['layout tiling', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Zalo'
-run = 'move-node-to-workspace S'
+run = ['layout tiling', 'move-node-to-workspace C']
 
-# W - Web
+[[on-window-detected]]
+if.app-name-regex-substring = 'Discord'
+run = ['layout tiling', 'move-node-to-workspace C']
+
+# S - Surfing
 [[on-window-detected]]
 if.app-name-regex-substring = 'Arc'
-run = ['layout tiling', 'move-node-to-workspace W']
+if.during-aerospace-startup = true
+run = ['layout tiling', 'move-node-to-workspace S']
 
 # T - Terminal (and editor)
 [[on-window-detected]]
@@ -233,11 +205,11 @@ run = ['layout tiling', 'move-node-to-workspace T']
 if.app-name-regex-substring = 'Code'
 run = ['layout tiling', 'move-node-to-workspace T']
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'Zed'
+run = ['layout tiling', 'move-node-to-workspace T']
+
 # D - Dev tools
 [[on-window-detected]]
 if.app-name-regex-substring = 'Dbeaver'
 run = ['layout tiling', 'move-node-to-workspace D']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'RapidAPI'
-run = ['layout floating', 'move-node-to-workspace D']
