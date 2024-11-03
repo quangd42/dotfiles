@@ -1,0 +1,6 @@
+[manager]
+sort_by = "created"
+sort_reverse = true
+linemode = "mtime"
+show_hidden = true
+show_symlink = true
