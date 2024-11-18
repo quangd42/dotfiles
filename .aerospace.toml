@@ -18,7 +18,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 20
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -76,8 +76,8 @@ outer.right = 0
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-semicolon = 'layout tiles horizontal vertical'
-alt-quote = 'layout accordion horizontal vertical'
+alt-semicolon = 'layout tiles vertical horizontal'
+alt-quote = 'layout accordion vertical horizontal'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'
@@ -100,6 +100,7 @@ alt-shift-ctrl-l = 'join-with right'
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
+alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-b = 'workspace B'
@@ -108,6 +109,7 @@ alt-w = 'workspace W'
 alt-t = 'workspace T'
 alt-d = 'workspace D'
 alt-c = 'workspace C'
+alt-r = 'workspace R'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-b = 'move-node-to-workspace B'
@@ -116,6 +118,7 @@ alt-shift-w = 'move-node-to-workspace W'
 alt-shift-t = 'move-node-to-workspace T'
 alt-shift-d = 'move-node-to-workspace D'
 alt-shift-c = 'move-node-to-workspace C'
+alt-shift-r = 'move-node-to-workspace R'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -161,10 +164,6 @@ run = 'move-node-to-workspace B'
 if.app-name-regex-substring = 'Spotify'
 run = ['layout tiling', 'move-node-to-workspace B']
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'GCal'
-run = ['layout tiling', 'move-node-to-workspace B']
-
 # C - Communication
 [[on-window-detected]]
 if.app-name-regex-substring = 'Messenger'
@@ -186,10 +185,15 @@ run = ['layout tiling', 'move-node-to-workspace C']
 if.app-name-regex-substring = 'Discord'
 run = ['layout tiling', 'move-node-to-workspace C']
 
-# S - Surfing
+# S - Search the web
 [[on-window-detected]]
 if.app-name-regex-substring = 'Arc'
-if.during-aerospace-startup = true
+if.workspace = 'B'
+run = ['layout tiling', 'move-node-to-workspace S']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Arc'
+if.workspace = 'T'
 run = ['layout tiling', 'move-node-to-workspace S']
 
 # T - Terminal (and editor)
@@ -213,3 +217,12 @@ run = ['layout tiling', 'move-node-to-workspace T']
 [[on-window-detected]]
 if.app-name-regex-substring = 'Dbeaver'
 run = ['layout tiling', 'move-node-to-workspace D']
+
+# R - Reading/Researching
+[[on-window-detected]]
+if.app-name-regex-substring = 'Preview'
+run = ['layout tiling', 'move-node-to-workspace R']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'GCal'
+run = ['layout tiling', 'move-node-to-workspace R']
