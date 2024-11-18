@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-vi-mode virtualenv)
+plugins=(git zsh-vi-mode)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -128,6 +128,16 @@ eval "$(zoxide init zsh)"
 function zvm_after_init() {
   # Set up fzf key bindings and fuzzy completion
   source <(fzf --zsh)
+}
+
+# Set up custom function for yazi. `y` instead of `yazi` to use.
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
