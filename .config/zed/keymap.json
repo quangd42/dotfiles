@@ -83,6 +83,14 @@
       "space e": "workspace::ToggleLeftDock",
       "a": "project_panel::NewFile",
       "shift-a": "project_panel::NewDirectory",
+      "d": "project_panel::Delete",
+      "y": "project_panel::Copy",
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      "g y": "project_panel::CopyPath",
+      "g Y": "project_panel::CopyRelativePath",
+      "enter": ["workspace::SendKeystrokes", "o space e"],
       "ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-k": "workspace::ToggleBottomDock"
     }

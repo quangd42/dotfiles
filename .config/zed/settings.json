@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "show_inline_completions": false,
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -14,7 +15,6 @@
     },
     "version": "2"
   },
-  "show_copilot_suggestions": false,
   "theme": "Catppuccin Mocha",
   "ui_font_size": 16,
   "ui_font_family": "Menlo",
