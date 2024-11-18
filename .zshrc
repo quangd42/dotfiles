@@ -109,6 +109,7 @@ alias cd="z"
 alias lg="lazygit"
 alias cl="curlie"
 alias wtt="wezterm cli set-tab-title"
+alias wwt="wezterm cli rename-workspace"
 
 # nvim envs
 alias nks='NVIM_APPNAME="nvim-kickstart" nvim'
