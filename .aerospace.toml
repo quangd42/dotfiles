@@ -132,7 +132,7 @@ alt-cmd-h = 'workspace --wrap-around prev'
 alt-cmd-l = 'workspace --wrap-around next'
 
 # disable hide
-cmd-h = []
+# cmd-h = []
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-esc = 'mode service'

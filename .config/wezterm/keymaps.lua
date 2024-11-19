@@ -32,6 +32,8 @@ function M.config(config)
 		-- Tabs
 		{ key = "k", mods = "SUPER", action = act.ActivateTabRelative(-1) },
 		{ key = "j", mods = "SUPER", action = act.ActivateTabRelative(1) },
+		{ key = "h", mods = "SUPER", action = act.ActivateTabRelative(-1) },
+		{ key = "l", mods = "SUPER", action = act.ActivateTabRelative(1) },
 		{ key = "Tab", mods = "CTRL", action = act.ActivateLastTab },
 		{ key = "Tab", mods = "CTRL|SHIFT", action = act.ActivateLastTab },
 
