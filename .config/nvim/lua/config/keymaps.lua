@@ -26,12 +26,19 @@ map("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit All" })
 map("n", "<leader>qx", "<cmd>xa<cr>", { desc = "Save & Quit All" })
 
 -- Buffers
-map("n", "<leader>[", "<C-^>", { desc = "Switch to Last Buffer" })
-map("n", "<leader>`", "<C-^>", { desc = "Switch to Last Buffer" })
+map("n", "<leader>[", "<C-^>", { desc = "which_key_ignore" })
+map("n", "<leader>`", "<C-^>", { desc = "which_key_ignore" })
 delmap("n", "<leader>bb")
--- delmap("n", "<leader>`")
-delmap("n", "<leader>bd")
-delmap("n", "<leader>bD")
+
+-- Commenting
+map({ "n", "x" }, "<D-/>", "<cmd>normal gcc<cr>", { desc = "Toggle Commenting" })
+
+-- Line Diagnostics
+map("n", "<leader>k", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+
+-- Tabs
+map("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- Remove LazyVim keymaps
 -- Files

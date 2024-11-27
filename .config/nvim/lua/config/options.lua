@@ -4,4 +4,5 @@
 vim.opt.scrolloff = 10 -- Lines of context
 vim.opt.inccommand = "split"
 vim.opt.conceallevel = 0
+vim.opt.expandtab = false
 -- vim.o.timeoutlen = 0

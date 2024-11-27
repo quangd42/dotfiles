@@ -73,17 +73,13 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       options = {
         right_mouse_command = false,
         middle_mouse_command = "bdelete! %d",
         -- separator_style = "slant",
       },
-    },
-    keys = {
-      { "<S-A-h>", "<cmd>BufferLineMovePrev<cr>", desc = "Prev Buffer" },
-      { "<S-A-l>", "<cmd>BufferLineMoveNext<cr>", desc = "Next Buffer" },
     },
   },
 }
