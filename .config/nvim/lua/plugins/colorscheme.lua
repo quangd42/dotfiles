@@ -58,8 +58,18 @@ return {
           FlashCurrent = { fg = colors.crust, bg = colors.sky },
           -- InclineNormal = { bg = colors.rosewater, fg = colors.crust },
           InclineNormal = { fg = colors.peach, bg = colors.crust },
+          CmpItemAbbrMatch = { fg = colors.blue },
+          CmpItemAbbr = { fg = colors.text },
+          PmenuBorder = { bg = colors.text },
         }
       end,
+      -- color_overrides = {
+      --   mocha = {
+      --     base = "#111111",
+      --     mantle = "#000000",
+      --     crust = "#000000",
+      --   },
+      -- },
     },
   },
 
