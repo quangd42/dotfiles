@@ -31,7 +31,7 @@ esc = ["collapse_selection", "keep_primary_selection"]
 V = ["select_mode", "extend_to_line_bounds"]
 # x = "select_regex"
 # X = "split_selection"
-s = "goto_word"
+backspace = "goto_word"
 
 [keys.select]
 # p = "move_char_left"
