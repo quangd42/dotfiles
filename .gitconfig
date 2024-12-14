@@ -15,6 +15,7 @@
 
 [include]
   path = "/Users/quang-dang/.config/delta/catppuccin.gitconfig"
+  path = "/Users/quang-dang/.config/delta/themes.gitconfig"
 
 [delta]
   navigate = true    # use n and N to move between diff sections
