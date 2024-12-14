@@ -4,7 +4,8 @@ return {
     opts = {
       modes = {
         char = {
-          jump_labels = true,
+          jump_labels = false,
+          highlight = { backdrop = false },
           config = function(opts)
             opts.jump_labels = opts.jump_labels
               and vim.v.count == 0
@@ -17,9 +18,6 @@ return {
         search = {
           enabled = true,
         },
-      },
-      search = {
-        mode = "fuzzy",
       },
     },
     -- stylua: ignore
