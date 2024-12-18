@@ -2,6 +2,7 @@ local cmp = require("cmp")
 return {
   {
     "hrsh7th/nvim-cmp",
+    optional = true,
     opts = {
       mapping = cmp.mapping.preset.insert({
         ["<CR>"] = {},
