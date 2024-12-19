@@ -2,16 +2,11 @@
 -- See `:help vim.opt`
 --  For more options, you can see `:help option-list`
 
--- This file is automatically loaded by plugins.core
-vim.g.mapleader = ' '
-vim.g.maplocalleader = '\\'
-
 local opt = vim.opt
 
 -- Make line numbers default
 opt.number = true
 -- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -39,7 +34,7 @@ opt.smartcase = true
 -- Keep signcolumn on by default
 opt.signcolumn = 'yes'
 
--- Decrease update time
+-- Decrease update time - Save swap file and trigger CursorHold
 opt.updatetime = 200
 
 -- Decrease mapped sequence wait time
@@ -68,15 +63,18 @@ opt.sidescrolloff = 8
 
 -- Steal from LazyVim
 -- opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
--- opt.shortmess:append({ W = true, I = true, c = true, C = true })
--- opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
--- opt.shiftround = true -- Round indent
--- opt.shiftwidth = 2 -- Size of an indent
+opt.shortmess:append { W = true, I = true, c = true, C = true }
+opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize', 'help', 'globals', 'skiprtp', 'folds' }
+opt.virtualedit = 'block' -- Allow cursor to move where there is no text in visual block mode
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 2 -- Size of an indent (in space)
+opt.tabstop = 2 -- Size of a tab character
 -- opt.pumblend = 10 -- Popup blend
 -- opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.termguicolors = true -- True color support
 opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
+opt.confirm = true -- Confirm to save changes before exiting modified buffer
 
 -- nvim-0.10
 opt.smoothscroll = true
