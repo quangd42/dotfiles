@@ -2,8 +2,34 @@
 --  See `:help vim.keymap.set()`
 local map = vim.keymap.set
 
+-- Yank
+map('n', 'Y', 'y$', { desc = 'Yank Till End Of Line' })
+-- Redo
+map('n', 'U', '<C-R>', { desc = 'Redo Last Change' })
+-- Visual mode copy paste
+map('v', 'C', '"_c', { desc = 'Change Without Yank' })
+map('v', 'D', '"_d', { desc = 'Delete Without Yank' })
+
+-- Move screen
+map('n', '<C-Y>', '5<C-Y>', { desc = 'which_key_ignore' })
+map('n', '<C-E>', '5<C-E>', { desc = 'which_key_ignore' })
+
+-- Buffers
+map('n', '<leader>[', '<C-^>', { desc = 'which_key_ignore' })
+map('n', '<leader>`', '<C-^>', { desc = 'which_key_ignore' })
+
+-- Commenting
+map({ 'n', 'x' }, '<D-/>', '<cmd>norm gcc<cr>', { desc = 'Toggle Commenting' })
+
+-- Tabs
+map('n', ']<tab>', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
+map('n', '[<tab>', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
+
+-- For working in config
+map('n', '<leader>X', ':w<cr>:source %<cr>')
+
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -11,7 +37,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- [[ Yoinked from LazyVim ]]
 
 -- better up/down
 map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
@@ -31,16 +59,6 @@ map('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
 map('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
 map('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
 
--- Buffers
-map('n', '<leader>`', '<cmd>e #<cr>', { desc = 'Switch to Last Buffer' })
-map('n', '<leader>[', '<cmd>e #<cr>', { desc = 'Switch to Last Buffer' })
--- map("n", "<leader>bd", function()
---   Snacks.bufdelete()
--- end, { desc = "Delete Buffer" })
--- map("n", "<leader>bo", function()
---   Snacks.bufdelete.other()
--- end, { desc = "Delete Other Buffers" })
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
@@ -54,27 +72,22 @@ map('i', ',', ',<c-g>u')
 map('i', '.', '.<c-g>u')
 map('i', ';', ';<c-g>u')
 
+-- highlights under cursor
+map('n', '<leader>ui', vim.show_pos, { desc = 'Inspect Pos' })
+map('n', '<leader>uI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
+
 -- diagnostic
 map('n', '<leader>k', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
 
--- stylua: ignore start
+-- windows
+map('n', '<leader>w', '<c-w>', { desc = 'Windows' })
+map('n', '<leader>-', '<C-W>s', { desc = 'Split Window Below' })
+map('n', '<leader>|', '<C-W>v', { desc = 'Split Window Right' })
+map('n', '<leader>wd', '<C-W>c', { desc = 'Delete Window', remap = true })
 
--- toggle options
--- LazyVim.format.snacks_toggle():map("<leader>uf")
--- LazyVim.format.snacks_toggle(true):map("<leader>uF")
--- Snacks.toggle.option("spell", { name = "Spelling"}):map("<leader>us")
--- Snacks.toggle.option("wrap", {name = "Wrap"}):map("<leader>uw")
--- Snacks.toggle.option("relativenumber", { name = "Relative Number"}):map("<leader>uL")
--- Snacks.toggle.diagnostics():map("<leader>ud")
--- Snacks.toggle.line_number():map("<leader>ul")
--- Snacks.toggle.option("conceallevel", {off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2}):map("<leader>uc")
--- Snacks.toggle.treesitter():map("<leader>uT")
--- Snacks.toggle.option("background", { off = "light", on = "dark" , name = "Dark Background"}):map("<leader>ub")
--- if vim.lsp.inlay_hint then
---   Snacks.toggle.inlay_hints():map("<leader>uh")
--- end
+-- stylua: ignore start
 
 -- lazygit
 if vim.fn.executable("lazygit") == 1 then
@@ -85,24 +98,5 @@ if vim.fn.executable("lazygit") == 1 then
   map("n", "<leader>gl", function() Snacks.lazygit.log({ cwd = vim.fs.root(0, ".git") }) end, { desc = "Lazygit Log" })
   map("n", "<leader>gL", function() Snacks.lazygit.log() end, { desc = "Lazygit Log (cwd)" })
 end
-
--- highlights under cursor
-map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
-
-
--- floating terminal
-map("n", "<c-/>",      function() Snacks.terminal(nil, { cwd = vim.uv.cwd() }) end, { desc = "Terminal (Root Dir)" })
-map("n", "<c-_>",      function() Snacks.terminal(nil, { cwd = vim.uv.cwd() }) end, { desc = "which_key_ignore" })
-
--- Terminal Mappings
-map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
-
--- windows
-map("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
-map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- vim: ts=2 sts=2 sw=2 et
