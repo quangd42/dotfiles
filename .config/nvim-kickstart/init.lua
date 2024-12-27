@@ -26,12 +26,12 @@
 -- [[ Setting options ]]
 require 'config.options'
 
--- [[ Basic Keymaps ]]
-require 'config.keymaps'
-require 'config.autocmds'
-
 -- [[ Install `lazy.nvim` plugin manager and bootstrap plugins]]
 require 'config.lazy'
+
+-- [[ Basic Keymaps ]]
+require 'config.autocmds'
+require 'config.keymaps'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
