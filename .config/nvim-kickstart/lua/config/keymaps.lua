@@ -26,7 +26,9 @@ map('n', ']<tab>', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
 map('n', '[<tab>', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
 
 -- For working in config
-map('n', '<leader>X', ':w<cr>:source %<cr>')
+if vim.bo.filetype == 'lua' then
+  map('n', '<leader>X', ':w<cr>:source %<cr>')
+end
 
 -- Diagnostic keymaps
 -- map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -47,12 +49,6 @@ map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr =
 map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
 map({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
 
--- Resize window using <ctrl> arrow keys
-map('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
-map('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
-map('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
-map('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
@@ -70,27 +66,12 @@ map('i', ';', ';<c-g>u')
 map('n', '<leader>ui', vim.show_pos, { desc = 'Inspect Pos' })
 map('n', '<leader>uI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 
--- diagnostic
-map('n', '<leader>k', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
-map('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
-map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
-
 -- windows
-map('n', '<leader>w', '<c-w>', { desc = 'Windows' })
 map('n', '<leader>-', '<C-W>s', { desc = 'Split Window Below' })
 map('n', '<leader>|', '<C-W>v', { desc = 'Split Window Right' })
-map('n', '<leader>wd', '<C-W>c', { desc = 'Delete Window', remap = true })
 
--- stylua: ignore start
-
--- lazygit
-if vim.fn.executable("lazygit") == 1 then
-  map("n", "<leader>gg", function() Snacks.lazygit( { cwd = vim.fs.root(0, ".git") }) end, { desc = "Lazygit (Root Dir)" })
-  map("n", "<leader>gb", function() Snacks.git.blame_line() end, { desc = "Git Blame Line" })
-  map({ "n", "x" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Git Browse" })
-  map("n", "<leader>gf", function() Snacks.lazygit.log_file() end, { desc = "Lazygit Current File History" })
-  map("n", "<leader>gl", function() Snacks.lazygit.log({ cwd = vim.fs.root(0, ".git") }) end, { desc = "Lazygit Log" })
-  map("n", "<leader>gL", function() Snacks.lazygit.log() end, { desc = "Lazygit Log (cwd)" })
-end
+-- diagnostic
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
 
 -- vim: ts=2 sts=2 sw=2 et
