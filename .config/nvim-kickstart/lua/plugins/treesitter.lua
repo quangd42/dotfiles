@@ -63,11 +63,11 @@ return {
         },
       },
     },
-    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
   },
 
   {
     'nvim-treesitter/nvim-treesitter-context',
+    event = 'VeryLazy',
     opts = function()
       local tsc = require 'treesitter-context'
       Snacks.toggle({
