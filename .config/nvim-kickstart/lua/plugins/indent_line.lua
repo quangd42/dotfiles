@@ -1,9 +1,12 @@
 return {
-  { -- Add indentation guides even on blank lines
+  {
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
+    event = 'VeryLazy',
     main = 'ibl',
-    opts = {},
+    opts = {
+      scope = { enabled = false },
+      indent = { char = '·', tab_char = '│' },
+      -- indent = { char = '│', tab_char = '│' }, -- from lazyvim
+    },
   },
 }
