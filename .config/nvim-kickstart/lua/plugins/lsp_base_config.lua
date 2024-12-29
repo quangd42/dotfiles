@@ -30,7 +30,7 @@ return {
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
     },
-    config = function()
+    config = function(_, opts)
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -56,7 +56,10 @@ return {
 
           -- Highlight the references of word under cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+          if not client then
+            return
+          end
+          if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -80,27 +83,32 @@ return {
           end
 
           -- Toggle Inlay hints
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map('<leader>uh', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, 'Toggle Inlay Hints')
           end
 
-          if client and client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
-            local semantic = client.config.capabilities.textDocument.semanticTokens
-            client.server_capabilities.semanticTokensProvider = {
-              full = true,
-              ---@diagnostic disable-next-line: need-check-nil
-              legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
-              range = true,
-            }
+          -- Language specifics
+          if opts.setup[client.name] then
+            opts.setup[client.name](client)
           end
+          -- Go
+          -- if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
+          --   local semantic = client.config.capabilities.textDocument.semanticTokens
+          --   client.server_capabilities.semanticTokensProvider = {
+          --     full = true,
+          --     ---@diagnostic disable-next-line: need-check-nil
+          --     legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
+          --     range = true,
+          --   }
+          -- end
 
           -- Python
-          if client.name == 'ruff' then
-            -- Disable hover in favor of Pyright
-            client.server_capabilities.hoverProvider = false
-          end
+          -- if client.name == 'ruff' then
+          --   -- Disable hover in favor of Pyright
+          --   client.server_capabilities.hoverProvider = false
+          -- end
         end,
       })
 
@@ -134,103 +142,92 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
-
-        lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+      local servers = opts.servers or {}
+      servers.lua_ls = {
+        -- cmd = {...},
+        -- filetypes = { ...},
+        -- capabilities = {},
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
             },
+            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            diagnostics = { disable = { 'missing-fields' } },
           },
         },
 
-        gopls = {
-          settings = {
-            gopls = {
-              gofumpt = true,
-              codelenses = {
-                gc_details = false,
-                generate = true,
-                regenerate_cgo = true,
-                run_govulncheck = true,
-                test = true,
-                tidy = true,
-                upgrade_dependency = true,
-                vendor = true,
-              },
-              hints = {
-                -- assignVariableTypes = true,
-                -- compositeLiteralFields = true,
-                -- compositeLiteralTypes = true,
-                constantValues = true,
-                -- functionTypeParameters = true,
-                -- parameterNames = true,
-                rangeVariableTypes = true,
-              },
-              analyses = {
-                -- fieldalignment = true,
-                nilness = true,
-                unusedparams = true,
-                unusedwrite = true,
-                useany = true,
-              },
-              usePlaceholders = true,
-              completeUnimported = true,
-              staticcheck = true,
-              directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
-              semanticTokens = true,
-            },
-          },
-        },
+        -- gopls = {
+        --   settings = {
+        --     gopls = {
+        --       gofumpt = true,
+        --       codelenses = {
+        --         gc_details = false,
+        --         generate = true,
+        --         regenerate_cgo = true,
+        --         run_govulncheck = true,
+        --         test = true,
+        --         tidy = true,
+        --         upgrade_dependency = true,
+        --         vendor = true,
+        --       },
+        --       hints = {
+        --         -- assignVariableTypes = true,
+        --         -- compositeLiteralFields = true,
+        --         -- compositeLiteralTypes = true,
+        --         constantValues = true,
+        --         -- functionTypeParameters = true,
+        --         -- parameterNames = true,
+        --         rangeVariableTypes = true,
+        --       },
+        --       analyses = {
+        --         -- fieldalignment = true,
+        --         nilness = true,
+        --         unusedparams = true,
+        --         unusedwrite = true,
+        --         useany = true,
+        --       },
+        --       usePlaceholders = true,
+        --       completeUnimported = true,
+        --       staticcheck = true,
+        --       directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
+        --       semanticTokens = true,
+        --     },
+        --   },
+        -- },
 
         -- Python
-        ruff = {},
-        pyright = {
-          settings = {
-            pyright = {
-              -- Using Ruff's import organizer
-              disableOrganizeImports = true,
-            },
-            python = {
-              analysis = {
-                -- Ignore all files for analysis to exclusively use Ruff for linting
-                ignore = { '*' },
-              },
-            },
-          },
-        },
+        -- ruff = {
+        --   cmd_env = { RUFF_TRACE = 'messages' },
+        --   init_options = {
+        --     settings = {
+        --       logLevel = 'error',
+        --     },
+        --   },
+        -- },
+        -- pyright = {
+        --   settings = {
+        --     pyright = {
+        --       -- Using Ruff's import organizer
+        --       disableOrganizeImports = true,
+        --     },
+        --     python = {
+        --       analysis = {
+        --         -- Ignore all files for analysis to exclusively use Ruff for linting
+        --         ignore = { '*' },
+        --       },
+        --     },
+        --   },
+        -- },
       }
 
       -- Ensure the servers and tools above are installed with Mason
       require('mason').setup()
 
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-        -- Python
-        'ruff',
-      })
+      -- Add other tools here for Mason to install
+      local ensure_installed = { 'stylua' }
+      vim.list_extend(ensure_installed, vim.tbl_keys(servers or {}))
+      vim.list_extend(ensure_installed, opts.ensure_installed or {})
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
