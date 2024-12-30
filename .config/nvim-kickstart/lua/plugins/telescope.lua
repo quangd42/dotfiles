@@ -23,6 +23,16 @@ return {
           },
         },
       },
+      {
+        'piersolenski/telescope-import.nvim',
+        keys = {
+          {
+            '<leader>si',
+            '<cmd>Telescope import<cr>',
+            desc = 'Workspace Import Statements',
+          },
+        },
+      },
       { 'nvim-tree/nvim-web-devicons' },
     },
     config = function()
@@ -124,10 +134,10 @@ return {
       map('n', '<leader>sh', builtin.help_tags, { desc = 'Help Pages' })
       map('n', '<leader>sj', builtin.jumplist, { desc = 'Jumplist' })
       map('n', '<leader>sk', builtin.keymaps, { desc = 'Keymaps' })
-      map('n', '<leader>ss', builtin.builtin, { desc = 'Select Telescope Builtins' })
       map('n', '<leader>sl', builtin.loclist, { desc = 'Location List' })
       map('n', '<leader>sm', builtin.marks, { desc = 'Jump to Mark' })
       map('n', '<leader>sr', builtin.resume, { desc = 'Resume' })
+      map('n', '<leader>sp', builtin.builtin, { desc = 'Select Builtin Pickers' })
       map('n', '<leader>sq', builtin.quickfix, { desc = 'Quickfix List' })
       map({ 'n', 'v' }, '<leader>sw', builtin.grep_string, { desc = 'Current Word' })
       map('n', '<leader>s.', builtin.oldfiles, { desc = 'Recent Files' })
@@ -138,6 +148,5 @@ return {
     end,
   },
 }
--- TODO: add lsp hotkeys
 
 -- vim: ts=2 sts=2 sw=2 et
