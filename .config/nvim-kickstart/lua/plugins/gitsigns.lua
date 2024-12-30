@@ -30,7 +30,7 @@ return {
           else
             gitsigns.nav_hunk 'next'
           end
-        end, { desc = 'Goto Next Git Change' })
+        end, { desc = 'Next git change' })
 
         map('n', '[c', function()
           if vim.wo.diff then
@@ -38,7 +38,7 @@ return {
           else
             gitsigns.nav_hunk 'prev'
           end
-        end, { desc = 'Goto Previous Git Change' })
+        end, { desc = 'Previous git change' })
 
         -- Actions
         -- normal mode

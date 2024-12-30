@@ -22,13 +22,8 @@ map('n', '<leader>`', '<C-^>', { desc = 'which_key_ignore' })
 map({ 'n', 'x' }, '<D-/>', '<cmd>norm gcc<cr>', { desc = 'Toggle Commenting' })
 
 -- Tabs
-map('n', ']<tab>', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
-map('n', '[<tab>', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
-
--- For working in config
-if vim.bo.filetype == 'lua' then
-  map('n', '<leader>X', ':w<cr>:source %<cr>')
-end
+map('n', ']<tab>', '<cmd>tabnext<cr>', { desc = 'Next tab' })
+map('n', '[<tab>', '<cmd>tabprevious<cr>', { desc = 'Previous tab' })
 
 -- Diagnostic keymaps
 -- map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -69,9 +64,5 @@ map('n', '<leader>uI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 -- windows
 map('n', '<leader>-', '<C-W>s', { desc = 'Split Window Below' })
 map('n', '<leader>|', '<C-W>v', { desc = 'Split Window Right' })
-
--- diagnostic
-map('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
-map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
 
 -- vim: ts=2 sts=2 sw=2 et
