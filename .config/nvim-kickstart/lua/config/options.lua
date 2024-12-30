@@ -62,7 +62,6 @@ opt.scrolloff = 10
 opt.sidescrolloff = 8
 
 -- Steal from LazyVim
--- opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 opt.shortmess:append { W = true, I = true, c = true, C = true }
 opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize', 'help', 'globals', 'skiprtp', 'folds' }
 opt.virtualedit = 'block' -- Allow cursor to move where there is no text in visual block mode
