@@ -13,7 +13,6 @@ return {
           return vim.fn.executable 'make' == 1
         end,
       },
-      { 'nvim-telescope/telescope-ui-select.nvim' },
       {
         'debugloop/telescope-undo.nvim',
         keys = {
@@ -77,9 +76,6 @@ return {
         },
 
         extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
-          },
           undo = {
             -- side_by_side = true,
             layout_strategy = 'vertical',
@@ -93,7 +89,6 @@ return {
 
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'undo')
 
       -- See `:help telescope.builtin`
