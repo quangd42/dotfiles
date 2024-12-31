@@ -25,6 +25,15 @@ return {
             cmp.show { providers = { 'copilot' } }
           end,
         },
+        cmdline = {
+          preset = 'none',
+          ['<S-Tab>'] = { 'select_prev', 'fallback' },
+          ['<Tab>'] = { 'select_next', 'fallback' },
+          ['<Up>'] = { 'select_prev', 'fallback' },
+          ['<Down>'] = { 'select_next', 'fallback' },
+          ['<C-p>'] = { 'select_prev', 'fallback' },
+          ['<C-n>'] = { 'select_next', 'fallback' },
+        },
       },
 
       appearance = {
@@ -77,6 +86,12 @@ return {
             },
             treesitter = { 'lsp' },
           },
+        },
+        -- auto_insert for cmdline
+        list = {
+          selection = function(ctx)
+            return ctx.mode == 'cmdline' and 'auto_insert' or 'preselect'
+          end,
         },
         -- Show documentation when selecting a completion item
         documentation = {
