@@ -1,15 +1,16 @@
+local ui_events = { 'BufReadPre', 'BufNewFile' }
 return {
   -- Improve vim.ui interfaces
   {
     'stevearc/dressing.nvim',
-    event = 'VeryLazy',
+    event = ui_events,
     opts = {},
   },
 
   -- Status line
   {
     'windwp/windline.nvim',
-    event = 'VeryLazy',
+    event = ui_events,
     config = function()
       require 'wlsample.airline'
     end,
@@ -18,7 +19,7 @@ return {
   -- Indent line
   {
     'lukas-reineke/indent-blankline.nvim',
-    event = 'VeryLazy',
+    event = ui_events,
     main = 'ibl',
     opts = {
       scope = { enabled = false },
@@ -30,7 +31,7 @@ return {
   -- Auto resize focused splits
   {
     'nvim-focus/focus.nvim',
-    event = 'VeryLazy',
+    event = ui_events,
     opts = {
       commands = true,
       ui = {
@@ -46,6 +47,7 @@ return {
   -- smooth scrolling
   {
     'karb94/neoscroll.nvim',
+    event = ui_events,
     opts = {
       duration_multiplier = 0.2,
     },
