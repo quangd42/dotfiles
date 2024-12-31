@@ -109,7 +109,7 @@ return {
       map('n', '<leader>F', function()
         builtin.find_files { no_ignore = true, hidden = true }
       end, { desc = 'Find All Files' })
-      map('n', '<leader>,', function()
+      map('n', '<leader>b', function()
         builtin.buffers { sort_mru = true, sort_lastused = true, ignore_current_buffer = true }
       end, { desc = 'Buffers' })
 
