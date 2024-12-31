@@ -11,8 +11,12 @@ map('v', 'C', '"_c', { desc = 'Change Without Yank' })
 map('v', 'D', '"_d', { desc = 'Delete Without Yank' })
 
 -- Move screen
-map('n', '<C-Y>', '5<C-Y>', { desc = 'which_key_ignore' })
-map('n', '<C-E>', '5<C-E>', { desc = 'which_key_ignore' })
+map('n', '<C-Y>', function()
+  require('neoscroll').scroll(-5, { move_cursor = false, duration = 250 })
+end, { desc = 'which_key_ignore' })
+map('n', '<C-E>', function()
+  require('neoscroll').scroll(5, { move_cursor = false, duration = 250 })
+end, { desc = 'which_key_ignore' })
 
 -- Buffers
 map('n', '<leader>[', '<C-^>', { desc = 'which_key_ignore' })

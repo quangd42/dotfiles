@@ -42,4 +42,12 @@ return {
       { '<leader>uf', '<cmd>FocusToggle<cr>', desc = 'Toggle Window Focus' },
     },
   },
+
+  -- smooth scrolling
+  {
+    'karb94/neoscroll.nvim',
+    opts = {
+      duration_multiplier = 0.2,
+    },
+  },
 }
