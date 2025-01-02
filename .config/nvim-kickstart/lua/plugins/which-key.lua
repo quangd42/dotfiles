@@ -19,7 +19,8 @@ return {
         { '<leader>t', group = '+toggle' },
         { '<leader>u', group = '+ui' },
         { '<leader>x', group = '+swap' },
-        { '<C-W>x', group = '+swap windows' },
+        { '<leader>w', group = '+windows', proxy = '<c-w>' }, -- proxy to window mappings
+        { '<C-W>x', group = '+swap' },
       },
     },
     keys = {

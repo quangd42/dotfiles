@@ -67,6 +67,7 @@ map('n', '<leader>uI', '<cmd>InspectTree<cr>', { desc = 'Inspect Tree' })
 
 -- windows
 map('n', '<leader>-', '<C-W>s', { desc = 'Split Window Below' })
-map('n', '<leader>|', '<C-W>v', { desc = 'Split Window Right' })
+map('n', '<leader>|', '<C-W>v', { desc = 'which_key_ignore' })
+map('n', '<leader>\\', '<C-W>v', { desc = 'Split Window Right' })
 
 -- vim: ts=2 sts=2 sw=2 et
