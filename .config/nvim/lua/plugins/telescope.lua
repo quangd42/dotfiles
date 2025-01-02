@@ -17,14 +17,15 @@ return {
         sorting_strategy = "ascending",
         layout_config = {
           prompt_position = "top",
+          horizontal = {
+            preview_width = 0.6,
+          },
         },
         mappings = {
           i = {
             ["<c-i>"] = find_files_no_ignore,
             ["<c-h>"] = find_files_with_hidden,
-          },
-          n = {
-            ["d"] = require("telescope.actions").delete_buffer,
+            ["<esc>"] = require("telescope.actions").close,
           },
         },
       },

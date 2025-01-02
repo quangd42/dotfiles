@@ -40,6 +40,10 @@ map("n", "<leader>k", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- Windows
+map("n", "<leader>|", "<C-W>v", { desc = "which_key_ignore" })
+map("n", "<leader>\\", "<C-W>v", { desc = "Split Window Right" })
+
 -- Remove LazyVim keymaps
 -- Files
 delmap("n", "<leader>ft")
