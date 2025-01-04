@@ -119,6 +119,7 @@ return {
     },
     opts_extend = { 'sources.default' },
   },
+
   -- LazyDev source
   {
     'saghen/blink.cmp',
@@ -132,25 +133,6 @@ return {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
             score_offset = 100, -- show at a higher priority than lsp
-          },
-        },
-      },
-    },
-  },
-  -- ripgrep source
-  {
-    'saghen/blink.cmp',
-    optional = true,
-    dependencies = {
-      'mikavilpas/blink-ripgrep.nvim',
-    },
-    opts = {
-      sources = {
-        default = { 'ripgrep' },
-        providers = {
-          ripgrep = {
-            name = 'Ripgrep',
-            module = 'blink-ripgrep',
           },
         },
       },
@@ -191,40 +173,6 @@ return {
               end
               return items
             end,
-          },
-        },
-      },
-    },
-  },
-
-  {
-    'saghen/blink.compat',
-    lazy = true,
-    opts = {},
-    version = '*', -- make sure to match this and blink.cmp version below
-  },
-
-  -- yanky source
-  {
-    'saghen/blink.cmp',
-    optional = true,
-    dependencies = {
-      'chrisgrieser/cmp_yanky',
-    },
-    opts = {
-      sources = {
-        default = { 'cmp_yanky' },
-        providers = {
-          cmp_yanky = {
-            name = 'cmp_yanky',
-            module = 'blink.compat.source',
-            opts = {
-              -- default values
-              -- only suggest items which match the current filetype
-              onlyCurrentFiletype = false,
-              -- only suggest items with a minimum length
-              minLength = 3,
-            },
           },
         },
       },
