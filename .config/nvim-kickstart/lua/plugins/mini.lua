@@ -22,25 +22,30 @@ return {
         local to_col = math.max(vim.fn.getline(end_line):len(), 1)
         return { from = { line = start_line, col = 1 }, to = { line = end_line, col = to_col } }
       end
+      local function ai_line(ai_type)
+        local line_num = vim.fn.line '.'
+        local line = vim.fn.getline(line_num)
+        -- Ignore indentation for `i` textobject
+        local from_col = ai_type == 'a' and 1 or (line:match('^(%s*)'):len() + 1)
+        -- Don't select `\n` past the line to operate within a line
+        local to_col = line:len()
+
+        return { from = { line = line_num, col = from_col }, to = { line = line_num, col = to_col } }
+      end
 
       return {
         n_lines = 500,
         custom_textobjects = {
-          o = ai.gen_spec.treesitter { -- code block
-            a = { '@block.outer', '@conditional.outer', '@loop.outer' },
-            i = { '@block.inner', '@conditional.inner', '@loop.inner' },
-          },
           f = ai.gen_spec.treesitter { a = '@function.outer', i = '@function.inner' }, -- function
-          c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' }, -- class
-          t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' }, -- tags
-          d = { '%f[%d]%d+' }, -- digits
-          e = { -- Word with case
-            { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
-            '^().*()$',
-          },
+          -- c = ai.gen_spec.treesitter { a = '@class.outer', i = '@class.inner' }, -- class
+          T = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' }, -- tags
+          -- e = { -- Word with case
+          --   { '%u[%l%d]+%f[^%l%d]', '%f[%S][%l%d]+%f[^%l%d]', '%f[%P][%l%d]+%f[^%l%d]', '^[%l%d]+%f[^%l%d]' },
+          --   '^().*()$',
+          -- },
+          y = ai_line, -- line
           g = ai_buffer, -- buffer
-          u = ai.gen_spec.function_call(), -- u for "Usage"
-          U = ai.gen_spec.function_call { name_pattern = '[%w_]' }, -- without dot in function name
+          F = ai.gen_spec.function_call(), -- u for "Usage"
         },
       }
     end,
