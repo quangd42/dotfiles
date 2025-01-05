@@ -59,7 +59,12 @@ return {
           -- end workaround
         end,
       },
-      ensure_installed = { 'goimports', 'gofumpt', 'gomodifytags' },
+    },
+  },
+  {
+    'williamboman/mason.nvim',
+    opts = {
+      ensure_installed = { 'goimports', 'gofumpt' },
     },
   },
   {
@@ -75,7 +80,7 @@ return {
     ft = 'go',
     dependencies = {
       {
-        'neovim/nvim-lspconfig',
+        'williamboman/mason.nvim',
         opts = { ensure_installed = { 'gomodifytags', 'impl' } },
       },
     },

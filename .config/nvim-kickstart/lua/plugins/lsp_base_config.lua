@@ -22,7 +22,6 @@ return {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
@@ -229,13 +228,9 @@ return {
       -- Ensure the servers and tools above are installed with Mason
       require('mason').setup()
 
-      -- Add other tools here for Mason to install
-      local ensure_installed = { 'stylua' }
-      vim.list_extend(ensure_installed, vim.tbl_keys(servers or {}))
-      vim.list_extend(ensure_installed, opts.ensure_installed or {})
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
       require('mason-lspconfig').setup {
+        automatic_installation = true,
+        ensure_installed = vim.tbl_keys(servers or {}),
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -247,6 +242,52 @@ return {
           end,
         },
       }
+    end,
+  },
+
+  -- Mason, yoinked from LazyVim
+  {
+    'williamboman/mason.nvim',
+    cmd = 'Mason',
+    keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
+    build = ':MasonUpdate',
+    opts_extend = { 'ensure_installed' },
+    opts = {
+      ensure_installed = {
+        'stylua',
+        'shfmt',
+      },
+    },
+    ---@param opts MasonSettings | {ensure_installed: string[]}
+    config = function(_, opts)
+      require('mason').setup(opts)
+      local mr = require 'mason-registry'
+      mr:on('package:install:success', function()
+        vim.defer_fn(function()
+          -- trigger FileType event to possibly load this newly installed LSP server
+          require('lazy.core.handler.event').trigger {
+            event = 'FileType',
+            buf = vim.api.nvim_get_current_buf(),
+          }
+        end, 100)
+      end)
+
+      -- Automatically install and update everything in ensure_installed
+      -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues/39
+      mr.refresh(function()
+        for _, name in pairs(opts.ensure_installed) do
+          local p = mr.get_package(name)
+          if not mr.is_installed(name) then
+            p:install()
+          else
+            p:check_new_version(function(success, result_or_err)
+              if success then
+                p:install { version = result_or_err.latest_version }
+              end
+            end)
+          end
+        end
+      end)
     end,
   },
 }
