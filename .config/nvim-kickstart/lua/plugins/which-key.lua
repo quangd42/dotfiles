@@ -10,17 +10,17 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '+code', mode = { 'n', 'x' } },
+        { '<leader>c', group = 'code', mode = { 'n', 'x' } },
         -- { '<leader>d', group = '[D]ocument' },
         -- { '<leader>r', group = '[R]ename' },
-        { '<leader>g', group = '+git', mode = { 'n', 'v' } },
-        { '<leader>q', group = '+quit/session' },
-        { '<leader>s', group = '+search' },
-        { '<leader>t', group = '+toggle' },
-        { '<leader>u', group = '+ui' },
-        { '<leader>x', group = '+swap' },
-        { '<leader>w', group = '+windows', proxy = '<c-w>' }, -- proxy to window mappings
-        { '<C-W>x', group = '+swap' },
+        { '<leader>g', group = 'git', mode = { 'n', 'v' } },
+        { '<leader>q', group = 'quit/session' },
+        { '<leader>s', group = 'search' },
+        { '<leader>t', group = 'toggle' },
+        { '<leader>u', group = 'ui' },
+        { '<leader>x', group = 'swap' },
+        { '<leader>w', group = 'windows', proxy = '<c-w>' }, -- proxy to window mappings
+        { '<C-W>x', group = 'swap' },
       },
     },
     keys = {

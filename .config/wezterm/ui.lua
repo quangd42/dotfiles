@@ -11,23 +11,24 @@ function M.config(config)
 	config.command_palette_font_size = 16.0
 	config.font_size = 16.2
 	config.line_height = 1.00
+	config.window_background_opacity = 0.85
 
 	-- [[
 	-- COLORSCHEME
 	-- ]]
-	local COLORSCHEME = "tokyonight_moon"
+	local COLORSCHEME = "tokyonight"
 	-- local COLORSCHEME = "kanagawabones"
 	-- local COLORSCHEME = "Catppuccin Mocha"
 	config.color_scheme = COLORSCHEME
 
-	local current_cs = wezterm.color.get_builtin_schemes()[COLORSCHEME]
+	local cs = wezterm.color.get_builtin_schemes()[COLORSCHEME]
 	if COLORSCHEME == "tokyonight" then
-		current_cs.tab_bar.inactive_tab = {
-			bg_color = "#1a1b26",
-			fg_color = "#7aa2f7",
+		cs.tab_bar.inactive_tab = {
+			bg_color = cs.scrollbar_thumb,
+			fg_color = "#a9b1d6",
 		}
 		config.color_schemes = {
-			["tokyonight"] = current_cs,
+			["tokyonight"] = cs,
 		}
 	end
 	config.command_palette_fg_color = "#c8d3f5"
@@ -43,23 +44,23 @@ function M.config(config)
 		local name = window:active_key_table()
 		if name then
 			name = wezterm.format({
-				{ Foreground = { Color = current_cs.tab_bar.active_tab.bg_color } },
-				{ Background = { Color = current_cs.tab_bar.active_tab.fg_color } },
+				{ Foreground = { Color = cs.tab_bar.active_tab.bg_color } },
+				{ Background = { Color = cs.tab_bar.active_tab.fg_color } },
 				{ Text = "Table: " },
 				{ Attribute = { Intensity = "Bold" } },
-				{ Foreground = { Color = current_cs.tab_bar.active_tab.fg_color } },
-				{ Background = { Color = current_cs.tab_bar.active_tab.bg_color } },
+				{ Foreground = { Color = cs.tab_bar.active_tab.fg_color } },
+				{ Background = { Color = cs.tab_bar.active_tab.bg_color } },
 				{ Text = " " .. name .. " " },
 			})
 		end
 
 		local workspace = wezterm.format({
-			{ Foreground = { Color = current_cs.tab_bar.active_tab.bg_color } },
-			{ Background = { Color = current_cs.scrollbar_thumb } },
+			{ Foreground = { Color = cs.tab_bar.active_tab.bg_color } },
+			{ Background = { Color = cs.scrollbar_thumb } },
 			{ Text = " Workspace: " },
 			{ Attribute = { Intensity = "Bold" } },
-			{ Foreground = { Color = current_cs.tab_bar.active_tab.fg_color } },
-			{ Background = { Color = current_cs.tab_bar.active_tab.bg_color } },
+			{ Foreground = { Color = cs.tab_bar.active_tab.fg_color } },
+			{ Background = { Color = cs.tab_bar.active_tab.bg_color } },
 			{ Text = " " .. window:active_workspace() .. " " },
 		})
 		window:set_right_status(name or workspace)

@@ -112,7 +112,7 @@ alias wtt="wezterm cli set-tab-title"
 alias wwt="wezterm cli rename-workspace"
 
 # nvim envs
-alias nks='NVIM_APPNAME="nvim-kickstart" nvim'
+alias v='NVIM_APPNAME="nvim-kickstart" nvim'
 alias nvs='NVIM_APPNAME="nvim-vscode" nvim'
 
 alias kbc='kubectl'
@@ -129,6 +129,9 @@ function zvm_after_init() {
   # Set up fzf key bindings and fuzzy completion
   source <(fzf --zsh)
 }
+
+# man syntax highlighting
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Set up custom function for yazi. `y` instead of `yazi` to use.
 function y() {

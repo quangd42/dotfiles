@@ -10,10 +10,10 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
-      current_line_blame = true,
-      current_line_blame_opts = {
-        delay = 2000,
-      },
+      -- current_line_blame = true,
+      -- current_line_blame_opts = {
+      --   delay = 2000,
+      -- },
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
