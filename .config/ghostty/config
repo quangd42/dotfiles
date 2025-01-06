@@ -1,0 +1,9 @@
+cursor-invert-fg-bg = true
+# no blinking cursor
+shell-integration-features = no-cursor
+mouse-hide-while-typing = true
+
+font-size = 16
+theme = tokyonight
+macos-titlebar-style = tabs
+background-opacity = 0.85
