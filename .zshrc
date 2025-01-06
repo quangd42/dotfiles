@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -104,7 +104,6 @@ source $ZSH/oh-my-zsh.sh
 alias ls="lsd"
 alias tree="lsd -A --tree --depth 3"
 alias c="code"
-alias n="nvim"
 alias cd="z"
 alias lg="lazygit"
 alias cl="curlie"
@@ -112,8 +111,10 @@ alias wtt="wezterm cli set-tab-title"
 alias wwt="wezterm cli rename-workspace"
 
 # nvim envs
+alias lv='NVIM_APPNAME="lazyvim" nvim'
 alias v='NVIM_APPNAME="nvim-kickstart" nvim'
-alias nvs='NVIM_APPNAME="nvim-vscode" nvim'
+alias n='nvim'
+alias nv='nvim -u NONE --clean'
 
 alias kbc='kubectl'
 
