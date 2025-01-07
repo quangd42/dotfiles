@@ -1,6 +1,11 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+-- [[ Setting options ]]
+require 'config.options'
 
--- NOTE: create a virtual env at this path and install pynvim there
--- https://neovim.io/doc/user/provider.html#_python-integration
-vim.g.python3_host_prog = "~/py3nvim/bin/python"
+-- [[ Install `lazy.nvim` plugin manager and bootstrap plugins]]
+require 'config.lazy'
+
+-- [[ Basic Keymaps ]]
+require 'config.autocmds'
+require 'config.keymaps'
+
+-- vim: ts=2 sts=2 sw=2 et

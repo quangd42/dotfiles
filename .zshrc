@@ -112,9 +112,9 @@ alias wwt="wezterm cli rename-workspace"
 
 # nvim envs
 alias lv='NVIM_APPNAME="lazyvim" nvim'
-alias v='NVIM_APPNAME="nvim-kickstart" nvim'
-alias n='nvim'
-alias nv='nvim -u NONE --clean'
+alias v='nvim'
+# alias v='NVIM_APPNAME="nvim-kickstart" nvim'
+alias n='nvim -u NONE --clean'
 
 alias kbc='kubectl'
 

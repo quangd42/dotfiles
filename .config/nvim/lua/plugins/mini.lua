@@ -1,4 +1,3 @@
--- Collection of various small independent plugins/modules
 return {
   -- Better text-objects
   {
