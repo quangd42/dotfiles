@@ -1,14 +1,10 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[❯](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
-error_symbol = '[❯](bold red)'
-vimcmd_symbol = '[❯](bold blue)' # [❮](bold blue) [❯](bold blue)
-vimcmd_replace_one_symbol = '[❯](bold yellow)'
-vimcmd_replace_symbol = '[❯](bold yellow)'
-vimcmd_visual_symbol = '[❯](bold purple)'
+[character]
+vimcmd_symbol = '[❯](bold purple) '
+success_symbol = '[➜](bold green) '
+error_symbol = '[✗](bold red) '
 
 [aws]
 symbol = "  "
@@ -48,6 +44,9 @@ symbol = " "
 
 [git_branch]
 symbol = " "
+
+[git_commit]
+tag_symbol = '  '
 
 [golang]
 symbol = " "
@@ -164,7 +163,7 @@ symbol = "󰟔 "
 symbol = " "
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
 
 [scala]
 symbol = " "
@@ -178,3 +177,6 @@ symbol = " "
 [gcloud]
 disabled = true
 symbol = '️🇬️ '
+
+[gradle]
+symbol = " "
