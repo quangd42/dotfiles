@@ -6,7 +6,7 @@ return {
       vim.cmd.colorscheme 'tokyonight-night'
     end,
     opts = {
-      transparent = true, -- Enable this to disable setting the background color
+      transparent = true,
     },
   },
   {

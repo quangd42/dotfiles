@@ -17,8 +17,8 @@ return {
   {
     'chrisgrieser/nvim-various-textobjs',
     keys = {
-      { 'ie', '<cmd>lua require("various-textobjs").subword("inner")<cr>', mode = { 'o', 'x' } },
-      { 'ae', '<cmd>lua require("various-textobjs").subword("outer")<cr>', mode = { 'o', 'x' } },
+      { 'ie', '<cmd>lua require("various-textobjs").subword("inner")<cr>', mode = { 'o', 'x' }, desc = 'inner subword' },
+      { 'ae', '<cmd>lua require("various-textobjs").subword("outer")<cr>', mode = { 'o', 'x' }, desc = 'outer subword' },
     },
   },
 }
