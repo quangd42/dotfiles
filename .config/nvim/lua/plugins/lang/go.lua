@@ -6,17 +6,17 @@ return {
         gopls = {
           settings = {
             gopls = {
+              -- Build
+              directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
+              -- Formatting
               gofumpt = true,
+              -- UI
               codelenses = {
-                gc_details = false,
-                generate = true,
-                regenerate_cgo = true,
-                run_govulncheck = true,
+                vulncheck = true,
                 test = true,
-                tidy = true,
-                upgrade_dependency = true,
-                vendor = true,
               },
+              semanticTokens = true,
+              -- Inlay hints
               hints = {
                 -- assignVariableTypes = true,
                 -- compositeLiteralFields = true,
@@ -26,17 +26,16 @@ return {
                 -- parameterNames = true,
                 rangeVariableTypes = true,
               },
+              -- Diagnostics
+              staticcheck = true,
               analyses = {
                 nilness = true,
                 unusedparams = true,
                 unusedwrite = true,
                 useany = true,
               },
+              -- Completion
               usePlaceholders = true,
-              completeUnimported = true,
-              staticcheck = true,
-              directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
-              semanticTokens = true,
             },
           },
         },
