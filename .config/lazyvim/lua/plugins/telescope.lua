@@ -1,7 +1,5 @@
-local find_files_no_ignore = function()
-  local action_state = require("telescope.actions.state")
-  local line = action_state.get_current_line()
-  LazyVim.pick("find_files", { no_ignore = true, default_text = line })()
+if LazyVim.pick.picker.name ~= "telescope" then
+  return {}
 end
 local find_files_with_hidden = function()
   local action_state = require("telescope.actions.state")
@@ -23,8 +21,7 @@ return {
         },
         mappings = {
           i = {
-            ["<c-i>"] = find_files_no_ignore,
-            ["<c-h>"] = find_files_with_hidden,
+            ["<a-.>"] = find_files_with_hidden,
             ["<esc>"] = require("telescope.actions").close,
           },
         },
