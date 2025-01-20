@@ -29,6 +29,9 @@ map("n", "<leader>qx", "<cmd>xa<cr>", { desc = "Save & Quit All" })
 map("n", "<leader>[", "<C-^>", { desc = "which_key_ignore" })
 map("n", "<leader>`", "<C-^>", { desc = "which_key_ignore" })
 delmap("n", "<leader>bb")
+delmap("n", "<leader>bd")
+delmap("n", "<leader>bD")
+delmap("n", "<leader>bo")
 
 -- Commenting
 map({ "n", "x" }, "<D-/>", "<cmd>normal gcc<cr>", { desc = "Toggle Commenting" })

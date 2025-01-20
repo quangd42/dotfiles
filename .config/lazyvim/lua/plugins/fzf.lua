@@ -23,6 +23,7 @@ return {
     keys = {
       { "<leader>f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader>F", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader>sr", "<cmd>FzfLua resume<cr>", desc = "Resume" },
       -- disable built-in
       { "<leader>fb", false },
       { "<leader>fc", false },

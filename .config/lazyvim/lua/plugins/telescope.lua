@@ -33,6 +33,7 @@ return {
     keys = {
       { "<leader>f", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader>F", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume" },
       -- { "<leader><space>", false },
       { "<leader>fb", false },
       { "<leader>fc", false },
