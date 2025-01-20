@@ -67,9 +67,6 @@ return {
         },
 
         pickers = {
-          find_files = {
-            hidden = true,
-          },
           git_files = {
             hidden = true,
           },
@@ -90,10 +87,35 @@ return {
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
 
+      local my_find_files
+      my_find_files = function(opts, no_ignore)
+        opts = opts or {}
+        no_ignore = vim.F.if_nil(no_ignore, false)
+        opts.attach_mappings = function(_, map)
+          map({ 'n', 'i' }, '<a-i>', function(prompt_bufnr) -- <a-.> to toggle modes
+            local prompt = require('telescope.actions.state').get_current_line()
+            require('telescope.actions').close(prompt_bufnr)
+            no_ignore = not no_ignore
+            my_find_files({ default_text = prompt }, no_ignore)
+          end)
+          return true
+        end
+
+        if no_ignore then
+          opts.no_ignore = true
+          opts.hidden = true
+          opts.prompt_title = 'Find Files'
+          require('telescope.builtin').find_files(opts)
+        else
+          opts.prompt_title = 'Find Files'
+          require('telescope.builtin').find_files(opts)
+        end
+      end
+
       local builtin = require 'telescope.builtin'
       local map = vim.keymap.set
 
-      map('n', '<leader>f', builtin.find_files, { desc = 'Find Files' })
+      map('n', '<leader>f', my_find_files, { desc = 'Find Files' })
       map('n', '<leader>F', function()
         builtin.find_files { no_ignore = true, hidden = true }
       end, { desc = 'Find All Files' })
