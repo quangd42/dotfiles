@@ -20,8 +20,7 @@ return {
         input = {
           keys = {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
-            ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
-            ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<a-.>"] = { "toggle_hidden", mode = { "i", "n" } },
           },
         },
       },
