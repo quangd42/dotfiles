@@ -1,7 +1,8 @@
+local ui_events = { "BufReadPre", "BufNewFile" }
 return {
   {
     "b0o/incline.nvim",
-    event = "BufReadPre",
+    event = ui_events,
     enabled = true,
     config = function()
       require("incline").setup({
@@ -71,6 +72,7 @@ return {
       })
     end,
   },
+
   {
     "akinsho/bufferline.nvim",
     enabled = false,
@@ -80,6 +82,31 @@ return {
         middle_mouse_command = "bdelete! %d",
         -- separator_style = "slant",
       },
+    },
+  },
+
+  -- Auto resize focused splits
+  {
+    "nvim-focus/focus.nvim",
+    event = ui_events,
+    opts = {
+      commands = true,
+      ui = {
+        cursorline = false,
+        signcolumn = false,
+      },
+    },
+    keys = {
+      { "<leader>uf", "<cmd>FocusToggle<cr>", desc = "Toggle Window Focus" },
+    },
+  },
+
+  -- smooth scrolling
+  {
+    "karb94/neoscroll.nvim",
+    event = ui_events,
+    opts = {
+      duration_multiplier = 0.2,
     },
   },
 }
