@@ -38,7 +38,7 @@ return {
 
         -- Actions
         -- normal mode
-        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'Git Preview Hunk' })
+        map('n', '<leader>gp', gitsigns.preview_hunk_inline, { desc = 'Git Preview Hunk' })
         map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Git Diff Against Index' })
         map('n', '<leader>gD', function()
           gitsigns.diffthis '@'
@@ -47,7 +47,6 @@ return {
         map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Git Reset Buffer' })
         -- Toggles
         map('n', '<leader>uB', gitsigns.toggle_current_line_blame, { desc = 'Toggle Blame Line' })
-        map('n', '<leader>gD', gitsigns.toggle_deleted, { desc = 'Toggle Git Deleted' })
       end,
     },
   },
