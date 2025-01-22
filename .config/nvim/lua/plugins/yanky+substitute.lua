@@ -34,9 +34,9 @@ return {
       { 'gp', function() require('substitute').operator() end, desc = 'Substitute' },
       { 'gpp', function() require('substitute').line() end, desc = 'Substitute Line' },
       { 'gp', function() require('substitute').visual() end, mode = { 'x' }, desc = 'Substitute' },
-      { 'gb', function() require('substitute.exchange').operator() end, desc = 'which_key_ignore' },
-      { 'gbb', function() require('substitute.exchange').line() end, desc = 'Exchange Line' },
-      { 'gb', function() require('substitute.exchange').visual() end, mode = { 'x' }, desc = 'Exchange Selection' },
+      { 'gx', function() require('substitute.exchange').operator() end, desc = 'Exchange', nowait = true },
+      { 'gxx', function() require('substitute.exchange').line() end, desc = 'Exchange Line' },
+      { 'gx', function() require('substitute.exchange').visual() end, mode = { 'x' }, desc = 'Exchange Selection' },
     },
   },
 }
