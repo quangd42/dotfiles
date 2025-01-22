@@ -43,12 +43,14 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
           end
 
-          map('gd', require('telescope.builtin').lsp_definitions, 'Goto Definition') --  To jump back, press <C-t>.
-          map('gr', require('telescope.builtin').lsp_references, 'Goto References')
-          map('gI', require('telescope.builtin').lsp_implementations, 'Goto Implementation')
-          map('gy', require('telescope.builtin').lsp_type_definitions, 'Goto Type Definition')
-          map('<leader>ss', require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
-          map('<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+          -- stylua: ignore start
+          map('gd', function() Snacks.picker.lsp_definitions() end, 'Goto Definition') --  To jump back, press <C-t>.
+          map('gr', function() Snacks.picker.lsp_references() end, 'Goto References')
+          map('gI', function() Snacks.picker.lsp_implementations() end, 'Goto Implementation')
+          map('gy', function() Snacks.picker.lsp_type_definitions() end, 'Goto Type Definition')
+          map('<leader>ss', function() Snacks.picker.lsp_symbols() end, 'Document Symbols')
+          map('<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace Symbols')
+          -- stylua: ignore end
           map('<leader>cr', vim.lsp.buf.rename, 'Rename Symbol')
           map('<leader>ca', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
           map('<leader>cd', vim.diagnostic.open_float, 'View Diagnostics')

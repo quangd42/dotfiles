@@ -11,7 +11,7 @@ return {
       {
         '<leader>rs',
         function()
-          return require('telescope').extensions.refactoring.refactors()
+          require('refactoring').select_refactor()
         end,
         mode = 'v',
         desc = 'Refactor',

@@ -1,7 +1,7 @@
 return {
   {
     'mrjones2014/smart-splits.nvim',
-    lazy = false,
+    event = 'VeryLazy',
     opts = {
       at_edge = 'stop',
     },

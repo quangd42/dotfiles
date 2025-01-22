@@ -16,7 +16,7 @@ return {
         enabled = true,
         preset = {
           keys = {
-            { icon = ' ', key = 'f', desc = 'Find File', action = '<leader>F' },
+            { icon = ' ', key = 'f', desc = 'Find File', action = '<leader>f' },
             { icon = ' ', key = '/', desc = 'Live Grep', action = '<leader>/' },
             { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
             { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
@@ -27,8 +27,6 @@ return {
     },
     -- stylua: ignore start
     keys = {
-      { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
-      { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
       { '<leader>sn', function() Snacks.notifier.show_history() end, desc = 'Notification History' },
       { '<leader>cR', function() Snacks.rename.rename_file() end, desc = 'Rename File' },
       { '<leader>gB', function() Snacks.gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' } },
