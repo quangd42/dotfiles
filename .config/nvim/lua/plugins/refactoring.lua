@@ -1,7 +1,7 @@
 return {
   {
     'ThePrimeagen/refactoring.nvim',
-    event = { 'BufReadPre', 'BufNewFile' },
+    cmd = 'Refactor',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
@@ -11,7 +11,7 @@ return {
       {
         '<leader>rs',
         function()
-          require('refactoring').select_refactor()
+          require('refactoring').select_refactor {}
         end,
         mode = 'v',
         desc = 'Refactor',
@@ -32,7 +32,7 @@ return {
         desc = 'Extract Block',
       },
       {
-        '<leader>rf',
+        '<leader>rB',
         function()
           require('refactoring').refactor 'Extract Block To File'
         end,
@@ -64,7 +64,7 @@ return {
         function()
           require('refactoring').refactor 'Extract Function'
         end,
-        mode = 'v',
+        mode = 'x',
         desc = 'Extract Function',
       },
       {
@@ -72,7 +72,7 @@ return {
         function()
           require('refactoring').refactor 'Extract Function To File'
         end,
-        mode = 'v',
+        mode = 'x',
         desc = 'Extract Function To File',
       },
       {
@@ -80,16 +80,8 @@ return {
         function()
           require('refactoring').refactor 'Extract Variable'
         end,
-        mode = 'v',
+        mode = 'x',
         desc = 'Extract Variable',
-      },
-      {
-        '<leader>rp',
-        function()
-          require('refactoring').debug.print_var()
-        end,
-        mode = 'v',
-        desc = 'Debug Print Variable',
       },
     },
     opts = {
