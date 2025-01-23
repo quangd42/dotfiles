@@ -28,8 +28,7 @@ return {
       { 'j-hui/fidget.nvim', opts = {} },
 
       -- Allows extra capabilities provided by nvim-cmp / blink
-      -- 'hrsh7th/cmp-nvim-lsp',
-      'saghen/blink.cmp',
+      'saghen/blink.cmp', -- 'hrsh7th/cmp-nvim-lsp',
     },
     config = function(_, opts)
       local function augroup(name)
@@ -95,26 +94,10 @@ return {
             end, 'Toggle Inlay Hints')
           end
 
-          -- Language specifics
+          -- Language specifics that need to be called on LspAttach
           if opts.setup[client.name] then
             opts.setup[client.name](client)
           end
-          -- Go
-          -- if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
-          --   local semantic = client.config.capabilities.textDocument.semanticTokens
-          --   client.server_capabilities.semanticTokensProvider = {
-          --     full = true,
-          --     ---@diagnostic disable-next-line: need-check-nil
-          --     legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
-          --     range = true,
-          --   }
-          -- end
-
-          -- Python
-          -- if client.name == 'ruff' then
-          --   -- Disable hover in favor of Pyright
-          --   client.server_capabilities.hoverProvider = false
-          -- end
         end,
       })
 
@@ -144,69 +127,6 @@ return {
             diagnostics = { disable = { 'missing-fields' } },
           },
         },
-
-        -- gopls = {
-        --   settings = {
-        --     gopls = {
-        --       gofumpt = true,
-        --       codelenses = {
-        --         gc_details = false,
-        --         generate = true,
-        --         regenerate_cgo = true,
-        --         run_govulncheck = true,
-        --         test = true,
-        --         tidy = true,
-        --         upgrade_dependency = true,
-        --         vendor = true,
-        --       },
-        --       hints = {
-        --         -- assignVariableTypes = true,
-        --         -- compositeLiteralFields = true,
-        --         -- compositeLiteralTypes = true,
-        --         constantValues = true,
-        --         -- functionTypeParameters = true,
-        --         -- parameterNames = true,
-        --         rangeVariableTypes = true,
-        --       },
-        --       analyses = {
-        --         -- fieldalignment = true,
-        --         nilness = true,
-        --         unusedparams = true,
-        --         unusedwrite = true,
-        --         useany = true,
-        --       },
-        --       usePlaceholders = true,
-        --       completeUnimported = true,
-        --       staticcheck = true,
-        --       directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
-        --       semanticTokens = true,
-        --     },
-        --   },
-        -- },
-
-        -- Python
-        -- ruff = {
-        --   cmd_env = { RUFF_TRACE = 'messages' },
-        --   init_options = {
-        --     settings = {
-        --       logLevel = 'error',
-        --     },
-        --   },
-        -- },
-        -- pyright = {
-        --   settings = {
-        --     pyright = {
-        --       -- Using Ruff's import organizer
-        --       disableOrganizeImports = true,
-        --     },
-        --     python = {
-        --       analysis = {
-        --         -- Ignore all files for analysis to exclusively use Ruff for linting
-        --         ignore = { '*' },
-        --       },
-        --     },
-        --   },
-        -- },
       }
 
       -- Ensure the servers above are installed with Mason through mason-lspconfig
