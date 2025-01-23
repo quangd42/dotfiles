@@ -29,6 +29,9 @@ return {
 
       -- Allows extra capabilities provided by nvim-cmp / blink
       'saghen/blink.cmp', -- 'hrsh7th/cmp-nvim-lsp',
+
+      -- IncRename
+      { 'smjonas/inc-rename.nvim', cmd = 'IncRename', opts = {} },
     },
     config = function(_, opts)
       local function augroup(name)
@@ -50,7 +53,10 @@ return {
           map('<leader>ss', function() Snacks.picker.lsp_symbols() end, 'Document Symbols')
           map('<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end, 'Workspace Symbols')
           -- stylua: ignore end
-          map('<leader>cr', vim.lsp.buf.rename, 'Rename Symbol')
+          vim.keymap.set('n', '<leader>cr', function()
+            local inc_rename = require 'inc_rename'
+            return ':' .. inc_rename.config.cmd_name .. ' ' .. vim.fn.expand '<cword>'
+          end, { expr = true, desc = 'Rename Symbol (inc-rename)' })
           map('<leader>ca', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
           map('<leader>cd', vim.diagnostic.open_float, 'View Diagnostics')
           map('gD', vim.lsp.buf.declaration, 'Goto Declaration')

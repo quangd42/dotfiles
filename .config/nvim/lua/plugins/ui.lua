@@ -1,11 +1,5 @@
 local ui_events = { 'BufReadPre', 'BufNewFile' }
 return {
-  -- Improve vim.ui interfaces
-  {
-    'stevearc/dressing.nvim',
-    event = ui_events,
-    opts = {},
-  },
 
   -- Status line
   {
