@@ -95,6 +95,44 @@ return {
         end,
       })
     end,
+    keys = {
+      {
+        'oi',
+        function()
+          if vim.v.operator == 'd' then
+            local scope = require('mini.indentscope').get_scope()
+            if scope.border.indent == -1 then
+              return 'oi'
+            end
+            local top = scope.border.top
+            local bottom = scope.border.bottom
+            local row = scope.reference.line
+            local move = ''
+            if row == bottom then
+              move = 'k'
+            elseif row == top then
+              move = 'j'
+            end
+            local ns = vim.api.nvim_create_namespace 'border'
+            vim.api.nvim_buf_add_highlight(0, ns, 'Substitute', top - 1, 0, -1)
+            vim.api.nvim_buf_add_highlight(0, ns, 'Substitute', bottom - 1, 0, -1)
+            vim.defer_fn(function()
+              vim.cmd('silent' .. tostring(top .. ',' .. bottom .. '<'))
+              vim.cmd(tostring(bottom .. 'delete'))
+              vim.cmd(tostring(top .. 'delete'))
+              vim.fn.setcursorcharpos(row - 1, scope.reference.column)
+              vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+            end, 150)
+            return '<esc>' .. move
+          else
+            return 'oi'
+          end
+        end,
+        expr = true,
+        mode = 'o',
+        desc = 'Outer indent border',
+      },
+    },
   },
 
   -- move
