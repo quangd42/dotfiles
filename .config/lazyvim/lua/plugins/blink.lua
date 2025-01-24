@@ -7,7 +7,8 @@ return {
         preset = "default",
         ["<CR>"] = {},
       },
-      signature = { enabled = true },
+      -- Disabled in favor of noice.nvim signature support
+      -- signature = { enabled = true },
     },
   },
 }

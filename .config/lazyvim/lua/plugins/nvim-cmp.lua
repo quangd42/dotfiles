@@ -16,25 +16,4 @@ return {
       }),
     },
   },
-  {
-    "hrsh7th/nvim-cmp",
-    optional = true,
-    dependencies = {
-      "chrisgrieser/cmp_yanky",
-    },
-    opts = {
-      sources = {
-        -- default values
-        {
-          name = "cmp_yanky",
-          option = {
-            -- only suggest items which match the current filetype
-            onlyCurrentFiletype = false,
-            -- only suggest items with a minimum length
-            minLength = 3,
-          },
-        },
-      },
-    },
-  },
 }

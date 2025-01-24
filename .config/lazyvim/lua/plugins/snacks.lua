@@ -36,6 +36,24 @@ if LazyVim.pick.picker.name == "snacks" then
     optional = true,
     opts = {
       picker = {
+        layouts = {
+          default = {
+            layout = {
+              box = "horizontal",
+              width = 0.9,
+              min_width = 120,
+              height = 0.8,
+              {
+                box = "vertical",
+                border = "rounded",
+                title = "{title} {live} {flags}",
+                { win = "input", height = 1, border = "bottom" },
+                { win = "list", border = "none" },
+              },
+              { win = "preview", title = "{preview}", border = "rounded", width = 0.55 },
+            },
+          },
+        },
         win = {
           input = {
             keys = {
@@ -54,9 +72,9 @@ if LazyVim.pick.picker.name == "snacks" then
 			{ "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart" },
 
-			{ "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume" },
+			{ "<leader>sP", function() Snacks.picker() end, desc = "Builtin Pickers" },
 			{ "<leader>sp", function() Snacks.picker.zoxide() end, desc = "Projects (zoxide)" },
-			{ "<leader>sP", function() Snacks.picker.pick("pickers") end, desc = "Builtin Pickers" },
+			{ "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume" },
 			{ "<leader>su", function() Snacks.picker.pick("undo") end, desc = "Undo" },
 
 			{ "<leader>fb", false },
