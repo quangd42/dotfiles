@@ -1,7 +1,6 @@
 return {
   {
     "jellydn/hurl.nvim",
-    lazy = true,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
@@ -29,6 +28,14 @@ return {
           "--parser",
           "html",
         },
+      },
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        hurl = { "hurlfmt" },
       },
     },
   },
