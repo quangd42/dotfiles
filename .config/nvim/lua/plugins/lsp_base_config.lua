@@ -65,11 +65,11 @@ return {
 
           map('<leader>cl', ':LspInfo<cr>', 'Lsp Info')
 
-          -- Highlight the references of word under cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if not client then
             return
           end
+          -- Highlight the references of word under cursor
           if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = augroup 'lsp-highlight'
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {

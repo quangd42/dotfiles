@@ -71,7 +71,9 @@ return {
           input = {
             keys = {
               ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-              ['<a-.>'] = { 'toggle_hidden', mode = { 'i', 'n' } },
+              ['<a-.>'] = { 'toggle_hidden', mode = { 'n', 'i' } },
+              ['<a-h>'] = false,
+              ['<c-/>'] = { 'toggle_help', mode = { 'n', 'i' } },
             },
           },
         },
@@ -80,10 +82,10 @@ return {
     -- stylua: ignore
     keys = {
       { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
+      { '<leader>B', function() Snacks.picker.buffers { hidden = true, nofile = true } end, desc = 'Buffers (All)' },
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
       { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart" },
       { "<leader>f", function() Snacks.picker.files() end, desc = "Find Files (Root)" },
-      { '<leader>F', function() Snacks.picker.files { cwd = vim.uv.cwd() } end, desc = 'Find Files (cwd)' },
       -- git
       { "<leader>gc", function() Snacks.picker.git_log() end, desc = "Git Log" },
       { "<leader>gh", function() Snacks.picker.git_diff() end, desc = "Git Diff (hunks)" },
@@ -103,6 +105,7 @@ return {
       { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
       { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
       { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
+      { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
       { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
       { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
       { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },

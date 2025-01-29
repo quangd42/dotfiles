@@ -46,8 +46,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
+--  See `:help 'list'` and `:help 'listchars'` and eol = '↲'
 opt.list = true
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
@@ -62,16 +61,14 @@ opt.scrolloff = 10
 opt.sidescrolloff = 8
 
 -- Steal from LazyVim
-opt.shortmess:append { W = true, I = true, c = true, C = true }
+-- opt.shortmess:append { W = true, I = true, c = true, C = true }
 opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize', 'help', 'globals', 'skiprtp', 'folds' }
 opt.virtualedit = 'block' -- Allow cursor to move where there is no text in visual block mode
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent (in space)
 opt.tabstop = 2 -- Size of a tab character
--- opt.pumblend = 10 -- Popup blend
--- opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.termguicolors = true -- True color support
-opt.wildmode = 'longest:full,full' -- Command-line completion mode
+-- opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 
