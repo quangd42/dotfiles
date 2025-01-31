@@ -2,16 +2,97 @@ local wezterm = require("wezterm")
 
 local M = {}
 
+local fonts = {
+	jb_mono = {
+		font = wezterm.font("JetBrainsMono Nerd Font"),
+		-- cell_width = 1.05,
+	},
+	jb_mono_light = {
+		font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Light" }),
+		font_rules = {
+			{
+				intensity = "Bold",
+				italic = true,
+				font = wezterm.font({
+					family = "Victor Mono",
+					weight = "Bold",
+					style = "Italic",
+				}),
+			},
+			{
+				italic = true,
+				intensity = "Half",
+				font = wezterm.font({
+					family = "Victor Mono",
+					weight = "Regular",
+					style = "Italic",
+				}),
+			},
+			{
+				italic = true,
+				intensity = "Normal",
+				font = wezterm.font({
+					family = "Victor Mono",
+					weight = "DemiBold",
+					style = "Italic",
+				}),
+			},
+		},
+	},
+	cascadia = {
+		line_height = 1.2,
+		font = wezterm.font_with_fallback({
+			{ family = "Cascadia Code", weight = "DemiLight" },
+			"JetBrainsMono Nerd Font",
+		}),
+		font_rules = {
+			{
+				intensity = "Bold",
+				italic = false,
+				font = wezterm.font("Cascadia Code", { weight = "DemiBold" }),
+			},
+			{
+				intensity = "Bold",
+				italic = true,
+				font = wezterm.font("Cascadia Code", { weight = "DemiBold", style = "Italic" }),
+			},
+		},
+	},
+	ibm_plex = {
+		font = wezterm.font_with_fallback({
+			"IBM Plex Mono",
+			"JetBrainsMono Nerd Font",
+		}),
+		font_rules = {
+			{
+				intensity = "Bold",
+				italic = false,
+				font = wezterm.font("IBM Plex Mono", { weight = "Medium" }),
+			},
+			{
+				intensity = "Bold",
+				italic = true,
+				font = wezterm.font("IBM Plex Mono", { weight = "Medium", style = "Italic" }),
+			},
+		},
+	},
+}
+
+local function set_font(config, font)
+	for k, v in pairs(fonts[font]) do
+		config[k] = v
+	end
+end
+
 function M.config(config)
 	-- [[
 	-- FONTS
 	-- ]]
-	config.font = wezterm.font("JetBrainsMono Nerd Font")
-	config.cell_width = 1.05
 	config.command_palette_font_size = 16.0
-	config.font_size = 16.2
+	config.font_size = 16.0
 	config.line_height = 1.00
-	config.window_background_opacity = 0.85
+	config.window_background_opacity = 0.95
+	set_font(config, "cascadia")
 
 	-- [[
 	-- COLORSCHEME

@@ -1,3 +1,86 @@
+local themes = {
+  ibm_plex = {
+    preset = {
+      header = [[
+      ████ ██████           █████      ██                    
+     ███████████             █████                            
+     █████████ ███████████████████ ███   ███████████  
+    █████████  ███    █████████████ █████ ██████████████  
+   █████████ ██████████ █████████ █████ █████ ████ █████  
+ ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+██████  █████████████████████ ████ █████ █████ ████ ██████
+]],
+    },
+    sections = {
+      { section = 'header' },
+      { section = 'keys', gap = 1, padding = 1 },
+      { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+      { icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+      {
+        icon = ' ',
+        title = 'Git Status',
+        section = 'terminal',
+        enabled = function()
+          return Snacks.git.get_root() ~= nil
+        end,
+        cmd = 'git status --short --branch --renames',
+        height = 5,
+        padding = 1,
+        ttl = 5 * 60,
+        indent = 3,
+      },
+      { section = 'startup' },
+    },
+  },
+  default = {
+    enabled = true,
+    preset = {
+      keys = {
+        { icon = ' ', key = 'f', desc = 'Find File', action = '<leader>f' },
+        { icon = ' ', key = '/', desc = 'Live Grep', action = '<leader>/' },
+        { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
+        { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+        { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+      },
+    },
+    sections = {
+      { section = 'header' },
+      { section = 'keys', gap = 1, padding = 1 },
+      { pane = 2, icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+      { pane = 2, icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
+      {
+        pane = 2,
+        icon = ' ',
+        title = 'Git Status',
+        section = 'terminal',
+        enabled = function()
+          return Snacks.git.get_root() ~= nil
+        end,
+        cmd = 'git status --short --branch --renames',
+        height = 5,
+        padding = 1,
+        ttl = 5 * 60,
+        indent = 3,
+      },
+      { section = 'startup' },
+    },
+  },
+}
+
+local function config_dashboard(theme)
+  local config = themes[theme]
+  local default = themes['default']
+  if not config then
+    return default
+  end
+  local out = vim.tbl_deep_extend('force', default, config)
+  if theme == 'ibm_plex' then
+    local colors = require('tokyonight.colors').setup()
+    default['sections'][1]['hl'] = colors.cyan
+  end
+  return out
+end
+
 return {
   {
     'folke/snacks.nvim',
@@ -12,39 +95,7 @@ return {
         timeout = 5000,
       },
       statuscolumn = { enabled = true },
-      dashboard = {
-        enabled = true,
-        preset = {
-          keys = {
-            { icon = ' ', key = 'f', desc = 'Find File', action = '<leader>f' },
-            { icon = ' ', key = '/', desc = 'Live Grep', action = '<leader>/' },
-            { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
-            { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
-            { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
-          },
-        },
-        sections = {
-          { section = 'header' },
-          { section = 'keys', gap = 1, padding = 1 },
-          { pane = 2, icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
-          { pane = 2, icon = ' ', title = 'Projects', section = 'projects', indent = 2, padding = 1 },
-          {
-            pane = 2,
-            icon = ' ',
-            title = 'Git Status',
-            section = 'terminal',
-            enabled = function()
-              return Snacks.git.get_root() ~= nil
-            end,
-            cmd = 'git status --short --branch --renames',
-            height = 5,
-            padding = 1,
-            ttl = 5 * 60,
-            indent = 3,
-          },
-          { section = 'startup' },
-        },
-      },
+      dashboard = config_dashboard 'cascadia',
     },
     -- stylua: ignore start
     keys = {

@@ -7,6 +7,11 @@ return {
     end,
     opts = {
       transparent = true,
+      on_highlights = function(hl, colors)
+        hl['SnacksDashboardHeader'] = {
+          fg = colors.blue2,
+        }
+      end,
     },
   },
   {
