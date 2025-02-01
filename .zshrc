@@ -109,12 +109,13 @@ alias lg="lazygit"
 alias cl="curlie"
 alias wtt="wezterm cli set-tab-title"
 alias wwt="wezterm cli rename-workspace"
+alias gs="git status"
 
 # nvim envs
-alias lv='NVIM_APPNAME="lazyvim" nvim'
+alias n='NVIM_APPNAME="lazyvim" nvim'
 alias v='nvim'
 # alias v='NVIM_APPNAME="nvim-kickstart" nvim'
-alias n='nvim -u NONE --clean'
+alias nv='nvim -u NONE --clean'
 
 alias kbc='kubectl'
 
