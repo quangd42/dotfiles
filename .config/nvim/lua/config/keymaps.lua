@@ -1,5 +1,4 @@
 -- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
 local map = vim.keymap.set
 
 -- Yank
@@ -32,7 +31,8 @@ map('n', ']<tab>', '<cmd>tabnext<cr>', { desc = 'Next tab' })
 map('n', '[<tab>', '<cmd>tabprevious<cr>', { desc = 'Previous tab' })
 
 -- Diagnostic keymaps
--- map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'Next Diagnostic' })
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev Diagnostic' })
 
 map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
