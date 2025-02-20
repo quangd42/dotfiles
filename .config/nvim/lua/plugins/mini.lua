@@ -54,6 +54,23 @@ return {
     end,
   },
 
+  -- hipatterns
+  -- NOTE: consider https://github.com/catgoose/nvim-colorizer.lua when working with FE
+  {
+    'echasnovski/mini.hipatterns',
+    event = 'BufReadPre',
+    config = function()
+      local hipatterns = require 'mini.hipatterns'
+      hipatterns.setup {
+        highlighters = {
+
+          -- Highlight hex color strings (`#rrggbb`) using that color
+          hex_color = hipatterns.gen_highlighter.hex_color(),
+        },
+      }
+    end,
+  },
+
   -- indentscope
   {
     'echasnovski/mini.indentscope',
