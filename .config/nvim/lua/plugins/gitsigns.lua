@@ -37,7 +37,6 @@ return {
         end, { desc = 'Previous git change' })
 
         -- Actions
-        -- normal mode
         map('n', '<leader>gp', gitsigns.preview_hunk_inline, { desc = 'Git Preview Hunk' })
         map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Git Diff Against Index' })
         map('n', '<leader>gD', function()

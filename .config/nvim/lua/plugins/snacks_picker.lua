@@ -81,7 +81,7 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
+			{ '<leader>b', function() Snacks.picker.buffers { filter = { cwd = true } } end, desc = 'Buffers' },
       { '<leader>B', function() Snacks.picker.buffers { hidden = true, nofile = true } end, desc = 'Buffers (All)' },
       { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep (Root Dir)" },
       { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart" },
@@ -89,7 +89,6 @@ return {
       -- git
       { "<leader>gc", function() Snacks.picker.git_log() end, desc = "Git Log" },
       { "<leader>gh", function() Snacks.picker.git_diff() end, desc = "Git Diff (hunks)" },
-      { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
       -- Grep
       { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
       { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
@@ -111,6 +110,7 @@ return {
       { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
       { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
       { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
+      { "<leader>sn", function() Snacks.picker.notifications() end, desc = "Notifications" },
       { "<leader>sp", function() Snacks.picker.zoxide() end, desc = "Projects (zoxide)" },
       { "<leader>sP", function() Snacks.picker() end, desc = "Builtin Pickers" },
       { "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume" },
