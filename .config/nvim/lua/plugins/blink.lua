@@ -17,15 +17,9 @@ return {
     opts = {
       keymap = {
         preset = 'default',
-        ['<Up>'] = { 'select_prev', 'fallback' },
-        ['<Down>'] = { 'select_next', 'fallback' },
-        -- show with a list of providers
-        ['<C-space>'] = {
-          function(cmp)
-            cmp.show { providers = { 'copilot' } }
-          end,
-        },
-        cmdline = {
+      },
+      cmdline = {
+        keymap = {
           preset = 'none',
           ['<S-Tab>'] = { 'select_prev', 'fallback' },
           ['<Tab>'] = { 'select_next', 'fallback' },
@@ -33,46 +27,6 @@ return {
           ['<Down>'] = { 'select_next', 'fallback' },
           ['<C-p>'] = { 'select_prev', 'fallback' },
           ['<C-n>'] = { 'select_next', 'fallback' },
-        },
-      },
-
-      appearance = {
-        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-        -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'mono',
-        -- Custom icons, for now must copy paste the entire set
-        kind_icons = {
-          Copilot = '',
-          Text = '󰉿',
-          Method = '󰊕',
-          Function = '󰊕',
-          Constructor = '󰒓',
-
-          Field = '󰜢',
-          Variable = '󰆦',
-          Property = '󰖷',
-
-          Class = '󱡠',
-          Interface = '󱡠',
-          Struct = '󱡠',
-          Module = '󰅩',
-
-          Unit = '󰪚',
-          Value = '󰦨',
-          Enum = '󰦨',
-          EnumMember = '󰦨',
-
-          Keyword = '󰻾',
-          Constant = '󰏿',
-
-          Snippet = '󱄽',
-          Color = '󰏘',
-          File = '󰈔',
-          Reference = '󰬲',
-          Folder = '󰉋',
-          Event = '󱐋',
-          Operator = '󰪚',
-          TypeParameter = '󰬛',
         },
       },
 
@@ -87,7 +41,7 @@ return {
             treesitter = { 'lsp' },
           },
         },
-        -- auto_insert for cmdline
+        -- for cmdline, do not preselect first option. only select when item is chosen
         list = {
           selection = {
             preselect = function(ctx)
@@ -142,42 +96,42 @@ return {
   },
 
   -- Copilot source
-  {
-    'saghen/blink.cmp',
-    optional = true,
-    dependencies = {
-      {
-        'giuxtaposition/blink-cmp-copilot',
-        dependencies = {
-          'zbirenbaum/copilot.lua',
-          opts = {
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-          },
-        },
-      },
-    },
-    opts = {
-      sources = {
-        -- default = { 'copilot' },
-        providers = {
-          copilot = {
-            name = 'copilot',
-            module = 'blink-cmp-copilot',
-            score_offset = 100,
-            async = true,
-            transform_items = function(_, items)
-              local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
-              local kind_idx = #CompletionItemKind + 1
-              CompletionItemKind[kind_idx] = 'Copilot'
-              for _, item in ipairs(items) do
-                item.kind = kind_idx
-              end
-              return items
-            end,
-          },
-        },
-      },
-    },
-  },
+  -- {
+  --   'saghen/blink.cmp',
+  --   optional = true,
+  --   dependencies = {
+  --     {
+  --       'giuxtaposition/blink-cmp-copilot',
+  --       dependencies = {
+  --         'zbirenbaum/copilot.lua',
+  --         opts = {
+  --           suggestion = { enabled = false },
+  --           panel = { enabled = false },
+  --         },
+  --       },
+  --     },
+  --   },
+  --   opts = {
+  --     sources = {
+  --       -- default = { 'copilot' },
+  --       providers = {
+  --         copilot = {
+  --           name = 'copilot',
+  --           module = 'blink-cmp-copilot',
+  --           score_offset = 100,
+  --           async = true,
+  --           transform_items = function(_, items)
+  --             local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
+  --             local kind_idx = #CompletionItemKind + 1
+  --             CompletionItemKind[kind_idx] = 'Copilot'
+  --             for _, item in ipairs(items) do
+  --               item.kind = kind_idx
+  --             end
+  --             return items
+  --           end,
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 }
