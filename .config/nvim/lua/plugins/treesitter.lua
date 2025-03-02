@@ -3,7 +3,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'VeryLazy' },
     event = 'VeryLazy',
     cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
@@ -47,19 +47,10 @@ return {
       textobjects = {
         move = {
           enable = true,
-          goto_next_start = { [']f'] = '@function.outer', [']a'] = '@parameter.inner' },
-          goto_next_end = { [']F'] = '@function.outer', [']A'] = '@parameter.inner' },
-          goto_previous_start = { ['[f'] = '@function.outer', ['[a'] = '@parameter.inner' },
-          goto_previous_end = { ['[F'] = '@function.outer', ['[A'] = '@parameter.inner' },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ['<leader>xa'] = '@parameter.inner',
-          },
-          swap_previous = {
-            ['<leader>xA'] = '@parameter.inner',
-          },
+          goto_next_start = { [']f'] = '@function.outer', [']a'] = '@parameter.inner', [']k'] = '@assignment.lhs', [']v'] = '@assignment.rhs' },
+          goto_next_end = { [']F'] = '@function.outer', [']A'] = '@parameter.inner', [']K'] = '@assignment.lhs', [']V'] = '@assignment.rhs' },
+          goto_previous_start = { ['[f'] = '@function.outer', ['[a'] = '@parameter.inner', ['[k'] = '@assignment.lhs', ['[v'] = '@assignment.rhs' },
+          goto_previous_end = { ['[F'] = '@function.outer', ['[A'] = '@parameter.inner', ['[K'] = '@assignment.lhs', ['[V'] = '@assignment.rhs' },
         },
       },
     },

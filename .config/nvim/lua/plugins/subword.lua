@@ -2,7 +2,6 @@ return {
   -- motions
   {
     'chrisgrieser/nvim-spider',
-    lazy = true,
     opts = {
       skipInsignificantPunctuation = false,
     },
