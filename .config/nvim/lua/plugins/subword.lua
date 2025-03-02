@@ -1,23 +1,38 @@
 return {
   -- motions
   {
-    'chrisgrieser/nvim-spider',
-    opts = {
-      skipInsignificantPunctuation = false,
-    },
-    keys = {
-      { 'w', "<cmd>lua require('spider').motion('w')<CR>", mode = { 'n', 'o', 'x' } },
-      { 'e', "<cmd>lua require('spider').motion('e')<CR>", mode = { 'n', 'o', 'x' } },
-      { 'b', "<cmd>lua require('spider').motion('b')<CR>", mode = { 'n', 'o', 'x' } },
-    },
+    'backdround/neowords.nvim',
+    keys = function()
+      local neowords = require 'neowords'
+      local presets = neowords.pattern_presets
+
+      local hops = neowords.get_word_hops(
+        -- Vim-patterns or pattern presets separated by commas.
+        -- Check `:h /magic` and onwards for patterns overview.
+        -- All punctuation: '\\v[!\"#$%%&\'()*+,.\\-/:;<=>?@[\\]^{|}~]+'
+
+        '\\v[!"#$%%&\'()*+,/:;<=>?@[\\]^{|}~]+',
+        presets.number,
+        presets.math_number,
+        presets.snake_case,
+        presets.camel_case,
+        presets.upper_case,
+        presets.hex_color
+      )
+      return {
+        { 'w', hops.forward_start, mode = { 'n', 'x', 'o' } },
+        { 'e', hops.forward_end, mode = { 'n', 'x', 'o' } },
+        { 'b', hops.backward_start, mode = { 'n', 'x', 'o' } },
+        { 'ge', hops.backward_end, mode = { 'n', 'x', 'o' } },
+      }
+    end,
   },
 
   -- textobjs
   {
-    'chrisgrieser/nvim-various-textobjs',
-    keys = {
-      { 'ie', '<cmd>lua require("various-textobjs").subword("inner")<cr>', mode = { 'o', 'x' }, desc = 'inner subword' },
-      { 'ae', '<cmd>lua require("various-textobjs").subword("outer")<cr>', mode = { 'o', 'x' }, desc = 'outer subword' },
-    },
+    'Julian/vim-textobj-variable-segment',
+    event = 'VeryLazy',
+    dependencies = { 'kana/vim-textobj-user', config = function() end },
+    config = function() end,
   },
 }
