@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "features": {
+    "inline_completion_provider": "zed"
+  },
   "show_inline_completions": true,
   "assistant": {
     "default_model": {
@@ -15,11 +18,11 @@
     },
     "version": "2"
   },
-  "theme": "Andromeda",
+  "theme": "Catppuccin Mocha",
   "ui_font_size": 16,
   "ui_font_family": "Menlo",
   "buffer_font_size": 16,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  // "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_line_height": { "custom": 1.5 },
   "wrap_guides": [80, 100],
   // Vim mode

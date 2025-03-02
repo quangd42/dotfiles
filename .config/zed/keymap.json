@@ -3,14 +3,12 @@
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
       // put key-bindings here if you want them to work in normal & visual mode
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      // "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      // "ctrl-j": ["workspace::ActivatePaneDown"],
       "ctrl-j": "workspace::ToggleBottomDock",
       // "ctrl-k": "workspace::ToggleBottomDock",
-      "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPrevHunk",
       "w": "vim::NextSubwordStart",
       "b": "vim::PreviousSubwordStart",
       "e": "vim::NextSubwordEnd",
@@ -18,11 +16,16 @@
     }
   },
   {
+    "context": "Editor && vim_mode == operator && !menu",
+    "bindings": {
+      "s": "vim::Subword"
+    }
+  },
+  {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
       // put key-bindings here if you want them to work only in normal mode
       "U": "editor::Redo",
-      "Y": ["editor::SelectToEndOfLine", "editor::Copy"],
       // Explorer and file
       "space e": "pane::RevealInProjectPanel",
       "space f": "file_finder::Toggle",
@@ -37,13 +40,14 @@
       "space 8": ["pane::ActivateItem", 7],
       "space 9": ["pane::ActivateItem", 8],
       "space [": ["workspace::SendKeystrokes", "ctrl-tab enter"],
-      "space h": "tab_switcher::Toggle",
-      "space b d": ["workspace::SendKeystrokes", "cmd-w"],
+      "space b": "tab_switcher::Toggle",
       "H": "pane::ActivatePrevItem",
       "L": "pane::ActivateNextItem",
       "space c f": "editor::Format",
       "space c r": "editor::Rename",
       "g r": "editor::FindAllReferences",
+      "g .": null,
+      "space c a": "editor::ToggleCodeActions",
       "g h": "editor::MoveToBeginningOfLine",
       "g l": "editor::MoveToEndOfLine"
     }
@@ -74,7 +78,7 @@
       "ctrl-m": "editor::ConfirmCompletion",
       "ctrl-y": "editor::ConfirmCompletion",
       "enter": "editor::NewlineBelow",
-      "ctrl-l": "editor::AcceptPartialInlineCompletion"
+      "ctrl-l": "editor::AcceptEditPrediction"
     }
   },
   {
@@ -88,8 +92,8 @@
       "r": "project_panel::Rename",
       "x": "project_panel::Cut",
       "p": "project_panel::Paste",
-      "g y": "project_panel::CopyPath",
-      "g Y": "project_panel::CopyRelativePath",
+      "g y": "workspace::CopyPath",
+      "g Y": "workspace::CopyRelativePath",
       "enter": ["workspace::SendKeystrokes", "o space e"],
       "ctrl-j": "workspace::ToggleBottomDock",
       "ctrl-k": "workspace::ToggleBottomDock"
@@ -98,10 +102,10 @@
   {
     "context": "Dock",
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
       // ... or other keybindings
     }
   },
