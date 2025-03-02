@@ -40,7 +40,7 @@ local fonts = {
 		},
 	},
 	cascadia = {
-		line_height = 1.2,
+		line_height = 1.3,
 		font = wezterm.font_with_fallback({
 			{ family = "Cascadia Code", weight = "DemiLight" },
 			"JetBrainsMono Nerd Font",
@@ -76,6 +76,9 @@ local fonts = {
 			},
 		},
 	},
+	iosevka = {
+		font = wezterm.font("Iosevka Extended"),
+	},
 }
 
 local function set_font(config, font)
@@ -91,8 +94,9 @@ function M.config(config)
 	config.command_palette_font_size = 16.0
 	config.font_size = 16.0
 	config.line_height = 1.00
-	config.window_background_opacity = 0.95
-	set_font(config, "cascadia")
+	config.window_background_opacity = 1
+	config.cursor_thickness = "50%"
+	set_font(config, "ibm_plex")
 
 	-- [[
 	-- COLORSCHEME
