@@ -19,14 +19,20 @@ return {
         preset = 'default',
       },
       cmdline = {
-        keymap = {
-          preset = 'none',
-          ['<S-Tab>'] = { 'select_prev', 'fallback' },
-          ['<Tab>'] = { 'select_next', 'fallback' },
-          ['<Up>'] = { 'select_prev', 'fallback' },
-          ['<Down>'] = { 'select_next', 'fallback' },
-          ['<C-p>'] = { 'select_prev', 'fallback' },
-          ['<C-n>'] = { 'select_next', 'fallback' },
+        completion = {
+          menu = {
+            auto_show = function(ctx)
+              return vim.fn.getcmdtype() == ':'
+              -- enable for inputs as well, with:
+              -- or vim.fn.getcmdtype() == '@'
+            end,
+          },
+          -- for cmdline, do not preselect first option. only select when item is chosen
+          list = {
+            selection = {
+              preselect = false,
+            },
+          },
         },
       },
 
@@ -39,14 +45,6 @@ return {
               { 'kind_icon', 'kind', gap = 1 },
             },
             treesitter = { 'lsp' },
-          },
-        },
-        -- for cmdline, do not preselect first option. only select when item is chosen
-        list = {
-          selection = {
-            preselect = function(ctx)
-              return ctx.mode ~= 'cmdline'
-            end,
           },
         },
         -- Show documentation when selecting a completion item
