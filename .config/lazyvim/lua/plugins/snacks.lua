@@ -17,16 +17,6 @@ local out = {
         },
       },
     },
-    keys = {
-      { "<leader>n", false },
-      {
-        "<leader>sn",
-        function()
-          Snacks.notifier.show_history()
-        end,
-        desc = "Notification History",
-      },
-    },
   },
 }
 
@@ -76,6 +66,15 @@ if LazyVim.pick.picker.name == "snacks" then
 			{ "<leader>sp", function() Snacks.picker.zoxide() end, desc = "Projects (zoxide)" },
 			{ "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume" },
 			{ "<leader>su", function() Snacks.picker.pick("undo") end, desc = "Undo" },
+
+      { "<leader>n", false },
+      {
+        "<leader>sn",
+        function()
+          Snacks.picker.notifications()
+        end,
+        desc = "Notification History",
+      },
 
 			{ "<leader>fb", false },
 			{ "<leader>fc", false },
