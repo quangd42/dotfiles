@@ -58,7 +58,17 @@ return {
             return ':' .. inc_rename.config.cmd_name .. ' ' .. vim.fn.expand '<cword>'
           end, { expr = true, desc = 'Rename Symbol (inc-rename)' })
           map('<leader>ca', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
-          map('<leader>cd', vim.diagnostic.open_float, 'View Diagnostics')
+          map('<leader>cd', function()
+            return require('flash').jump {
+              action = function(match, state)
+                vim.api.nvim_win_call(match.win, function()
+                  vim.api.nvim_win_set_cursor(match.win, match.pos)
+                  vim.diagnostic.open_float()
+                end)
+                state:restore()
+              end,
+            }
+          end, 'View Diagnostics')
           map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
           map('gK', vim.lsp.buf.signature_help, 'Signature Help')
           map('<c-k>', vim.lsp.buf.signature_help, 'Signature Help', 'i')
@@ -113,7 +123,7 @@ return {
       for type, icon in pairs(signs) do
         diagnostic_signs[vim.diagnostic.severity[type]] = icon
       end
-      vim.diagnostic.config { signs = { text = diagnostic_signs } }
+      vim.diagnostic.config { signs = { text = diagnostic_signs }, float = { source = true } }
 
       -- Add capabilities to what Neovim can support from LSP servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
