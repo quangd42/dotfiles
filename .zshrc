@@ -147,6 +147,9 @@ function y() {
 
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
+export PATH="/opt/homebrew/opt/php@8.2/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.2/sbin:$PATH"
+export PATH="/usr/local/mysql/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/quang-dang/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/quang-dang/Downloads/google-cloud-sdk/path.zsh.inc'; fi
