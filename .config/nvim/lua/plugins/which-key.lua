@@ -11,8 +11,6 @@ return {
       -- Document existing key chains
       spec = {
         { '<leader>c', group = 'code', mode = { 'n', 'x' } },
-        -- { '<leader>d', group = '[D]ocument' },
-        -- { '<leader>r', group = '[R]ename' },
         { '<leader>g', group = 'git', mode = { 'n', 'v' } },
         { '<leader>q', group = 'quit/session' },
         { '<leader>s', group = 'search' },

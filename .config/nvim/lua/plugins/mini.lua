@@ -19,7 +19,7 @@ return {
       return {
         n_lines = 500,
         custom_textobjects = {
-          a = ai.gen_spec.treesitter { a = '@parameter.outer', i = '@parameter.inner' }, -- argument
+          A = ai.gen_spec.treesitter { a = '@parameter.outer', i = '@parameter.inner' }, -- TS argument
           o = ai.gen_spec.treesitter { -- code block
             a = { '@block.outer', '@conditional.outer', '@loop.outer' },
             i = { '@block.inner', '@conditional.inner', '@loop.inner' },
@@ -43,6 +43,50 @@ return {
             return { from = from, to = to }
           end, -- buffer
           F = ai.gen_spec.function_call(), -- u for "Usage"
+        },
+      }
+    end,
+  },
+
+  -- clue
+  -- mostly for repeated movement with 'hydra' mode
+  {
+    'echasnovski/mini.clue',
+    event = 'VeryLazy',
+    config = function()
+      local function clues()
+        local out = {}
+        local keys = { 'a', 'A', 'f', 'F', 'c', 'd', 'k', 'K', 't', 'v', 'V', 'y', '<tab>' }
+        local dirs = { '[', ']' }
+        local modes = { 'n', 'x', 'o' }
+        local function map(key, dir)
+          for _, m in ipairs(modes) do
+            out[#out + 1] = { mode = m, keys = dir .. key, postkeys = dir }
+          end
+        end
+        for _, d in ipairs(dirs) do
+          for _, k in ipairs(keys) do
+            map(k, d)
+          end
+        end
+        return out
+      end
+      local miniclue = require 'mini.clue'
+      miniclue.setup {
+        triggers = {
+          -- movement triggers
+          { mode = 'n', keys = ']' },
+          { mode = 'n', keys = '[' },
+        },
+        clues = {
+          clues(),
+        },
+        window = {
+          delay = 0,
+          config = {
+            width = 'auto',
+            border = 'rounded',
+          },
         },
       }
     end,
@@ -193,10 +237,19 @@ return {
     },
   },
 
+  -- splitjoin
+  {
+    'echasnovski/mini.splitjoin',
+    opts = {},
+    keys = {
+      -- stylua: ignore
+      { 'gS', function() return require('mini.splitjoin').toggle() end, desc = 'Split/Join Arguments' },
+    },
+  },
+
   -- surround
   {
     'echasnovski/mini.surround',
-    event = 'VeryLazy',
     opts = {
       mappings = {
         add = 'gsa', -- Add surrounding in Normal and Visual modes
@@ -207,6 +260,9 @@ return {
         replace = 'gsr', -- Replace surrounding
         update_n_lines = 'gsn', -- Update `n_lines`
       },
+    },
+    keys = {
+      { 'gs' },
     },
   },
 }
