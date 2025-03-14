@@ -8,9 +8,12 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "inline_completion_provider": "zed"
+    "edit_prediction_provider": "zed"
   },
-  "show_inline_completions": true,
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "mode": "subtle"
+  },
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -20,7 +23,7 @@
   },
   "theme": "Catppuccin Mocha",
   "ui_font_size": 16,
-  "ui_font_family": "Menlo",
+  "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 16,
   // "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_line_height": { "custom": 1.5 },
@@ -105,6 +108,10 @@
   },
   // Terminal
   "terminal": {
-    "default_height": 640
+    "default_height": 640,
+    "option_as_meta": true,
+    "copy_on_select": true,
+    "font_family": "IBM Plex Mono",
+    "font_fallbacks": ["JetBrainsMono Nerd Font"]
   }
 }

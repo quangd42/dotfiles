@@ -1,104 +1,181 @@
 [
   {
-    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    // VimControl: Indicates that vim keybindings should work.
+    // Currently an alias for vim_mode == normal || vim_mode == visual || vim_mode == operator,
+    // but the definition may change over time
+    "context": "VimControl && !menu",
     "bindings": {
-      // put key-bindings here if you want them to work in normal & visual mode
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
-      // "ctrl-j": ["workspace::ActivatePaneDown"],
-      "ctrl-j": "workspace::ToggleBottomDock",
-      // "ctrl-k": "workspace::ToggleBottomDock",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  // Normal & Visual
+  {
+    "context": "vim_mode == normal || vim_mode == visual && !menu",
+    "bindings": {
+      // Editing
+      "alt-down": "editor::MoveLineDown",
+      "alt-up": "editor::MoveLineUp",
+      ">": "editor::Indent",
+      "<": "editor::Outdent",
+      "g h": "vim::FirstNonWhitespace",
+      "g l": "vim::EndOfLine",
+
+      // LSP Actions
+      "space c a": "editor::ToggleCodeActions",
+      "g .": null,
+      "space c r": "editor::Rename",
+      "g r": "editor::FindAllReferences",
+
+      // Subword
       "w": "vim::NextSubwordStart",
       "b": "vim::PreviousSubwordStart",
       "e": "vim::NextSubwordEnd",
-      "g e": "vim::PreviousSubwordEnd"
+      "g e": "vim::PreviousSubwordEnd",
+
+      // Vimsneak
+      "backspace": "vim::PushSneak",
+      "shift-backspace": "vim::PushSneakBackward"
     }
   },
+  // Normal
   {
-    "context": "Editor && vim_mode == operator && !menu",
+    "context": "vim_mode == normal && !menu",
     "bindings": {
-      "s": "vim::Subword"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
-    "bindings": {
-      // put key-bindings here if you want them to work only in normal mode
+      // Editing
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
       "U": "editor::Redo",
-      // Explorer and file
+      "space c f": "editor::Format",
+
+      // Navigation
+      "space a": "assistant::ToggleFocus",
+      "space b": "tab_switcher::Toggle",
       "space e": "pane::RevealInProjectPanel",
       "space f": "file_finder::Toggle",
-      // Buffer nav
-      "space 1": ["pane::ActivateItem", 0],
-      "space 2": ["pane::ActivateItem", 1],
-      "space 3": ["pane::ActivateItem", 2],
-      "space 4": ["pane::ActivateItem", 3],
-      "space 5": ["pane::ActivateItem", 4],
-      "space 6": ["pane::ActivateItem", 5],
-      "space 7": ["pane::ActivateItem", 6],
-      "space 8": ["pane::ActivateItem", 7],
-      "space 9": ["pane::ActivateItem", 8],
-      "space [": ["workspace::SendKeystrokes", "ctrl-tab enter"],
-      "space b": "tab_switcher::Toggle",
+      "space s s": "project_symbols::Toggle",
       "H": "pane::ActivatePreviousItem",
       "L": "pane::ActivateNextItem",
-      "space c f": "editor::Format",
-      "space c r": "editor::Rename",
-      "g r": "editor::FindAllReferences",
-      "g .": null,
-      "space c a": "editor::ToggleCodeActions",
-      "g h": "editor::MoveToBeginningOfLine",
-      "g l": "editor::MoveToEndOfLine"
+      "space \\": "pane::SplitRight",
+      "space -": "pane::SplitDown",
+
+      // Git operations
+      "space g D": "git::Diff",
+      "space g R": "git::RestoreFile",
+      "space g S": "git::StageFile",
+      "space g U": "git::UnstageFile",
+      "space g a": "git::Add",
+      "space g d": "editor::ToggleSelectedDiffHunks",
+      "space g g": "git_panel::ToggleFocus",
+      "space g r": "git::Restore",
+      "space g s": "git::StageAndNext",
+      "space g t": "git::ToggleStaged",
+      "space g u": "git::UnstageAndNext"
     }
   },
+  // Visual
   {
-    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "context": "vim_mode == visual",
     "bindings": {
-      // visual, visual line & visual block modes
-      ">": "editor::Indent",
-      "<": "editor::Outdent",
-      "g h": "editor::SelectToBeginningOfLine",
-      "g l": "editor::SelectToEndOfLine"
+      "shift-s": ["vim::PushAddSurrounds", {}],
+      "space c f": "editor::FormatSelections"
     }
   },
+  // Insert
   {
-    "context": "Editor && vim_mode == insert && !menu",
+    "context": "vim_mode == insert",
     "bindings": {
-      // put key-bindings here if you want them to work in insert mode
-      // e.g.
-      // "j j": "vim::NormalBefore" // remap jj in insert mode to escape.
       "alt-down": "editor::MoveLineDown",
       "alt-up": "editor::MoveLineUp"
     }
   },
+  // Operator
   {
-    "context": "Editor && showing_completions",
+    "context": "vim_mode == operator",
     "bindings": {
-      "ctrl-m": "editor::ConfirmCompletion",
-      "ctrl-y": "editor::ConfirmCompletion",
-      "enter": "editor::NewlineBelow",
-      "ctrl-l": "editor::AcceptEditPrediction"
+      "v": "vim::Subword"
     }
   },
+  // Project Panel
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "space e": "workspace::ToggleLeftDock",
       "a": "project_panel::NewFile",
-      "shift-a": "project_panel::NewDirectory",
       "d": "project_panel::Delete",
-      "y": "project_panel::Copy",
-      "r": "project_panel::Rename",
-      "x": "project_panel::Cut",
-      "p": "project_panel::Paste",
-      "g y": "workspace::CopyPath",
-      "g Y": "workspace::CopyRelativePath",
       "enter": ["workspace::SendKeystrokes", "o space e"],
-      "ctrl-j": "workspace::ToggleBottomDock",
-      "ctrl-k": "workspace::ToggleBottomDock"
+      "g Y": "workspace::CopyRelativePath",
+      "g y": "workspace::CopyPath",
+      "p": "project_panel::Paste",
+      "q": "workspace::ToggleLeftDock",
+      "r": "project_panel::Rename",
+      "shift-a": "project_panel::NewDirectory",
+      "space e": "workspace::ToggleLeftDock",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy"
     }
   },
+  // Git Panel
+  {
+    "context": "GitPanel && ChangesList",
+    "bindings": {
+      "a": "git::StageAll",
+      "b": "git::Branch",
+      "c": "git::Commit",
+      "d": "git::RestoreFile",
+      "f": "git::Fetch",
+      "p": "git::Pull",
+      "P": "git::Push",
+      "q": "workspace::ToggleLeftDock",
+      "backspace": null,
+      "escape": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "GitPanel > Editor",
+    "bindings": {
+      "alt-y": "git::GenerateCommitMessage",
+      "escape": "git_panel::FocusChanges"
+    }
+  },
+  {
+    "context": "GitCommit > Editor",
+    "bindings": {
+      "alt-y": "git::GenerateCommitMessage"
+    }
+  },
+  // Terminal
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-enter": "workspace::NewTerminal",
+      "ctrl-m": "workspace::ToggleZoom",
+      "ctrl-h": "pane::ActivatePreviousItem",
+      "ctrl-l": "pane::ActivateNextItem",
+      "cmd-x": "terminal::ToggleViMode"
+    }
+  },
+  // Editor wide
+  {
+    // NOTE: This is truly global, no context!
+    "bindings": {
+      "cmd-o": "projects::OpenRecent",
+      "alt-cmd-o": "workspace::Open"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Put key bindings here (in addition to the context above) if you want them to
+      // work when no editor exists.
+      "space a": "assistant::ToggleFocus",
+      "space b": "tab_switcher::Toggle",
+      "space e": "pane::RevealInProjectPanel",
+      "space f": "file_finder::Toggle"
+    }
+  },
+
+  // Pane navigation
   {
     "context": "Dock",
     "bindings": {
@@ -109,60 +186,73 @@
       // ... or other keybindings
     }
   },
+
+  // Code Completion (Language Server)
   {
-    "context": "Terminal",
+    "context": "Editor && showing_completions",
     "bindings": {
-      "cmd-enter": "workspace::NewTerminal",
-      "ctrl-m": "workspace::ToggleZoom",
-      "ctrl-k": "workspace::ToggleBottomDock",
-      "ctrl-h": "pane::ActivatePreviousItem",
-      "ctrl-l": "pane::ActivateNextItem"
+      "ctrl-m": "editor::ConfirmCompletion",
+      "ctrl-y": "editor::ConfirmCompletion",
+      "enter": "editor::NewlineBelow"
     }
   },
-  {
-    "context": "AssistantPanel",
-    "bindings": {
-      "cmd-?": "workspace::ToggleRightDock"
-    }
-  },
+  // Edit Prediction (Zed Completion)
   {
     "context": "Editor && mode == full && edit_prediction",
     "use_key_equivalents": true,
     "bindings": {
       "alt-y": "editor::NextEditPrediction",
       "alt-shift-y": "editor::PreviousEditPrediction",
-      "ctrl-cmd-right": "editor::AcceptPartialEditPrediction",
-      "alt-shift-e": "editor::AcceptPartialEditPrediction"
+      "alt-p": "editor::AcceptPartialEditPrediction"
     }
   },
   {
     "context": "Editor && !edit_prediction",
     "use_key_equivalents": true,
     "bindings": {
-      "alt-y": "editor::ShowEditPrediction"
-    }
-  },
-  {
-    "context": "Editor && showing_completions",
-    "use_key_equivalents": true,
-    "bindings": {
-      "enter": "editor::ConfirmCompletion",
-      "tab": "editor::ComposeCompletion",
-      "alt-y": "editor::ComposeCompletion"
+      "alt-y": "editor::ShowEditPrediction",
+      "tab": "editor::Tab"
     }
   },
   {
     "context": "Editor && edit_prediction",
     "bindings": {
       "alt-y": "editor::AcceptEditPrediction",
-      "tab": "editor::AcceptEditPrediction"
+      "tab": null
     }
   },
   {
     "context": "Editor && edit_prediction_conflict",
     "use_key_equivalents": true,
     "bindings": {
-      "alt-y": "editor::AcceptEditPrediction"
+      "alt-y": "editor::AcceptEditPrediction",
+      "tab": null
+    }
+  },
+  // Bind `tab` back to its original behavior.
+  {
+    "context": "Editor",
+    "bindings": {
+      "tab": "editor::Tab"
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "tab": "editor::ComposeCompletion"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || vim_mode == replace || vim_mode == waiting",
+    "bindings": {
+      "tab": "vim::Tab"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "bindings": {
+      "tab": ["vim::Literal", ["tab", "\u0009"]]
     }
   }
+  // END bind `tab` back
 ]
