@@ -110,6 +110,7 @@ alias cl="curlie"
 alias wtt="wezterm cli set-tab-title"
 alias wwt="wezterm cli rename-workspace"
 alias gs="git status"
+alias gdoc='stdsym | fzf --preview "go doc \$(echo {})" | xargs go doc'
 
 # nvim envs
 alias n='NVIM_APPNAME="lazyvim" nvim'
