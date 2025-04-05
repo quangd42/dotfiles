@@ -103,8 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls="lsd"
 alias tree="lsd -A --tree --depth 3"
-alias c="code"
-alias cd="z"
 alias lg="lazygit"
 alias cl="curlie"
 alias wtt="wezterm cli set-tab-title"

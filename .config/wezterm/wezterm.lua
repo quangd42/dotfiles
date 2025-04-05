@@ -15,6 +15,7 @@ end
 
 -- This is where you actually apply your config choices
 
+conf.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 ui.config(conf)
 keymaps.config(conf)
 options.config(conf)
