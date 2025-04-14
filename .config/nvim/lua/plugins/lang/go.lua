@@ -80,15 +80,34 @@ return {
     dependencies = {
       {
         'williamboman/mason.nvim',
-        opts = { ensure_installed = { 'gomodifytags', 'impl' } },
+        opts = { ensure_installed = { 'gomodifytags' } },
       },
     },
     opts = function(_, opts)
       local nls = require 'null-ls'
       opts.sources = vim.list_extend(opts.sources or {}, {
         nls.builtins.code_actions.gomodifytags,
-        nls.builtins.code_actions.impl,
       })
     end,
+  },
+  {
+    'fang2hou/go-impl.nvim',
+    ft = 'go',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+      'folke/snacks.nvim',
+    },
+    opts = {},
+    keys = {
+      {
+        '<leader>ci',
+        function()
+          require('go-impl').open()
+        end,
+        mode = { 'n' },
+        desc = 'Go Impl',
+      },
+    },
   },
 }
