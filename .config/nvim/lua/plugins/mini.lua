@@ -48,50 +48,6 @@ return {
     end,
   },
 
-  -- clue
-  -- mostly for repeated movement with 'hydra' mode
-  {
-    'echasnovski/mini.clue',
-    event = 'VeryLazy',
-    config = function()
-      local function clues()
-        local out = {}
-        local keys = { 'a', 'A', 'f', 'F', 'c', 'd', 'k', 'K', 't', 'v', 'V', 'y', '<tab>' }
-        local dirs = { '[', ']' }
-        local modes = { 'n', 'x', 'o' }
-        local function map(key, dir)
-          for _, m in ipairs(modes) do
-            out[#out + 1] = { mode = m, keys = dir .. key, postkeys = dir }
-          end
-        end
-        for _, d in ipairs(dirs) do
-          for _, k in ipairs(keys) do
-            map(k, d)
-          end
-        end
-        return out
-      end
-      local miniclue = require 'mini.clue'
-      miniclue.setup {
-        triggers = {
-          -- movement triggers
-          { mode = 'n', keys = ']' },
-          { mode = 'n', keys = '[' },
-        },
-        clues = {
-          clues(),
-        },
-        window = {
-          delay = 0,
-          config = {
-            width = 'auto',
-            border = 'rounded',
-          },
-        },
-      }
-    end,
-  },
-
   -- hipatterns
   -- NOTE: consider https://github.com/catgoose/nvim-colorizer.lua when working with FE
   {
@@ -250,20 +206,26 @@ return {
   -- surround
   {
     'echasnovski/mini.surround',
-    opts = {
-      mappings = {
-        add = 'gsa', -- Add surrounding in Normal and Visual modes
-        delete = 'gsd', -- Delete surrounding
-        find = 'gsf', -- Find surrounding (to the right)
-        find_left = 'gsF', -- Find surrounding (to the left)
-        highlight = 'gsh', -- Highlight surrounding
-        replace = 'gsr', -- Replace surrounding
-        update_n_lines = 'gsn', -- Update `n_lines`
-      },
-    },
-    keys = {
-      { 'gs' },
-    },
+    event = 'VeryLazy',
+    config = function()
+      require('mini.surround').setup {
+        mappings = {
+          add = 'ys', -- Add surrounding in Normal and Visual modes
+          delete = 'ds', -- Delete surrounding
+          find = '', -- Find surrounding (to the right)
+          find_left = '', -- Find surrounding (to the left)
+          highlight = '', -- Highlight surrounding
+          replace = 'cs', -- Replace surrounding
+          update_n_lines = 'gsn', -- Update `n_lines`
+
+          suffix_last = '',
+          suffix_next = '',
+        },
+        search_method = 'cover_or_next',
+      }
+      vim.keymap.del('x', 'ys')
+      vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+    end,
   },
 }
 
