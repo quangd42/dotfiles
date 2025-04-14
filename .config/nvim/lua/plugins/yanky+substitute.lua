@@ -6,7 +6,14 @@ return {
       highlight = { timer = 150 },
     },
     keys = {
-      { '<leader>p', ':YankyRingHistory<cr>', mode = { 'n', 'x' }, desc = 'Open Yank History' },
+      {
+        '<leader>p',
+        function()
+          Snacks.picker.yanky()
+        end,
+        mode = { 'n', 'x' },
+        desc = 'Open Yank History',
+      },
       { 'y', '<Plug>(YankyYank)', mode = { 'n', 'x' }, desc = 'Yank Text' },
       { 'p', '<Plug>(YankyPutAfter)', mode = { 'n', 'x' }, desc = 'Put Text After Cursor' },
       { 'P', '<Plug>(YankyPutBefore)', mode = { 'n', 'x' }, desc = 'Put Text Before Cursor' },
