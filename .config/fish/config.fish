@@ -1,3 +1,8 @@
+# install fisher https://github.com/jorgebucaran/fisher
+# fisher install ilancosman/tide@v6
+# fisher install lewisacidic/fish-git-abbr
+# fisher install PatrickF1/fzf.fish
+
 if status is-interactive
   # Commands to run in interactive sessions can go here
 
@@ -67,6 +72,7 @@ if status is-interactive
 		rm -f -- "$tmp"
 	end
 
+	# abbr & alias
 	abbr --add ls lsd
 	abbr --add tree lsd --tree
 	abbr --add la lsd -lA
@@ -85,9 +91,12 @@ if status is-interactive
 	# man syntax highlighting
 	set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
-	# mason bin
+	# PATH
 	set -gx PATH $PATH ~/.local/share/nvim/mason/bin
+	set -gx PATH $PATH /opt/homebrew/bin
+	set -gx XDG_CONFIG_HOME $HOME/.config # for lazygit to use correct config folder
 
 	# fzf --fish | FZF_ALT_C_COMMAND= source
+	set -g FZF_DEFAULT_OPTS '--bind=up:previous,down:next'
 	zoxide init fish | source
 end
