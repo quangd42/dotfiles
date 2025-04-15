@@ -10,7 +10,7 @@ font-size = 16
 # adjust-cursor-height = 13%
 theme = tokyonight
 macos-titlebar-style = tabs
-background-opacity = 0.95
+# background-opacity = 0.95
 adjust-cursor-thickness = 100%
 # bold-is-bright = true
 

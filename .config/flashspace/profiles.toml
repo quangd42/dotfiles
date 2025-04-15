@@ -1,0 +1,115 @@
+selectedProfileId = 'EB33C7BE-94E3-4A01-BA31-2331F43F6C30'
+
+[[profiles]]
+id = 'EB33C7BE-94E3-4A01-BA31-2331F43F6C30'
+name = 'Default'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'opt+shift+b'
+display = 'DELL U2723QE'
+id = '4B581926-1CFF-49C3-872C-78B2F5ABEDEB'
+name = 'Base'
+shortcut = 'opt+b'
+symbolIconName = 'homekit'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.spotify.client'
+iconPath = '/Applications/Spotify.app/Contents/Resources/Icon.icns'
+name = 'Spotify'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.apple.systempreferences'
+iconPath = '/System/Applications/System Settings.app/Contents/Resources/PrefApp.icns'
+name = 'System Settings'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'opt+shift+r'
+display = 'DELL U2723QE'
+id = '55D53F27-C604-4488-8E9E-ADAE976957A6'
+name = 'Read'
+shortcut = 'opt+r'
+symbolIconName = 'book.pages'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.yellowmonkeystudio.gcal'
+iconPath = '/Applications/GCal for Google Calendar.app/Contents/Resources/AppIcon.icns'
+name = 'GCal for Google Calendar'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.apple.Preview'
+iconPath = '/System/Applications/Preview.app/Contents/Resources/AppIcon.icns'
+name = 'Preview'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'opt+shift+t'
+display = 'DELL U2723QE'
+id = '34631EF0-E4F8-47C3-AE94-9D7D90612ED4'
+name = 'Terminal'
+shortcut = 'opt+t'
+symbolIconName = 'apple.terminal'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.github.wez.wezterm'
+iconPath = '/Applications/WezTerm.app/Contents/Resources/terminal.icns'
+name = 'WezTerm'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'dev.zed.Zed'
+iconPath = '/Applications/Zed.app/Contents/Resources/Zed.icns'
+name = 'Zed'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.mitchellh.ghostty'
+iconPath = '/Applications/Ghostty.app/Contents/Resources/AppIcon.icns'
+name = 'Ghostty'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'opt+shift+s'
+display = 'DELL U2723QE'
+id = '3B9F5074-A9D9-47C4-97E2-3998321CEC95'
+name = 'Browser'
+shortcut = 'opt+s'
+symbolIconName = 'network'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'company.thebrowser.Browser'
+iconPath = '/Applications/Arc.app/Contents/Resources/AppIcon.icns'
+name = 'Arc'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'md.obsidian'
+iconPath = '/Applications/Obsidian.app/Contents/Resources/icon.icns'
+name = 'Obsidian'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'opt+shift+c'
+display = 'DELL U2723QE'
+id = '2E8672DD-9D93-4BEF-8358-3E8A24C826F2'
+name = 'Chat'
+shortcut = 'opt+c'
+symbolIconName = 'message'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'net.whatsapp.WhatsApp'
+iconPath = '/Applications/WhatsApp.app/Contents/Resources/AppIconCatalystRelease.icns'
+name = "\u200EWhatsApp"
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.apple.MobileSMS'
+iconPath = '/System/Applications/Messages.app/Contents/Resources/AppIcon.icns'
+name = 'Messages'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.hnc.Discord'
+iconPath = '/Applications/Discord.app/Contents/Resources/electron.icns'
+name = 'Discord'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.vng.zalo'
+iconPath = '/Applications/Zalo.app/Contents/Resources/icon.icns'
+name = 'Zalo'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.facebook.archon.developerID'
+iconPath = '/Applications/Messenger.app/Contents/Resources/messenger.icns'
+name = 'Messenger'
