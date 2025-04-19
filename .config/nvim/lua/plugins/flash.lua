@@ -5,6 +5,7 @@ return {
     ---@type Flash.Config
     opts = {
       modes = { char = { highlight = { backdrop = false } } },
+      labels = 'nrtsgkhaeibldwqfoujzxmcvpy',
     },
     -- stylua: ignore
     keys = {
