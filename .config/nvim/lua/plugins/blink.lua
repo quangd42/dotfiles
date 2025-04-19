@@ -10,7 +10,7 @@ return {
     },
 
     -- use a release tag to download pre-built binaries
-    version = '*',
+    version = '1.*',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -64,6 +64,8 @@ return {
 
       -- Experimental signature help support
       signature = { enabled = true },
+
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
 
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
