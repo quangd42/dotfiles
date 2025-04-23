@@ -64,7 +64,7 @@ return {
       })
     end,
     keys = {
-      { '<leader>uf', '<cmd>FocusToggle<cr>', desc = 'Toggle Window Focus' },
+      { '<leader>uW', '<cmd>FocusToggle<cr>', desc = 'Toggle Window Focus' },
     },
   },
 
