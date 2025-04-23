@@ -60,6 +60,15 @@ return {
           map('<leader>ca', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
           map('<leader>cd', function()
             return require('flash').jump {
+              matcher = function(win)
+                ---@param diag vim.Diagnostic
+                return vim.tbl_map(function(diag)
+                  return {
+                    pos = { diag.lnum + 1, diag.col },
+                    end_pos = { diag.end_lnum + 1, diag.end_col - 1 },
+                  }
+                end, vim.diagnostic.get(vim.api.nvim_win_get_buf(win)))
+              end,
               action = function(match, state)
                 vim.api.nvim_win_call(match.win, function()
                   vim.api.nvim_win_set_cursor(match.win, match.pos)
