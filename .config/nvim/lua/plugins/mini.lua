@@ -193,16 +193,6 @@ return {
     },
   },
 
-  -- splitjoin
-  {
-    'echasnovski/mini.splitjoin',
-    opts = {},
-    keys = {
-      -- stylua: ignore
-      { 'gS', function() return require('mini.splitjoin').toggle() end, desc = 'Split/Join Arguments' },
-    },
-  },
-
   -- surround
   {
     'echasnovski/mini.surround',
