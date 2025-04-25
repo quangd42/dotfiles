@@ -150,9 +150,8 @@
     "bindings": {
       "cmd-enter": "workspace::NewTerminal",
       "ctrl-m": "workspace::ToggleZoom",
-      "ctrl-h": "pane::ActivatePreviousItem",
-      "ctrl-l": "pane::ActivateNextItem",
-      "cmd-x": "terminal::ToggleViMode"
+      "cmd-x": "terminal::ToggleViMode",
+      "cmd-k": ["terminal::SendKeystroke", "ctrl-l"]
     }
   },
   // Editor wide
@@ -253,6 +252,14 @@
     "bindings": {
       "tab": ["vim::Literal", ["tab", "\u0009"]]
     }
-  }
+  },
   // END bind `tab` back
+
+  // Tab Switcher
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "x": "tab_switcher::CloseSelectedItem"
+    }
+  }
 ]

@@ -30,10 +30,10 @@ function M.config(config)
 		{ key = "p", mods = "SUPER|SHIFT", action = act.ActivateCommandPalette },
 
 		-- Tabs
-		{ key = "k", mods = "SUPER", action = act.ActivateTabRelative(-1) },
-		{ key = "j", mods = "SUPER", action = act.ActivateTabRelative(1) },
-		{ key = "h", mods = "SUPER", action = act.ActivateTabRelative(-1) },
-		{ key = "l", mods = "SUPER", action = act.ActivateTabRelative(1) },
+		-- { key = "k", mods = "SUPER", action = act.ActivateTabRelative(-1) },
+		-- { key = "j", mods = "SUPER", action = act.ActivateTabRelative(1) },
+		-- { key = "h", mods = "SUPER", action = act.ActivateTabRelative(-1) },
+		-- { key = "l", mods = "SUPER", action = act.ActivateTabRelative(1) },
 		{ key = "Tab", mods = "CTRL", action = act.ActivateLastTab },
 		{ key = "Tab", mods = "CTRL|SHIFT", action = act.ActivateLastTab },
 
@@ -42,6 +42,9 @@ function M.config(config)
 		{ key = "j", mods = "ALT", action = act.DisableDefaultAssignment },
 		{ key = "k", mods = "ALT", action = act.DisableDefaultAssignment },
 		{ key = "l", mods = "ALT", action = act.DisableDefaultAssignment },
+
+		-- clear scrollback
+		{ key = "k", mods = "SUPER", action = act.SendKey({ key = "l", mods = "CTRL" }) },
 
 		-- workspace launcher
 		{ key = "o", mods = "SUPER", action = act.ShowLauncherArgs({ flags = "WORKSPACES" }) },
