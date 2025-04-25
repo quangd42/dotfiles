@@ -10,14 +10,13 @@ enableSpaceControl = false
 enableSpaceControlAnimations = true
 enableSwipeGestures = true
 enableWorkspaceTransitions = false
-focusDown = 'opt+j'
 focusFrontmostWindow = false
-focusLeft = 'opt+h'
-focusRight = 'opt+l'
-focusUp = 'opt+k'
+focusNextWorkspaceWindow = 'opt+h'
+focusPreviousWorkspaceWindow = 'opt+a'
 menuBarDisplayAliases = ''
 menuBarTitleTemplate = '$WORKSPACE'
 pipApps = []
+pipScreenCornerOffset = 15
 runScriptOnLaunch = ''
 runScriptOnProfileChange = 'sketchybar --reload'
 runScriptOnWorkspaceChange = 'sketchybar --trigger flashspace_workspace_change WORKSPACE="$WORKSPACE" DISPLAY="$DISPLAY"'
@@ -39,8 +38,3 @@ switchToRecentWorkspace = 'opt+tab'
 toggleTheFocusedAppFloating = 'opt+f'
 workspaceTransitionDimming = 0.20000000000000001
 workspaceTransitionDuration = 0.29999999999999999
-
-[[floatingApps]]
-bundleIdentifier = 'com.apple.finder'
-iconPath = '/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns'
-name = 'Finder'

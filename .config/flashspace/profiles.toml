@@ -76,11 +76,6 @@ bundleIdentifier = 'company.thebrowser.Browser'
 iconPath = '/Applications/Arc.app/Contents/Resources/AppIcon.icns'
 name = 'Arc'
 
-[[profiles.workspaces.apps]]
-bundleIdentifier = 'md.obsidian'
-iconPath = '/Applications/Obsidian.app/Contents/Resources/icon.icns'
-name = 'Obsidian'
-
 [[profiles.workspaces]]
 assignAppShortcut = 'opt+shift+c'
 display = 'DELL U2723QE'
@@ -113,3 +108,22 @@ name = 'Zalo'
 bundleIdentifier = 'com.facebook.archon.developerID'
 iconPath = '/Applications/Messenger.app/Contents/Resources/messenger.icns'
 name = 'Messenger'
+
+[[profiles.workspaces]]
+assignAppShortcut = 'opt+shift+n'
+display = 'DELL U2723QE'
+id = '69B177AC-8B20-4998-BAEF-4996BD2D5D9A'
+name = 'Notes'
+shortcut = 'opt+n'
+symbolIconName = 'note.text'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'md.obsidian'
+iconPath = '/Applications/Obsidian.app/Contents/Resources/icon.icns'
+name = 'Obsidian'
+
+[[profiles.workspaces.apps]]
+bundleIdentifier = 'com.apple.Notes'
+iconPath = '/System/Applications/Notes.app/Contents/Resources/AppIcon.icns'
+name = 'Notes'
+
