@@ -60,7 +60,7 @@ if status is-interactive
 	set -g tide_git_color_upstream $green
 	set -g tide_pwd_color_anchors $cyan
 	set -g tide_pwd_color_dirs $cyan
-	set -g tide_right_prompt_items status cmd_duration context jobs direnv node python rustc java php pulumi ruby go kubectl distrobox toolbox terraform aws nix_shell crystal elixir zig
+	# set -g tide_right_prompt_items status cmd_duration context jobs direnv node python rustc java php pulumi ruby go kubectl distrobox toolbox terraform aws nix_shell crystal elixir zig
 
 	# yazi
 	function y
@@ -81,8 +81,9 @@ if status is-interactive
 	abbr --add wtt wezterm cli set-tab-title
 	abbr --add wwt wezterm cli rename-workspace
 	abbr --add gdoc 'stdsym | fzf --preview "go doc \$(echo {})" | xargs go doc'
-	abbr --add v nvim
-	abbr --add n 'NVIM_APPNAME="lazyvim" nvim'
+	alias v nvim
+	alias n 'NVIM_APPNAME="lazyvim" nvim'
+	alias fn 'NVIM_APPNAME="firenvim" nvim'
 	function multicd
 		echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
 	end
