@@ -71,7 +71,7 @@ return {
   -- smooth scrolling
   {
     'karb94/neoscroll.nvim',
-    enabled = false,
+    enabled = true,
     event = ui_events,
     opts = {
       duration_multiplier = 0.2,

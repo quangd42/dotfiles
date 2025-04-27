@@ -1,7 +1,7 @@
 return {
   {
     'folke/tokyonight.nvim',
-    enabled = false,
+    enabled = true,
     -- version = '4.11.0',
     commit = 'c8ea87c',
     priority = 1000, -- Make sure to load this before all the other start plugins.
@@ -9,7 +9,7 @@ return {
       vim.cmd.colorscheme 'tokyonight-night'
     end,
     opts = {
-      transparent = true,
+      transparent = false,
       on_highlights = function(hl, colors)
         hl['SnacksDashboardHeader'] = {
           fg = colors.blue2,
@@ -19,7 +19,7 @@ return {
   },
   {
     'rebelot/kanagawa.nvim',
-    enabled = true,
+    enabled = false,
     priority = 1000,
     init = function()
       vim.cmd.colorscheme 'kanagawa'
